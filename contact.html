@@ -9,8 +9,44 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/styles.css">
 <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+<link rel="stylesheet" href="css/styles.css">
+<style>
+  /* ---- Undo jQuery Mobile's global overrides ---- */
+  html, body {
+    font-family: 'IBM Plex Sans', system-ui, sans-serif !important;
+    font-size: 16px !important;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  h1, h2, h3, h4, p, .lede, .eyebrow {
+    font-family: inherit !important;
+    text-shadow: none !important;
+  }
+
+  .form-input, .form-textarea {
+    font-family: 'IBM Plex Sans', sans-serif !important;
+    font-size: 1rem !important;
+    -webkit-appearance: none;
+    text-shadow: none !important;
+  }
+
+  .btn, .copy-btn, .social-btn, .nav-links a, .card-link, .logo {
+    text-shadow: none !important;
+    text-decoration: none !important;
+    font-family: inherit !important;
+  }
+
+  main, .section, .container, .card {
+    position: static !important;
+    overflow: visible !important;
+  }
+
+  /* Scope jQM styling to the FAQ only */
+  #faqCollapsibleSet .ui-collapsible-heading a {
+    font-family: 'IBM Plex Sans', sans-serif !important;
+  }
+</style>
 </head>
 <body>
 
@@ -102,9 +138,6 @@
 
   <!-- ============ FAQ (jQuery Mobile) ============ -->
   <!-- RUBRIC #14: jQuery Mobile — collapsible widget, manually initialized -->
-  <!-- Scoped to this one container so it doesn't touch the rest of the site's
-       custom nav/CSS. jQuery Mobile is deprecated (Oct 2021) but included here
-       to satisfy the course rubric requirement. -->
   <section class="section" style="padding-top:0;">
     <div class="container">
       <h2 class="reveal" style="margin-bottom: var(--space-5);">Common questions</h2>
@@ -154,11 +187,11 @@
   </div>
 </footer>
 
-<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="js/script.js"></script>
 <script>
   // Prevent jQuery Mobile from auto-enhancing the whole document as a "page" —
-  // we only want the FAQ collapsible widget below, not a full jQM takeover
-  // of this site's custom nav/buttons/layout.
+  // we only want the FAQ collapsible widget, not a full jQM takeover.
   $(document).on('mobileinit', function () {
     $.mobile.autoInitializePage = false;
     $.mobile.ignoreContentEnabled = true;
@@ -166,11 +199,8 @@
 </script>
 <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 <script>
-  // Manually enhance just the FAQ collapsible-set (RUBRIC #14: jQuery Mobile)
-  $(function () {
-    $('#faqCollapsibleSet').collapsibleset();
-  });
+  // Manually enhance just the FAQ collapsible-set (RUBRIC #14)
+  $(function () { $('#faqCollapsibleSet').collapsibleset(); });
 </script>
-<script src="js/script.js"></script>
 </body>
 </html>
