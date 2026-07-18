@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Experience — Kurt Sooknanan</title>
+<meta name="description" content="Working experience of Kurt Sooknanan, Junior Security Analyst at the UMass Boston SOC.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>%F0%9F%9B%A1%EF%B8%8F</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container navbar">
+    <a href="index.html" class="logo">kurt<span>.</span>sooknanan</a>
+    <nav aria-label="Primary">
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="academics.html">Academics</a></li>
+        <li><a href="experience.html" class="active">Experience</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main>
+  <section class="page-hero">
+    <div class="container">
+      <p class="eyebrow">Page 03</p>
+      <h1>Working experience</h1>
+      <p class="lede">What I actually work on day-to-day — alert triage, vulnerability scanning, and endpoint remediation.</p>
+    </div>
+  </section>
+
+  <!-- ============ ROLE CARD ============ -->
+  <!-- RUBRIC #3/4: spacing/borders, layout -->
+  <section class="section">
+    <div class="container">
+      <div class="card reveal role-card">
+        <div class="icon-tile" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2 3 6v6c0 5 4 8.5 9 10 5-1.5 9-5 9-10V6l-9-4Z"/></svg>
+        </div>
+        <div>
+          <h3>Junior Security Analyst</h3>
+          <p class="role-meta">UMass Boston · Security Operations Center (SOC) · Current</p>
+          <p style="margin-bottom: var(--space-4);">Working within the university's SOC to monitor, investigate, and remediate security events across campus systems, using a mix of SIEM, vulnerability management, and endpoint protection tooling.</p>
+
+          <!-- RUBRIC #6/7: Responsive stat row, CSS Grid -->
+          <div class="stat-row" style="margin-top: 0; padding-top: 0; border-top: none; margin-bottom: var(--space-5);">
+            <div>
+              <div class="stat-num">185+</div>
+              <div class="stat-label">Devices under vulnerability management</div>
+            </div>
+            <div>
+              <div class="stat-num">3</div>
+              <div class="stat-label">Sentinel incidents investigated, week one</div>
+            </div>
+            <div>
+              <div class="stat-num">12+</div>
+              <div class="stat-label">Security tools &amp; platforms in active use</div>
+            </div>
+          </div>
+
+          <!-- RUBRIC #5: list -->
+          <ul class="bullet-list">
+            <li><strong style="color: var(--charcoal);">Incident investigation</strong> — triage and document security incidents in Microsoft Sentinel, from initial alert review through supervisor-facing written findings</li>
+            <li><strong style="color: var(--charcoal);">Vulnerability management</strong> — manage Tenable scanning across 185+ campus devices: asset tagging by hostname and IP, Nessus Agent scan scheduling with completion notifications, and remediation proposals for findings including a high-severity WinVerifyTrust signature validation issue (CVE-2013-3900) and a medium-severity Edge Chromium vulnerability</li>
+            <li><strong style="color: var(--charcoal);">Threat hunting</strong> — build hypothesis-driven hunts starting from software actually in use across the organization, prioritizing by attack surface and target value using CVSS and EPSS scoring with NVD research</li>
+            <li><strong style="color: var(--charcoal);">Phishing &amp; smishing analysis</strong> — manual investigation of reported messages: header analysis, URL reputation checks via VirusTotal, and social engineering indicator review, with recommendations written in plain language for non-technical staff</li>
+            <li><strong style="color: var(--charcoal);">Endpoint security</strong> — investigate and remediate endpoint threats in Microsoft Defender, including pre-deployment readiness checks confirming provisioning software and Defender enrollment before machines ship</li>
+            <li><strong style="color: var(--charcoal);">Email security</strong> — work across the inbound mail inspection chain: transport rules, Defender ATP scanning, Abnormal behavioral detection, and DLP/Purview classification, plus DMARC and SPF for domain spoofing prevention</li>
+            <li><strong style="color: var(--charcoal);">DNS &amp; IP management</strong> — support Infoblox workflows including IP assignment, cleanup of stale records and unused servers, and DHCP/IPAM administration</li>
+            <li><strong style="color: var(--charcoal);">Documentation &amp; reporting</strong> — track findings and remediation through ServiceNow, including DHS-format incident reporting; cross-reference indicators of compromise via VirusTotal, AbuseIP, and Any.Run and map findings to MITRE ATT&amp;CK</li>
+          </ul>
+
+          <p class="card-link" style="margin-top: var(--space-4);"><a href="blog.html" style="color: inherit; text-decoration: none;">Read the full weekly field notes &rarr;</a></p>
+        </div>
+      </div>
+
+      <div class="card reveal role-card" style="margin-top: var(--space-5);">
+        <div class="icon-tile" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 9h1m4 0h1m-6 4h1m4 0h1m-6 4h1m4 0h1"/></svg>
+        </div>
+        <div>
+          <h3>Supervisor / Assistant Manager</h3>
+          <p class="role-meta">Cumberland Farms · Retail Operations · Current</p>
+          <p style="margin-bottom: var(--space-4);">Running store operations day-to-day, with a lot more IT and systems work than the title suggests — most of it centered on keeping retail hardware and network infrastructure online, plus compliance auditing and shift leadership.</p>
+
+          <div class="stat-row" style="margin-top: 0; padding-top: 0; border-top: none; margin-bottom: var(--space-5);">
+            <div>
+              <div class="stat-num">24/7</div>
+              <div class="stat-label">Store systems kept operational</div>
+            </div>
+            <div>
+              <div class="stat-num">3</div>
+              <div class="stat-label">Regulated log types audited per shift</div>
+            </div>
+            <div>
+              <div class="stat-num">Key</div>
+              <div class="stat-label">Holder — opening, closing, escalations</div>
+            </div>
+          </div>
+
+          <ul class="bullet-list">
+            <li><strong style="color: var(--charcoal);">Infrastructure &amp; connectivity</strong> — maintain the store's low-voltage data cabinet, keeping routers, switches, and patch panels stable so the network stays up for POS, fuel systems, and back-office operations</li>
+            <li><strong style="color: var(--charcoal);">System administration</strong> — troubleshoot the connection between POS register clients and the back-office store server, resolving polling errors and database sync issues that interrupt transactions</li>
+            <li><strong style="color: var(--charcoal);">Hardware maintenance</strong> — diagnose and repair failures on critical retail hardware including barcode scanners, thermal receipt printers, and fuel pump communication interfaces, minimizing downtime during trading hours</li>
+            <li><strong style="color: var(--charcoal);">Incident triage under pressure</strong> — isolate whether a failure is hardware, network, or software before escalating, and keep transactions moving with a workaround while the root cause gets resolved</li>
+            <li><strong style="color: var(--charcoal);">Vendor &amp; escalation management</strong> — coordinate with corporate IT support and third-party service technicians, documenting symptoms and steps already taken so escalations don't restart from zero</li>
+            <li><strong style="color: var(--charcoal);">Compliance &amp; auditing</strong> — run and audit shift documentation, tobacco and lottery logs, safe counts, and cash handling to meet regulatory and corporate requirements</li>
+            <li><strong style="color: var(--charcoal);">Access &amp; asset control</strong> — manage key holder responsibilities, safe access, and opening/closing procedures, enforcing separation of duties on cash handling</li>
+            <li><strong style="color: var(--charcoal);">Team leadership &amp; training</strong> — lead shifts, onboard new staff on POS and store systems, and handle customer and operational escalations during high-traffic periods</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TOOL STACK ============ -->
+  <!-- RUBRIC #5/7: list, flexbox layout -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="eyebrow">Daily toolkit</p>
+        <h2>Tool stack</h2>
+      </div>
+      <div class="badge-row reveal">
+        <span class="badge">Microsoft Sentinel</span>
+        <span class="badge">Tenable</span>
+        <span class="badge">Nessus Agent</span>
+        <span class="badge">Microsoft Defender</span>
+        <span class="badge">ServiceNow</span>
+        <span class="badge">Azure</span>
+        <span class="badge">VirusTotal</span>
+        <span class="badge">AbuseIPDB</span>
+        <span class="badge">Any.Run</span>
+        <span class="badge">MITRE ATT&amp;CK</span>
+        <span class="badge">Infoblox</span>
+        <span class="badge">Message Header Analyzer</span>
+        <span class="badge">DMARC Analyzer</span>
+        <span class="badge">NVD</span>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-col">
+      <p class="footer-logo">Kurt Sooknanan</p>
+      <p>Information Security Analyst &amp; IT Student, UMass Boston.</p>
+    </div>
+    <div class="footer-col">
+      <h3>Links</h3>
+      <ul>
+        <li><a href="mailto:manny.kurt@gmail.com">Email</a></li>
+        <li><a href="https://github.com/kurt-sudo420" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/kurt-sooknanan-485494410/" target="_blank" rel="noopener">LinkedIn</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h3>Site</h3>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <p>&copy; <span id="year"></span> Kurt Sooknanan. Built with HTML5, CSS3 &amp; JavaScript.</p>
+    <p>Last updated: <span id="lastModified"></span></p>
+  </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>
