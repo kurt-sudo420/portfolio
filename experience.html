@@ -42,7 +42,6 @@
   </section>
 
   <!-- ============ ROLE CARD ============ -->
-  <!-- RUBRIC #3/4: spacing/borders, layout -->
   <section class="section">
     <div class="container">
       <div class="card reveal role-card">
@@ -54,7 +53,6 @@
           <p class="role-meta">UMass Boston · Security Operations Center (SOC) · Current</p>
           <p style="margin-bottom: var(--space-4);">Working within the university's SOC to monitor, investigate, and remediate security events across campus systems, using a mix of SIEM, vulnerability management, and endpoint protection tooling.</p>
 
-          <!-- RUBRIC #6/7: Responsive stat row, CSS Grid -->
           <div class="stat-row" style="margin-top: 0; padding-top: 0; border-top: none; margin-bottom: var(--space-5);">
             <div>
               <div class="stat-num">185+</div>
@@ -62,7 +60,7 @@
             </div>
             <div>
               <div class="stat-num">3</div>
-              <div class="stat-label">Sentinel incidents investigated, week one</div>
+              <div class="stat-label">SIEM incidents investigated, week one</div>
             </div>
             <div>
               <div class="stat-num">12+</div>
@@ -70,16 +68,15 @@
             </div>
           </div>
 
-          <!-- RUBRIC #5: list -->
           <ul class="bullet-list">
-            <li><strong style="color: var(--charcoal);">Incident investigation</strong> — triage and document security incidents in Microsoft Sentinel, from initial alert review through supervisor-facing written findings</li>
-            <li><strong style="color: var(--charcoal);">Vulnerability management</strong> — manage Tenable scanning across 185+ campus devices: asset tagging by hostname and IP, Nessus Agent scan scheduling with completion notifications, and remediation proposals for findings including a high-severity WinVerifyTrust signature validation issue (CVE-2013-3900) and a medium-severity Edge Chromium vulnerability</li>
+            <li><strong style="color: var(--charcoal);">Incident investigation</strong> — triage and document security incidents in a cloud-native SIEM, from initial alert review through supervisor-facing written findings</li>
+            <li><strong style="color: var(--charcoal);">Vulnerability management</strong> — manage agent-based vulnerability scanning across 185+ campus devices: asset tagging by hostname and IP, scan scheduling with completion notifications, and remediation proposals for findings including a high-severity WinVerifyTrust signature validation issue (CVE-2013-3900) and a medium-severity browser vulnerability</li>
             <li><strong style="color: var(--charcoal);">Threat hunting</strong> — build hypothesis-driven hunts starting from software actually in use across the organization, prioritizing by attack surface and target value using CVSS and EPSS scoring with NVD research</li>
-            <li><strong style="color: var(--charcoal);">Phishing &amp; smishing analysis</strong> — manual investigation of reported messages: header analysis, URL reputation checks via VirusTotal, and social engineering indicator review, with recommendations written in plain language for non-technical staff</li>
-            <li><strong style="color: var(--charcoal);">Endpoint security</strong> — investigate and remediate endpoint threats in Microsoft Defender, including pre-deployment readiness checks confirming provisioning software and Defender enrollment before machines ship</li>
-            <li><strong style="color: var(--charcoal);">Email security</strong> — work across the inbound mail inspection chain: transport rules, Defender ATP scanning, Abnormal behavioral detection, and DLP/Purview classification, plus DMARC and SPF for domain spoofing prevention</li>
-            <li><strong style="color: var(--charcoal);">DNS &amp; IP management</strong> — support Infoblox workflows including IP assignment, cleanup of stale records and unused servers, and DHCP/IPAM administration</li>
-            <li><strong style="color: var(--charcoal);">Documentation &amp; reporting</strong> — track findings and remediation through ServiceNow, including DHS-format incident reporting; cross-reference indicators of compromise via VirusTotal, AbuseIP, and Any.Run and map findings to MITRE ATT&amp;CK</li>
+            <li><strong style="color: var(--charcoal);">Phishing &amp; smishing analysis</strong> — manual investigation of reported messages: header analysis, URL reputation checks via threat intelligence platforms, and social engineering indicator review, with recommendations written in plain language for non-technical staff</li>
+            <li><strong style="color: var(--charcoal);">Endpoint security</strong> — investigate and remediate endpoint threats using an enterprise EDR platform, including pre-deployment readiness checks confirming provisioning software and agent enrollment before machines ship</li>
+            <li><strong style="color: var(--charcoal);">Email security</strong> — work across the inbound mail inspection chain: transport rules, ATP scanning, AI-based behavioral detection, and DLP/data classification, plus DMARC and SPF for domain spoofing prevention</li>
+            <li><strong style="color: var(--charcoal);">DNS &amp; IP management</strong> — support DDI platform workflows including IP assignment, cleanup of stale records and unused servers, and DHCP/IPAM administration</li>
+            <li><strong style="color: var(--charcoal);">Documentation &amp; reporting</strong> — track findings and remediation through an ITSM ticketing platform, including DHS-format incident reporting; cross-reference indicators of compromise via threat intelligence tools and map findings to MITRE ATT&amp;CK</li>
           </ul>
 
           <p class="card-link" style="margin-top: var(--space-4);"><a href="blog.html" style="color: inherit; text-decoration: none;">Read the full weekly field notes &rarr;</a></p>
@@ -126,7 +123,6 @@
   </section>
 
   <!-- ============ TOOL STACK ============ -->
-  <!-- RUBRIC #5/7: list, flexbox layout -->
   <section class="section section--alt">
     <div class="container">
       <div class="section-header reveal">
@@ -134,20 +130,20 @@
         <h2>Tool stack</h2>
       </div>
       <div class="badge-row reveal">
-        <span class="badge">Microsoft Sentinel</span>
-        <span class="badge">Tenable</span>
-        <span class="badge">Nessus Agent</span>
-        <span class="badge">Microsoft Defender</span>
-        <span class="badge">ServiceNow</span>
-        <span class="badge">Azure</span>
-        <span class="badge">VirusTotal</span>
-        <span class="badge">AbuseIPDB</span>
-        <span class="badge">Any.Run</span>
+        <span class="badge">SIEM</span>
+        <span class="badge">Vulnerability Scanner</span>
+        <span class="badge">Agent-Based Scanning</span>
+        <span class="badge">EDR</span>
+        <span class="badge">ITSM / Ticketing</span>
+        <span class="badge">Cloud Platform</span>
+        <span class="badge">Threat Intelligence</span>
+        <span class="badge">IP Reputation</span>
+        <span class="badge">Sandbox Analysis</span>
         <span class="badge">MITRE ATT&amp;CK</span>
-        <span class="badge">Infoblox</span>
-        <span class="badge">Message Header Analyzer</span>
-        <span class="badge">DMARC Analyzer</span>
-        <span class="badge">NVD</span>
+        <span class="badge">DDI / IPAM</span>
+        <span class="badge">Email Header Analysis</span>
+        <span class="badge">DMARC Analysis</span>
+        <span class="badge">NVD / CVE Research</span>
       </div>
     </div>
   </section>
