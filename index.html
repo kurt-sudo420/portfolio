@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kurt Sooknanan — Information Security Analyst</title>
+<meta name="description" content="Portfolio of Kurt Sooknanan, Information Security Analyst and IT student at UMass Boston.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>%F0%9F%9B%A1%EF%B8%8F</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- ============ NAV (shared across all pages) ============ -->
+<header class="site-header">
+  <div class="container navbar">
+    <a href="index.html" class="logo">kurt<span>.</span>sooknanan</a>
+    <nav aria-label="Primary">
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="academics.html">Academics</a></li>
+        <li><a href="experience.html">Experience</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main>
+  <!-- ============ HERO ============ -->
+  <!-- RUBRIC #4/7: CSS Grid page layout, two-column hero -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <p class="eyebrow">Information Security Analyst</p>
+        <h1>Kurt Sooknanan</h1>
+        <!-- RUBRIC #13: JavaScript typing effect -->
+        <p class="hero-tagline mono">&gt; <span id="typedRole"></span><span class="cursor"></span></p>
+        <p class="lede">I'm a Junior Security Analyst at the UMass Boston SOC and a B.S. Information Technology student on the Systems Administration track, expected to graduate in 2028. Outside of class and the SOC, I build (and occasionally break) things in my homelab, and I'm currently working toward my Network+, Security+, and AWS Cloud certifications.</p>
+        <div class="hero-actions">
+          <a href="experience.html" class="btn btn-primary">View my experience</a>
+          <a href="contact.html" class="btn btn-outline">Contact me</a>
+        </div>
+
+        <!-- RUBRIC #6/7: Responsive stat row, CSS Grid -->
+        <div class="stat-row">
+          <div>
+            <div class="stat-num">3</div>
+            <div class="stat-label">Certifications in progress</div>
+          </div>
+          <div>
+            <div class="stat-num">6+</div>
+            <div class="stat-label">Security tools in daily use</div>
+          </div>
+          <div>
+            <div class="stat-num">2028</div>
+            <div class="stat-label">Expected graduation</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Signature element: terminal mockup, built with plain HTML/CSS -->
+      <div class="terminal reveal" aria-hidden="true">
+        <div class="terminal-bar">
+          <span class="terminal-dot"></span>
+          <span class="terminal-dot"></span>
+          <span class="terminal-dot"></span>
+          <span class="terminal-title">kurt@soc-workstation: ~</span>
+        </div>
+        <div class="terminal-body">
+          <div><span class="prompt">$</span> whoami</div>
+          <div class="out">kurt-sooknanan</div>
+          <div>&nbsp;</div>
+          <div><span class="prompt">$</span> cat role.txt</div>
+          <div class="out">Junior Security Analyst @ UMass Boston SOC</div>
+          <div class="out">B.S. Information Technology — Class of 2028</div>
+          <div>&nbsp;</div>
+          <div><span class="prompt">$</span> ls certifications/</div>
+          <div class="muted">Network+.cert  Security+.cert  AWS-Cloud.cert</div>
+          <div class="comment"># 3 in progress</div>
+          <div>&nbsp;</div>
+          <div><span class="prompt">$</span> ./status.sh</div>
+          <div class="out">[Good] monitoring alerts in Microsoft Sentinel</div>
+          <div class="out">[Good] homelab uptime: nominal</div>
+          <div class="out">[Good] open to new opportunities</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION PREVIEW CARDS ============ -->
+  <!-- RUBRIC #3/4/8: CSS spacing/backgrounds, grid layout, icons -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="eyebrow">Get to know me</p>
+        <h2>Three ways to look at my work</h2>
+        <p class="lede">Everything here maps back to the same person — a student, an analyst, and someone who likes taking systems apart to understand them.</p>
+      </div>
+
+      <div class="grid-3">
+        <a href="academics.html" class="card reveal">
+          <div class="card-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3 2 8l10 5 10-5-10-5Z"/><path d="M6 10.5V16c0 1.5 2.7 3 6 3s6-1.5 6-3v-5.5"/></svg>
+          </div>
+          <h3>Academics</h3>
+          <p>Degree, in-progress certifications, and the tools I've picked up along the way.</p>
+          <span class="card-link">View academics →</span>
+        </a>
+
+        <a href="experience.html" class="card reveal">
+          <div class="card-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2 3 6v6c0 5 4 8.5 9 10 5-1.5 9-5 9-10V6l-9-4Z"/></svg>
+          </div>
+          <h3>Experience</h3>
+          <p>What I actually do day-to-day as a SOC analyst — alerts, scans, and remediation.</p>
+          <span class="card-link">View experience →</span>
+        </a>
+
+        <a href="about.html" class="card reveal">
+          <div class="card-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18M8 4v5"/></svg>
+          </div>
+          <h3>A bit about me</h3>
+          <p>My homelab, side projects, and what I'm up to outside of school and work.</p>
+          <span class="card-link">View more →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ============ FOOTER (shared across all pages) ============ -->
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-col">
+      <p class="footer-logo">Kurt Sooknanan</p>
+      <p>Information Security Analyst &amp; IT Student, UMass Boston.</p>
+    </div>
+    <div class="footer-col">
+      <h3>Links</h3>
+      <ul>
+        <li><a href="mailto:manny.kurt@gmail.com">Email</a></li>
+        <li><a href="https://github.com/kurt-sudo420" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/kurt-sooknanan-485494410/" target="_blank" rel="noopener">LinkedIn</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h3>Site</h3>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <p>&copy; <span id="year"></span> Kurt Sooknanan. Built with HTML5, CSS3 &amp; JavaScript.</p>
+    <!-- RUBRIC #15: last modified date via JavaScript -->
+    <p>Last updated: <span id="lastModified"></span></p>
+  </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>
