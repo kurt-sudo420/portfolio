@@ -1,18 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
 <meta charset="UTF-8">
 <meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>A Bit About Me — Kurt Sooknanan</title>
-<meta name="description" content="Homelab, side projects, and interests of Kurt Sooknanan.">
+<title>About — Kurt Sooknanan</title>
+<meta name="description" content="How Kurt Sooknanan got into security research, plus a walkthrough of his homelab.">
+<meta name="author" content="Kurt Sooknanan">
+<meta name="theme-color" content="#0A1830">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>%F0%9F%9B%A1%EF%B8%8F</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/styles.css">
+<script>document.documentElement.classList.remove('no-js');</script>
 </head>
 <body>
+
+<a href="#main" class="skip-link">Skip to content</a>
 
 <header class="site-header">
   <div class="container navbar">
@@ -22,23 +27,24 @@
         <li><a href="index.html">Home</a></li>
         <li><a href="academics.html">Academics</a></li>
         <li><a href="experience.html">Experience</a></li>
-        <li><a href="about.html" class="active">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="about.html" class="active" aria-current="page">About</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
-    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
       <span></span><span></span><span></span>
     </button>
   </div>
 </header>
 
-<main>
+<main id="main">
   <section class="page-hero">
     <div class="container page-hero-grid">
       <div>
         <p class="eyebrow">Page 05</p>
         <h1>A bit about me</h1>
-        <p class="lede">The homelab I tinker with, the projects I build for fun, and what I'm up to outside of class and the SOC.</p>
+        <p class="lede">How I ended up doing security research as an undergraduate, the homelab I tinker with, and what I'm up to outside of class and the SOC.</p>
       </div>
       <!-- RUBRIC #6: Image -->
       <div class="id-terminal">
@@ -59,24 +65,57 @@
     </div>
   </section>
 
-  <!-- ============ HOMELAB + GITHUB ============ -->
-  <!-- RUBRIC #3/4/8: backgrounds, layout, icons/links -->
+  <!-- ============ STORY ============ -->
   <section class="section">
     <div class="container">
       <div class="section-header reveal">
+        <p class="eyebrow">The short version</p>
+        <h2>How I got here</h2>
+      </div>
+      <div class="grid-2">
+        <div class="reveal">
+          <p style="margin-bottom: var(--space-4);">I started out keeping a retail store's network and point-of-sale systems alive &mdash; unglamorous work, but it taught me to isolate a failure to hardware, network, or software before touching anything, which turns out to be most of what incident triage is.</p>
+          <p style="margin-bottom: var(--space-4);">That led to the university SOC, where I now spend my shifts in the alert queue: investigating phishing reports, running vulnerability scans across campus endpoints, and writing up findings that someone more senior has to be able to act on.</p>
+        </div>
+        <div class="reveal">
+          <p style="margin-bottom: var(--space-4);">In parallel I picked up a Machine Psychology Fellowship with the Cyberpunk Division &mdash; the security arm of UMass Boston's Machine Psychology Group &mdash; red-teaming large language models. It's the same instinct pointed at a newer target &mdash; find out what a system does when you push it somewhere its designers didn't intend.</p>
+          <p>The through line is that I'd rather understand a thing by taking it apart than by reading about it, which is also why there's a rack of equipment in my house and a Flipper Zero on my desk.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROJECTS POINTER ============ -->
+  <!-- RUBRIC #3/4/8: backgrounds, layout, icons/links -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section-header reveal">
         <p class="eyebrow">Homelab &amp; projects</p>
-        <h2>What I've been working on</h2>
-        <p class="lede">Rather than listing everything out here, the best look at what I'm building is my GitHub. My repositories cover the self-hosted stack I run at home, the scripts and tools I've written around it, and the coursework projects I've taken further than the assignment asked for.</p>
+        <h2>What I've been building</h2>
+        <p class="lede">The security tooling I write, the self-hosted stack I run at home, and the wireless testing I do on my own gear all have their own page &mdash; and the source for most of it is public.</p>
       </div>
 
-      <div class="card reveal" style="display:flex; gap: var(--space-5); align-items:flex-start;">
-        <div class="icon-tile" aria-hidden="true">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m8 9-4 3 4 3M16 9l4 3-4 3M13 6l-2 12"/></svg>
+      <div class="grid-2">
+        <div class="card reveal" style="display:flex; gap: var(--space-5); align-items:flex-start;">
+          <div class="icon-tile" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+          </div>
+          <div>
+            <h3>Project write-ups</h3>
+            <p style="margin-bottom: var(--space-4);">CyberToolkit, Project BadToken, the homelab, and the wireless lab &mdash; what each one is and what I learned building it.</p>
+            <a href="projects.html" class="btn btn-primary">See my projects &rarr;</a>
+          </div>
         </div>
-        <div>
-          <h3>My repositories</h3>
-          <p style="margin-bottom: var(--space-4);">Everything from homelab automation and security tooling to this portfolio site itself lives on GitHub — commit history included, so you can see how each project actually came together rather than just the finished version.</p>
-          <a href="https://github.com/kurt-sudo420?tab=repositories" target="_blank" rel="noopener" class="btn btn-primary">Browse my repositories →</a>
+
+        <div class="card reveal" style="display:flex; gap: var(--space-5); align-items:flex-start;">
+          <div class="icon-tile" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m8 9-4 3 4 3M16 9l4 3-4 3M13 6l-2 12"/></svg>
+          </div>
+          <div>
+            <h3>My repositories</h3>
+            <p style="margin-bottom: var(--space-4);">Everything from homelab automation to this site itself lives on GitHub, commit history and all.</p>
+            <a href="https://github.com/kurt-sudo420?tab=repositories" target="_blank" rel="noopener" class="btn btn-outline--light">Browse on GitHub &rarr;</a>
+          </div>
         </div>
       </div>
     </div>
@@ -108,7 +147,7 @@
           </div>
           <div>
             <h3>Fitness</h3>
-            <p>Currently working through a structured 75-day training program — diet, gym, and cardio.</p>
+            <p>Working through a structured training program &mdash; diet, gym, and cardio, tracked the same way I'd track anything else.</p>
           </div>
         </div>
         <div class="feature-row">
@@ -117,7 +156,16 @@
           </div>
           <div>
             <h3>Homelab tinkering</h3>
-            <p>Most weekends involve breaking something in the homelab, then figuring out how to fix it properly.</p>
+            <p>Most weekends involve breaking something in the homelab, then figuring out how to fix it properly rather than just fast.</p>
+          </div>
+        </div>
+        <div class="feature-row">
+          <div class="icon-tile" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 6h2M10 18h4"/></svg>
+          </div>
+          <div>
+            <h3>Hardware &amp; RF</h3>
+            <p>Learning the physical layer the hard way &mdash; radios, badges, and USB devices, all on equipment I own.</p>
           </div>
         </div>
       </div>
@@ -129,7 +177,7 @@
   <div class="container footer-grid">
     <div class="footer-col">
       <p class="footer-logo">Kurt Sooknanan</p>
-      <p>Information Security Analyst &amp; IT Student, UMass Boston.</p>
+      <p>AI Security Researcher &amp; Security Analyst, UMass Boston.</p>
     </div>
     <div class="footer-col">
       <h3>Links</h3>
@@ -142,7 +190,8 @@
     <div class="footer-col">
       <h3>Site</h3>
       <ul>
-        <li><a href="index.html">Home</a></li>
+        <li><a href="experience.html">Experience</a></li>
+        <li><a href="projects.html">Projects</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </div>

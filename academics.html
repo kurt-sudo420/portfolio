@@ -1,18 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
 <meta charset="UTF-8">
 <meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Academics — Kurt Sooknanan</title>
-<meta name="description" content="Education, certifications, and skills of Kurt Sooknanan.">
+<meta name="description" content="Degree, honours, certifications, and self-assessed skills of Kurt Sooknanan.">
+<meta name="author" content="Kurt Sooknanan">
+<meta name="theme-color" content="#0A1830">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>%F0%9F%9B%A1%EF%B8%8F</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/styles.css">
+<script>document.documentElement.classList.remove('no-js');</script>
 </head>
 <body>
+
+<a href="#main" class="skip-link">Skip to content</a>
 
 <header class="site-header">
   <div class="container navbar">
@@ -20,24 +25,25 @@
     <nav aria-label="Primary">
       <ul class="nav-links" id="navLinks">
         <li><a href="index.html">Home</a></li>
-        <li><a href="academics.html" class="active">Academics</a></li>
+        <li><a href="academics.html" class="active" aria-current="page">Academics</a></li>
         <li><a href="experience.html">Experience</a></li>
+        <li><a href="projects.html">Projects</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
-    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
       <span></span><span></span><span></span>
     </button>
   </div>
 </header>
 
-<main>
+<main id="main">
   <section class="page-hero">
     <div class="container">
       <p class="eyebrow">Page 02</p>
       <h1>Academics</h1>
-      <p class="lede">My degree, the certifications I'm actively working through, and the tools and coursework behind them.</p>
+      <p class="lede">My degree, the honors behind it, the certifications I'm actively working through, and an honest read on where each of my skills actually sits.</p>
     </div>
   </section>
 
@@ -49,9 +55,53 @@
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3 2 8l10 5 10-5-10-5Z"/><path d="M6 10.5V16c0 1.5 2.7 3 6 3s6-1.5 6-3v-5.5"/></svg>
         </div>
         <div>
-          <h3>B.S. Information Technology — Systems Administration Track</h3>
-          <p class="role-meta">University of Massachusetts Boston · College of Science and Mathematics · Expected 2028</p>
-          <p>Coursework spanning Linux/Unix systems administration, web design (HTML5, CSS3, JavaScript), networking fundamentals, and cybersecurity foundations — with an emphasis on hands-on labs over theory alone.</p>
+          <h3>B.S. Information Technology &mdash; Systems Administration Track</h3>
+          <p class="role-meta">University of Massachusetts Boston &middot; College of Science and Mathematics &middot; Expected Jun 2028</p>
+          <p style="margin-bottom: var(--space-4);">Coursework spanning Linux/Unix systems administration, networking, web design (HTML5, CSS3, JavaScript), and IT security &mdash; with an emphasis on hands-on labs over theory alone. Alongside the degree I hold an undergraduate Machine Psychology Fellowship with the Cyberpunk Division of the Machine Psychology Group, doing adversarial security testing of large language models and embedded devices.</p>
+          <div class="badge-row">
+            <span class="badge">Systems Administration</span>
+            <span class="badge">Networking</span>
+            <span class="badge">Linux / Unix</span>
+            <span class="badge">IT Security</span>
+            <span class="badge">Web Design</span>
+            <span class="badge">Undergraduate Research</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HONOURS ============ -->
+  <section class="section section--alt">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="eyebrow">Recognition</p>
+        <h2>Honors &amp; awards</h2>
+      </div>
+      <div class="grid-2">
+        <div class="card reveal">
+          <div class="award-row">
+            <div class="icon-tile" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="9" r="5"/><path d="M8.5 13.5 7 22l5-2.5L17 22l-1.5-8.5"/></svg>
+            </div>
+            <div>
+              <h3>Dean's List</h3>
+              <p class="role-meta" style="margin-bottom:6px;">University of Massachusetts Boston &middot; 2026</p>
+              <p>Awarded for academic standing while working in the SOC and carrying a research fellowship.</p>
+            </div>
+          </div>
+        </div>
+        <div class="card reveal">
+          <div class="award-row">
+            <div class="icon-tile" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l2.6 5.3 5.9.9-4.3 4.1 1 5.8-5.2-2.7-5.2 2.7 1-5.8L3.5 9.2l5.9-.9L12 3Z"/></svg>
+            </div>
+            <div>
+              <h3>President's Award for Educational Excellence</h3>
+              <p class="role-meta" style="margin-bottom:6px;">U.S. Department of Education &middot; 2024</p>
+              <p>National recognition for sustained academic achievement.</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -59,73 +109,107 @@
 
   <!-- ============ CERTIFICATIONS ============ -->
   <!-- RUBRIC #3/4/8: backgrounds, grid layout, icons -->
-  <section class="section section--alt">
+  <section class="section">
     <div class="container">
       <div class="section-header reveal">
         <p class="eyebrow">In progress</p>
-        <h2>Certifications</h2>
-        <p class="lede">Working through these alongside my SOC role, in order of how directly they apply to day-to-day work.</p>
+        <h2>Certification pathway</h2>
+        <p class="lede">A deliberate sequence rather than a scattered list &mdash; networking fundamentals first, then the defensive baseline, then detection and response, finishing with hands-on offensive certification. Each one builds on the last.</p>
       </div>
-      <div class="grid-3">
-        <div class="card reveal">
-          <div class="card-icon" aria-hidden="true">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="7" width="20" height="10" rx="2"/><path d="M6 12h.01M10 12h4"/></svg>
+      <ol class="pathway reveal">
+        <li>
+          <div class="card">
+            <span class="pathway-num" aria-hidden="true">01</span>
+            <h3>CompTIA Network+</h3>
+            <p class="role-meta">Networking foundations</p>
+            <p>Topologies, protocols, addressing, and structured troubleshooting &mdash; the layer everything else sits on top of.</p>
+            <span class="tag">Exam scheduled Sept 2026</span>
           </div>
-          <h3>CompTIA Network+</h3>
-          <p>Networking fundamentals — topologies, protocols, and troubleshooting.</p>
-          <span class="tag">In progress</span>
-        </div>
-        <div class="card reveal">
-          <div class="card-icon" aria-hidden="true">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3 4 6v6c0 5.2 3.4 8.7 8 9 4.6-.3 8-3.8 8-9V6l-8-3Z"/><path d="M9 12l2 2 4-4"/></svg>
+        </li>
+        <li>
+          <div class="card">
+            <span class="pathway-num" aria-hidden="true">02</span>
+            <h3>CompTIA Security+</h3>
+            <p class="role-meta">Defensive baseline</p>
+            <p>Threats, risk management, cryptography, and controls &mdash; the vocabulary and frameworks the rest of the field assumes.</p>
+            <span class="tag">In progress</span>
           </div>
-          <h3>CompTIA Security+</h3>
-          <p>Core security concepts — threats, risk management, and controls.</p>
-          <span class="tag">In progress</span>
-        </div>
-        <div class="card reveal">
-          <div class="card-icon" aria-hidden="true">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17a4 4 0 0 1-1-7.9A5 5 0 0 1 15.5 8H16a4 4 0 0 1 1 7.9"/><path d="M12 12v6M9.5 15.5 12 18l2.5-2.5"/></svg>
+        </li>
+        <li>
+          <div class="card">
+            <span class="pathway-num" aria-hidden="true">03</span>
+            <h3>CompTIA CySA+</h3>
+            <p class="role-meta">Detection &amp; response</p>
+            <p>Behavioral analytics, threat hunting, and incident response &mdash; the certification that maps most directly onto my SOC shifts.</p>
+            <span class="tag">In progress</span>
           </div>
-          <h3>AWS Cloud Practitioner</h3>
-          <p>Foundational AWS knowledge, building toward cloud security work.</p>
-          <span class="tag">In progress</span>
-        </div>
-      </div>
+        </li>
+        <li>
+          <div class="card">
+            <span class="pathway-num" aria-hidden="true">04</span>
+            <h3>OSCP</h3>
+            <p class="role-meta">Offensive security</p>
+            <p>Offensive Security Certified Professional &mdash; exploitation, privilege escalation, and a 24-hour hands-on practical exam. The long-term target.</p>
+            <span class="tag">In progress</span>
+          </div>
+        </li>
+      </ol>
     </div>
   </section>
 
   <!-- ============ SKILLS TABLE ============ -->
   <!-- RUBRIC #9: table -->
-  <section class="section">
+  <section class="section section--alt">
     <div class="container">
       <div class="section-header reveal">
         <p class="eyebrow">Skills &amp; tools</p>
         <h2>What I work with</h2>
+        <p class="lede">Self-assessed, and deliberately conservative &mdash; &ldquo;working knowledge&rdquo; means I use it under supervision, &ldquo;proficient&rdquo; means I can work independently and troubleshoot it.</p>
       </div>
       <div class="table-wrap reveal">
         <table class="data-table">
+          <caption class="mono" style="caption-side:bottom; text-align:left; padding:12px 18px; font-size:0.78rem; color:var(--slate);">Levels reflect independent capability, not exposure.</caption>
           <thead>
             <tr>
-              <th>Tool / skill</th>
-              <th>Category</th>
-              <th>Level</th>
+              <th scope="col">Tool / skill</th>
+              <th scope="col">Category</th>
+              <th scope="col">Level</th>
             </tr>
           </thead>
           <tbody>
             <tr>
+              <td>LLM red-teaming (garak, PyRIT)</td>
+              <td>AI / model security</td>
+              <td><span class="level-pill">Proficient</span></td>
+            </tr>
+            <tr>
+              <td>Model serving &amp; weight editing</td>
+              <td>AI / model security</td>
+              <td><span class="level-pill">Working knowledge</span></td>
+            </tr>
+            <tr>
               <td>SIEM</td>
-              <td>SIEM / threat detection</td>
+              <td>Threat detection &amp; triage</td>
               <td><span class="level-pill">Working knowledge</span></td>
             </tr>
             <tr>
-              <td>Vulnerabilities</td>
               <td>Vulnerability management</td>
+              <td>Security operations</td>
               <td><span class="level-pill">Working knowledge</span></td>
             </tr>
             <tr>
-              <td>XDR </td>
+              <td>EDR / XDR</td>
               <td>Endpoint security</td>
+              <td><span class="level-pill">Working knowledge</span></td>
+            </tr>
+            <tr>
+              <td>Phishing &amp; email analysis</td>
+              <td>Security operations</td>
+              <td><span class="level-pill">Proficient</span></td>
+            </tr>
+            <tr>
+              <td>Wireless &amp; RF testing</td>
+              <td>Offensive security</td>
               <td><span class="level-pill">Working knowledge</span></td>
             </tr>
             <tr>
@@ -134,14 +218,19 @@
               <td><span class="level-pill">Proficient</span></td>
             </tr>
             <tr>
-              <td>HTML / CSS / JavaScript</td>
-              <td>Web development</td>
+              <td>Python</td>
+              <td>Scripting, tooling &amp; automation</td>
               <td><span class="level-pill">Proficient</span></td>
             </tr>
             <tr>
-              <td>Python</td>
-              <td>Scripting &amp; automation</td>
-              <td><span class="level-pill">Developing</span></td>
+              <td>HPC / Slurm</td>
+              <td>Research infrastructure</td>
+              <td><span class="level-pill">Working knowledge</span></td>
+            </tr>
+            <tr>
+              <td>HTML / CSS / JavaScript</td>
+              <td>Web development</td>
+              <td><span class="level-pill">Proficient</span></td>
             </tr>
             <tr>
               <td>TrueNAS / ZFS</td>
@@ -156,7 +245,7 @@
 
   <!-- ============ SKILL BARS ============ -->
   <!-- RUBRIC #12: JS-driven animation on scroll -->
-  <section class="section section--alt">
+  <section class="section">
     <div class="container">
       <div class="section-header reveal">
         <p class="eyebrow">Self-rated</p>
@@ -165,12 +254,16 @@
       <div class="grid-2 reveal">
         <div>
           <div class="skill-item">
-            <div class="skill-item-top"><span>Linux administration</span><span class="text-muted mono">85%</span></div>
+            <div class="skill-item-top"><span>LLM red-teaming</span><span class="text-muted mono">85%</span></div>
             <div class="skill-bar"><div class="skill-bar-fill" data-level="85"></div></div>
           </div>
           <div class="skill-item">
             <div class="skill-item-top"><span>SIEM &amp; alert triage</span><span class="text-muted mono">90%</span></div>
             <div class="skill-bar"><div class="skill-bar-fill" data-level="90"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-item-top"><span>Linux administration</span><span class="text-muted mono">85%</span></div>
+            <div class="skill-bar"><div class="skill-bar-fill" data-level="85"></div></div>
           </div>
           <div class="skill-item">
             <div class="skill-item-top"><span>Web development</span><span class="text-muted mono">85%</span></div>
@@ -183,12 +276,16 @@
             <div class="skill-bar"><div class="skill-bar-fill" data-level="85"></div></div>
           </div>
           <div class="skill-item">
-            <div class="skill-item-top"><span>Python scripting</span><span class="text-muted mono">75%</span></div>
-            <div class="skill-bar"><div class="skill-bar-fill" data-level="75"></div></div>
+            <div class="skill-item-top"><span>Python scripting</span><span class="text-muted mono">80%</span></div>
+            <div class="skill-bar"><div class="skill-bar-fill" data-level="80"></div></div>
           </div>
           <div class="skill-item">
-            <div class="skill-item-top"><span>Cloud (AWS)</span><span class="text-muted mono">60%</span></div>
-            <div class="skill-bar"><div class="skill-bar-fill" data-level="60"></div></div>
+            <div class="skill-item-top"><span>Wireless &amp; RF testing</span><span class="text-muted mono">70%</span></div>
+            <div class="skill-bar"><div class="skill-bar-fill" data-level="70"></div></div>
+          </div>
+          <div class="skill-item">
+            <div class="skill-item-top"><span>Incident response &amp; reporting</span><span class="text-muted mono">80%</span></div>
+            <div class="skill-bar"><div class="skill-bar-fill" data-level="80"></div></div>
           </div>
         </div>
       </div>
@@ -200,7 +297,7 @@
   <div class="container footer-grid">
     <div class="footer-col">
       <p class="footer-logo">Kurt Sooknanan</p>
-      <p>Information Security Analyst &amp; IT Student, UMass Boston.</p>
+      <p>AI Security Researcher &amp; Security Analyst, UMass Boston.</p>
     </div>
     <div class="footer-col">
       <h3>Links</h3>
@@ -213,7 +310,8 @@
     <div class="footer-col">
       <h3>Site</h3>
       <ul>
-        <li><a href="index.html">Home</a></li>
+        <li><a href="experience.html">Experience</a></li>
+        <li><a href="projects.html">Projects</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </div>
