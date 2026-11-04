@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Search indexing is intentionally off (privacy). Delete this line when you want the site to appear in search results. -->
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<title>CyberToolkit case study | Kurt Sooknanan</title>
+<meta name="description" content="Case study: CyberToolkit, standard-library Python network security utilities with a threaded port scanner, banner grabber, SHA-256 hashing, DNS lookup, and secure password generation.">
+<meta name="author" content="Kurt Sooknanan">
+<meta name="theme-color" content="#050608">
+<link rel="canonical" href="https://kurt-sudo420.github.io/portfolio/projects/cybertoolkit.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Kurt Sooknanan">
+<meta property="og:title" content="CyberToolkit case study | Kurt Sooknanan">
+<meta property="og:description" content="Case study: CyberToolkit, standard-library Python network security utilities with a threaded port scanner, banner grabber, SHA-256 hashing, DNS lookup, and secure password generation.">
+<meta property="og:url" content="https://kurt-sudo420.github.io/portfolio/projects/cybertoolkit.html">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/styles.css">
+<script>document.documentElement.classList.remove('no-js');</script>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to content</a>
+
+<header class="site-header">
+  <div class="nav-wrap">
+    <a href="../index.html" class="brand"><span class="brand-mark" aria-hidden="true">KS</span><span class="brand-name">Kurt Sooknanan</span></a>
+    <nav aria-label="Primary">
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html" style="--i:0"><span class="nav-num">01</span>Home</a></li>
+        <li><a href="../about.html" style="--i:1"><span class="nav-num">02</span>About</a></li>
+        <li><a href="../experience.html" style="--i:2"><span class="nav-num">03</span>Experience</a></li>
+        <li><a href="../projects.html" class="active" aria-current="page" style="--i:3"><span class="nav-num">04</span>Projects</a></li>
+        <li><a href="../research.html" style="--i:4"><span class="nav-num">05</span>Research</a></li>
+        <li><a href="../certifications.html" style="--i:5"><span class="nav-num">06</span>Certifications</a></li>
+        <li><a href="../contact.html" style="--i:6"><span class="nav-num">07</span>Contact</a></li>
+      </ul>
+    </nav>
+    <a class="nav-status" href="../contact.html"><span class="pulse-dot" aria-hidden="true"></span>Open to internships and co-ops</a>
+    <button class="nav-toggle" id="navToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span></button>
+  </div>
+</header>
+
+<main id="main">
+  <section class="cs-hero" aria-labelledby="csTitle">
+    <div class="ambient" aria-hidden="true"></div>
+    <div class="wrap">
+      <a class="cs-back" href="../projects.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg> All projects</a>
+      <p class="kicker fade-in" style="--d:100ms">Case study / Security tooling</p>
+      <h1 id="csTitle" data-split style="--chars:7"><span class="line">Cyber</span><span class="line">Toolkit</span></h1>
+      <div class="cs-intro">
+        <p class="lede fade-in" style="--d:600ms">Five network security utilities in standard-library Python, built to understand every layer rather than import it.</p>
+        <dl class="cs-meta fade-in" style="--d:750ms"><div><dt>Role</dt><dd>Author</dd></div><div><dt>Status</dt><dd><span class="state">Public on GitHub</span></dd></div><div><dt>License</dt><dd>MIT</dd></div><div><dt>Tests</dt><dd>pytest</dd></div><div class="full"><dt>Stack</dt><dd>Python 3.8+, sockets, ThreadPoolExecutor, hashlib, secrets</dd></div><div class="full"><dt>Repository</dt><dd><a class="text-link" href="https://github.com/kurt-sudo420/CyberToolkit" target="_blank" rel="noopener">github.com/kurt-sudo420/CyberToolkit<span class="sr-only"> (opens in a new tab)</span></a></dd></div></dl>
+      </div>
+      <div class="frame cs-vis reveal reveal--scale"><canvas data-visual="ports" aria-hidden="true"></canvas><p class="frame-label">Concurrent sweep of ports 20 to 100, as in the README example</p></div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <section class="cs-section" id="problem" aria-labelledby="problem-h">
+      <header><p class="kicker">Overview</p><h2 id="problem-h">Why build it</h2></header>
+      <div class="cs-body">
+<p>CyberToolkit started as a hands-on way to work with sockets, hashing, and the everyday building blocks of network security work. I kept it standard-library only, so every piece, from socket handling to thread pooling, is something I had to understand rather than import.</p><ul class="cs-stack"><li><b>Port scanner</b><span>Concurrent TCP scan with ranges</span></li><li><b>SHA-256 file hash</b><span>Chunked, so large files work</span></li><li><b>Password generator</b><span>Built on secrets, not random</span></li><li><b>DNS lookup</b><span>All IPs for a domain</span></li><li><b>Banner grabber</b><span>Prints the service banner</span></li><li><b>Python 3.8+</b><span>No dependencies</span></li></ul></div>
+    </section>
+    <section class="cs-section" id="demo" aria-labelledby="demo-h">
+      <header><p class="kicker">Interface</p><h2 id="demo-h">A real session</h2></header>
+      <div class="cs-body"><div class="frame"><div class="term-bar"><i></i><i></i><i></i><span>cybertoolkit.py (example from the README)</span></div>
+<div class="term term-type" data-inview>
+  <div class="tl" style="--n:0"><span class="p">$</span> <span class="o">python cybertoolkit.py</span></div>
+  <div class="tl" style="--n:1"><span class="c">Choice:</span> <span class="o">1</span></div>
+  <div class="tl" style="--n:2"><span class="c">Enter IP or hostname:</span> <span class="o">scanme.nmap.org</span></div>
+  <div class="tl" style="--n:3"><span class="c">Ports [Enter for common ports]:</span> <span class="o">20-100</span></div>
+  <div class="tl" style="--n:4">&nbsp;</div>
+  <div class="tl" style="--n:5">Scanning 45.33.32.156 (81 ports)...</div>
+  <div class="tl" style="--n:6">&nbsp;</div>
+  <div class="tl" style="--n:7"><span class="o">Open ports:</span></div>
+  <div class="tl" style="--n:8"><span class="p">     22/tcp</span>  SSH</div>
+  <div class="tl" style="--n:9"><span class="p">     80/tcp</span>  HTTP</div>
+</div></div>
+<p class="meta">Output from the example in the project README. scanme.nmap.org is a host Nmap provides specifically for testing.</p></div>
+    </section>
+    <section class="cs-section" id="design" aria-labelledby="design-h">
+      <header><p class="kicker">Implementation</p><h2 id="design-h">Design decisions</h2></header>
+      <div class="cs-body"><ul class="bullets"><li><strong>Threaded scanning.</strong> A sequential scan of 1,000 ports at a 0.5s timeout could take minutes when ports are filtered. A <code>ThreadPoolExecutor</code> overlaps the waiting, so the scan is bounded by the slowest port rather than the sum of all of them.</li><li><strong><code>secrets</code>, not <code>random</code>.</strong> Python's <code>random</code> is a pseudo-random generator and unsafe for anything security-related.</li><li><strong>Chunked hashing.</strong> Files are read 64 KB at a time, so hashing doesn't depend on a file fitting in memory.</li><li><strong>Specific exception handling.</strong> Each tool catches the errors it actually expects and reports them distinctly, instead of a bare <code>except</code> that hides problems and swallows Ctrl+C.</li><li><strong>Hostnames resolved once.</strong> A bad hostname fails immediately instead of erroring on every port.</li></ul></div>
+    </section>
+    <section class="cs-section" id="testing" aria-labelledby="testing-h">
+      <header><p class="kicker">Testing</p><h2 id="testing-h">Tests and scope</h2></header>
+      <div class="cs-body">
+<p>A pytest suite covers the port-specification parser: ranges, lists, de-duplication, and invalid input. The network functions are verified manually against a local listener.</p>
+<div class="callout"><p><strong>Authorized use only.</strong> The README spells it out: the scanner and banner grabber should only be pointed at systems you own or have explicit written permission to test.</p></div></div>
+    </section>
+    <section class="cs-section" id="repo" aria-labelledby="repo-h">
+      <header><p class="kicker">Repository</p><h2 id="repo-h">Source</h2></header>
+      <div class="cs-body">
+<p>Public on GitHub under the MIT license. A separate lab copy, cybertoolkit-lab, is where I experiment with AI coding agents without touching the main repository.</p>
+<div class="btn-row" style="margin-top:var(--s-5)">
+  <a href="https://github.com/kurt-sudo420/CyberToolkit" class="btn btn--primary" target="_blank" rel="noopener" data-magnetic><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m8 8-5 4 5 4M16 8l5 4-5 4M14 5l-4 14"/></svg> CyberToolkit<span class="sr-only"> (opens in a new tab)</span></a>
+  <a href="https://github.com/kurt-sudo420/cybertoolkit-lab" class="btn btn--ghost" target="_blank" rel="noopener" data-magnetic>cybertoolkit-lab<span class="sr-only"> (opens in a new tab)</span></a>
+</div>
+<h3>Possible extensions</h3><ul class="bullets"><li>UDP scanning</li><li>Export results to JSON or CSV</li><li>Concurrent banner grabbing across multiple ports</li><li>Reverse DNS lookups</li></ul></div>
+    </section>
+  </div>
+
+  <section class="s s--line s--panel" aria-labelledby="relH">
+    <div class="wrap">
+      <div class="sec-head sec-head--stack"><h2 id="relH" style="font-size:var(--t-lg)">Related projects</h2></div>
+      <div class="cs-related"><article class="card3d reveal" data-tilt="4">
+  <div class="card3d-vis"><div class="frame frame--grid"><svg class="hydra-svg" viewBox="0 0 480 300" role="img" aria-label="Illustration of the HYDRA engine connected to three attack modules">
+  <path class="wire" d="M170 150 C 250 150, 260 70, 330 70"/><path class="flow d1" d="M170 150 C 250 150, 260 70, 330 70"/>
+  <path class="wire" d="M170 150 L 330 150"/><path class="flow d2" d="M170 150 L 330 150"/>
+  <path class="wire" d="M170 150 C 250 150, 260 230, 330 230"/><path class="flow d3" d="M170 150 C 250 150, 260 230, 330 230"/>
+  <circle cx="170" cy="150" r="46" fill="rgba(61,232,245,0.08)" stroke="#3DE8F5"/>
+  <circle class="core-ring" cx="170" cy="150" r="60"/>
+  <text x="170" y="156" text-anchor="middle" font-size="17" font-weight="700" font-family="Archivo, sans-serif" style="font-stretch:125%">HYDRA</text>
+  <rect class="node" x="330" y="50" width="120" height="40" rx="10"/><text x="390" y="75" text-anchor="middle" font-size="13">garak</text>
+  <rect class="node" x="330" y="130" width="120" height="40" rx="10"/><text x="390" y="155" text-anchor="middle" font-size="13">PyRIT</text>
+  <rect class="node" x="330" y="210" width="120" height="40" rx="10"/><text x="390" y="235" text-anchor="middle" font-size="13">WebRedTeam</text>
+</svg></div></div>
+  <div class="card3d-body">
+    <p class="kicker">LLM security research</p>
+    <h3><a class="stretched" href="../projects/hydra.html">BadToken HYDRA</a></h3>
+    <p>Automated LLM red-teaming framework built around one scheduler and one evidence format.</p>
+    <div class="chip-row"><span class="chip">Python</span><span class="chip">garak</span><span class="chip">PyRIT</span><span class="chip">vLLM</span></div>
+    <div class="card3d-foot"><span class="state state--live">In development</span></div>
+  </div>
+</article><article class="card3d reveal" data-tilt="4">
+  <div class="card3d-vis"><div class="frame frame--grid"><div style="position:absolute;inset:0"><div class="stage3d" data-tilt="5">
+  <div class="browser3d" role="img" aria-label="Illustration of an LLM-backed web page where hidden instructions in page content lead the assistant to emit a script payload">
+    <div class="browser3d-bar"><i></i><i></i><i></i><span class="browser3d-url">https://lab-test.local/product/42</span></div>
+    <div class="browser3d-body">
+      <div>
+        <div class="sk sk--h"></div>
+        <div class="sk" style="width:92%"></div><div class="sk" style="width:84%"></div><div class="sk" style="width:88%"></div>
+        <div class="sk sk--inject" style="width:76%"></div>
+        <div class="sk" style="width:64%"></div><div class="sk" style="width:80%"></div>
+      </div>
+      <div class="chatpane">
+        <div class="bubble">Summarize the reviews on this page.</div>
+        <div class="bubble bubble--ai">Reading page content&hellip;</div>
+        <div class="bubble bubble--alert">&lt;script&gt; rendered in reply</div>
+      </div>
+    </div>
+  </div>
+</div>
+</div></div></div>
+  <div class="card3d-body">
+    <p class="kicker">Web and LLM security</p>
+    <h3><a class="stretched" href="../projects/webredteam.html">WebRedTeam</a></h3>
+    <p>HYDRA's browser-based module for prompt injection that escalates into script execution.</p>
+    <div class="chip-row"><span class="chip">Browser testing</span><span class="chip">Prompt injection</span><span class="chip">XSS</span></div>
+    <div class="card3d-foot"><span class="state state--violet">In progress</span></div>
+  </div>
+</article></div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <nav class="cs-next" aria-label="Next case study">
+      <div><p class="kicker" style="margin-bottom:var(--s-4)">Next case study</p><p class="ex-title" style="--chars:8"><a href="../projects/wireless-lab.html">Wireless lab</a></p></div>
+      <a href="../projects/wireless-lab.html" class="btn btn--primary" data-magnetic aria-label="Next case study: Wireless lab">Next <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </nav>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <p class="brand-name" style="font-size:1.3rem;margin-bottom:12px;color:var(--text)">Kurt Sooknanan</p>
+        <p>Junior Security Analyst at the UMass Boston Network Security Operations Center and undergraduate LLM security researcher in the Machine Psychology Group.</p>
+      </div>
+      <div class="footer-col">
+        <h2>Work</h2>
+        <ul>
+          <li><a href="../projects.html">Projects</a></li>
+          <li><a href="../research.html">Research</a></li>
+          <li><a href="../experience.html">Experience</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h2>About</h2>
+        <ul>
+          <li><a href="../about.html">About me</a></li>
+          <li><a href="../certifications.html">Certifications</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h2>Elsewhere</h2>
+        <ul>
+          <li><a href="mailto:manny.kurt@gmail.com">Email</a></li>
+          <li><a href="https://github.com/kurt-sudo420" target="_blank" rel="noopener">GitHub<span class="sr-only"> (opens in a new tab)</span></a></li>
+          <li><a href="https://www.linkedin.com/in/kurt-sooknanan-485494410/" target="_blank" rel="noopener">LinkedIn<span class="sr-only"> (opens in a new tab)</span></a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="footer-mark" aria-hidden="true">Sooknanan</p>
+    <div class="footer-bottom">
+      <p>&copy; <span id="year">2026</span> Kurt Sooknanan. Hand-built with HTML, CSS, and JavaScript.</p>
+      <p>Last updated <span id="lastModified"></span></p>
+    </div>
+  </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="../js/script.js"></script>
+<script src="../js/visuals.js" defer></script>
+</body>
+</html>

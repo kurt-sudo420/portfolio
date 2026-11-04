@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Search indexing is intentionally off (privacy). Delete this line when you want the site to appear in search results. -->
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<title>WebRedTeam case study | Kurt Sooknanan</title>
+<meta name="description" content="Case study: extending the WebRedTeam browser-based testing framework into a BadToken HYDRA module for prompt injection that escalates into script execution.">
+<meta name="author" content="Kurt Sooknanan">
+<meta name="theme-color" content="#050608">
+<link rel="canonical" href="https://kurt-sudo420.github.io/portfolio/projects/webredteam.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Kurt Sooknanan">
+<meta property="og:title" content="WebRedTeam case study | Kurt Sooknanan">
+<meta property="og:description" content="Case study: extending the WebRedTeam browser-based testing framework into a BadToken HYDRA module for prompt injection that escalates into script execution.">
+<meta property="og:url" content="https://kurt-sudo420.github.io/portfolio/projects/webredteam.html">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/styles.css">
+<script>document.documentElement.classList.remove('no-js');</script>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to content</a>
+
+<header class="site-header">
+  <div class="nav-wrap">
+    <a href="../index.html" class="brand"><span class="brand-mark" aria-hidden="true">KS</span><span class="brand-name">Kurt Sooknanan</span></a>
+    <nav aria-label="Primary">
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html" style="--i:0"><span class="nav-num">01</span>Home</a></li>
+        <li><a href="../about.html" style="--i:1"><span class="nav-num">02</span>About</a></li>
+        <li><a href="../experience.html" style="--i:2"><span class="nav-num">03</span>Experience</a></li>
+        <li><a href="../projects.html" class="active" aria-current="page" style="--i:3"><span class="nav-num">04</span>Projects</a></li>
+        <li><a href="../research.html" style="--i:4"><span class="nav-num">05</span>Research</a></li>
+        <li><a href="../certifications.html" style="--i:5"><span class="nav-num">06</span>Certifications</a></li>
+        <li><a href="../contact.html" style="--i:6"><span class="nav-num">07</span>Contact</a></li>
+      </ul>
+    </nav>
+    <a class="nav-status" href="../contact.html"><span class="pulse-dot" aria-hidden="true"></span>Open to internships and co-ops</a>
+    <button class="nav-toggle" id="navToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span></button>
+  </div>
+</header>
+
+<main id="main">
+  <section class="cs-hero" aria-labelledby="csTitle">
+    <div class="ambient" aria-hidden="true"></div>
+    <div class="wrap">
+      <a class="cs-back" href="../projects.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg> All projects</a>
+      <p class="kicker fade-in" style="--d:100ms">Case study / Web and LLM security</p>
+      <h1 id="csTitle" data-split style="--chars:7"><span class="line">Web</span><span class="line">RedTeam</span></h1>
+      <div class="cs-intro">
+        <p class="lede fade-in" style="--d:600ms">Extending a browser-based black-box framework to test whether prompt injection can escalate into script execution.</p>
+        <dl class="cs-meta fade-in" style="--d:750ms"><div class="full"><dt>Role</dt><dd>Extending the framework as a HYDRA module</dd></div><div><dt>Status</dt><dd><span class="state state--violet">In progress</span></dd></div><div><dt>Part of</dt><dd>BadToken HYDRA</dd></div><div class="full"><dt>Focus</dt><dd>Prompt injection, XSS, LLM-backed web apps</dd></div></dl>
+      </div>
+      <div class="frame cs-vis reveal reveal--scale"><div class="stage3d" data-tilt="5">
+  <div class="browser3d" role="img" aria-label="Illustration of an LLM-backed web page where hidden instructions in page content lead the assistant to emit a script payload">
+    <div class="browser3d-bar"><i></i><i></i><i></i><span class="browser3d-url">https://lab-test.local/product/42</span></div>
+    <div class="browser3d-body">
+      <div>
+        <div class="sk sk--h"></div>
+        <div class="sk" style="width:92%"></div><div class="sk" style="width:84%"></div><div class="sk" style="width:88%"></div>
+        <div class="sk sk--inject" style="width:76%"></div>
+        <div class="sk" style="width:64%"></div><div class="sk" style="width:80%"></div>
+      </div>
+      <div class="chatpane">
+        <div class="bubble">Summarize the reviews on this page.</div>
+        <div class="bubble bubble--ai">Reading page content&hellip;</div>
+        <div class="bubble bubble--alert">&lt;script&gt; rendered in reply</div>
+      </div>
+    </div>
+  </div>
+</div>
+<span class="float-chip" style="left:6%;top:12%"><b>untrusted</b> page content</span>
+<span class="float-chip" style="right:6%;bottom:14%">model output <b>rendered</b> as HTML</span>
+<p class="frame-label">Illustration of the vulnerability class, not a WebRedTeam screenshot</p></div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <section class="cs-section" id="problem" aria-labelledby="problem-h">
+      <header><p class="kicker">Overview</p><h2 id="problem-h">The problem</h2></header>
+      <div class="cs-body">
+<p>Many LLM features live inside web apps: a chat panel that summarizes a page, an assistant that reads reviews or documents. If attacker-controlled content can steer the model, and the app renders the model's output without encoding it, prompt injection becomes cross-site scripting.</p>
+<p>Text-only scanners score the model's reply as a string. They can't see what the browser does with it, which is where the actual damage happens.</p></div>
+    </section>
+    <section class="cs-section" id="chain" aria-labelledby="chain-h">
+      <header><p class="kicker">Threat model</p><h2 id="chain-h">From prompt injection to script execution</h2></header>
+      <div class="cs-body"><ol class="chain">
+  <li class="reveal"><span class="chain-step">Step 1</span><h3>Plant</h3><p>An attacker hides instructions in content the app will later read: a page, a review, a document.</p><span class="defend">Defense: input sanitization</span></li>
+  <li class="reveal" style="--rd:80ms"><span class="chain-step">Step 2</span><h3>Ingest</h3><p>The app's model reads that content alongside the user's real request and can't tell the two apart.</p><span class="defend">Defense: information flow control</span></li>
+  <li class="reveal" style="--rd:160ms"><span class="chain-step">Step 3</span><h3>Emit</h3><p>Following the hidden instructions, the model's reply carries a script payload.</p><span class="defend">Defense: output filtering</span></li>
+  <li class="reveal" style="--rd:240ms"><span class="chain-step">Step 4</span><h3>Execute</h3><p>The app renders the reply as HTML, and the browser runs the script in the user's session.</p><span class="defend">Defense: output encoding, CSP</span></li>
+</ol>
+<p class="meta" style="margin-top:var(--s-4)">This chain describes the vulnerability class being tested. Each step has its own defense, and a finding is only real if it survives all four.</p></div>
+    </section>
+    <section class="cs-section" id="approach" aria-labelledby="approach-h">
+      <header><p class="kicker">Approach</p><h2 id="approach-h">Test through a real browser</h2></header>
+      <div class="cs-body">
+<p>WebRedTeam is a browser-based, black-box web testing framework: it interacts with an application the way a user would and observes what actually renders. I'm extending it into the web module of BadToken HYDRA so this attack class runs under the same scheduler and lands in the same evidence format as the garak and PyRIT results.</p><ul class="bullets"><li><strong>Black-box by design:</strong> no access to the target's source is assumed, matching how real apps get attacked.</li><li><strong>One evidence format:</strong> browser findings sit next to model-level findings from the other HYDRA modules.</li><li><strong>Lab targets only:</strong> testing runs against lab-hosted instances, never third-party or production apps.</li></ul>
+<p>Development and demos run on my own Ubuntu workstation, with batch runs on the university research cluster.</p></div>
+    </section>
+    <section class="cs-section" id="status" aria-labelledby="status-h">
+      <header><p class="kicker">Status</p><h2 id="status-h">Where it stands</h2></header>
+      <div class="cs-body">
+<p>This work is in progress, and there are no published results yet. It's planned as a research write-up alongside the BadToken weight-editing study.</p>
+<p>WebRedTeam isn't one of my own repositories, so I don't link a codebase here; the integration work will be documented with the BadToken repository when it's public.</p></div>
+    </section>
+  </div>
+
+  <section class="s s--line s--panel" aria-labelledby="relH">
+    <div class="wrap">
+      <div class="sec-head sec-head--stack"><h2 id="relH" style="font-size:var(--t-lg)">Related projects</h2></div>
+      <div class="cs-related"><article class="card3d reveal" data-tilt="4">
+  <div class="card3d-vis"><div class="frame frame--grid"><svg class="hydra-svg" viewBox="0 0 480 300" role="img" aria-label="Illustration of the HYDRA engine connected to three attack modules">
+  <path class="wire" d="M170 150 C 250 150, 260 70, 330 70"/><path class="flow d1" d="M170 150 C 250 150, 260 70, 330 70"/>
+  <path class="wire" d="M170 150 L 330 150"/><path class="flow d2" d="M170 150 L 330 150"/>
+  <path class="wire" d="M170 150 C 250 150, 260 230, 330 230"/><path class="flow d3" d="M170 150 C 250 150, 260 230, 330 230"/>
+  <circle cx="170" cy="150" r="46" fill="rgba(61,232,245,0.08)" stroke="#3DE8F5"/>
+  <circle class="core-ring" cx="170" cy="150" r="60"/>
+  <text x="170" y="156" text-anchor="middle" font-size="17" font-weight="700" font-family="Archivo, sans-serif" style="font-stretch:125%">HYDRA</text>
+  <rect class="node" x="330" y="50" width="120" height="40" rx="10"/><text x="390" y="75" text-anchor="middle" font-size="13">garak</text>
+  <rect class="node" x="330" y="130" width="120" height="40" rx="10"/><text x="390" y="155" text-anchor="middle" font-size="13">PyRIT</text>
+  <rect class="node" x="330" y="210" width="120" height="40" rx="10"/><text x="390" y="235" text-anchor="middle" font-size="13">WebRedTeam</text>
+</svg></div></div>
+  <div class="card3d-body">
+    <p class="kicker">LLM security research</p>
+    <h3><a class="stretched" href="../projects/hydra.html">BadToken HYDRA</a></h3>
+    <p>Automated LLM red-teaming framework built around one scheduler and one evidence format.</p>
+    <div class="chip-row"><span class="chip">Python</span><span class="chip">garak</span><span class="chip">PyRIT</span><span class="chip">vLLM</span></div>
+    <div class="card3d-foot"><span class="state state--live">In development</span></div>
+  </div>
+</article><article class="card3d reveal" data-tilt="4">
+  <div class="card3d-vis"><div class="frame frame--grid"><svg class="rf-svg" viewBox="0 0 480 300" role="img" aria-label="Illustration of radio waves radiating from an antenna beside a spectrum display">
+  <g transform="translate(150 160)">
+    <circle class="wave" r="130"/><circle class="wave" r="130"/><circle class="wave" r="130"/><circle class="wave" r="130"/>
+  </g>
+  <path d="M150 160 L150 250 M130 250 h40" stroke="#CFE8FF" stroke-width="2" fill="none"/>
+  <circle cx="150" cy="160" r="7" fill="#3DE8F5"/>
+  <g transform="translate(300 90)">
+    <rect x="0" y="0" width="150" height="130" rx="10" fill="#151925" stroke="rgba(170,196,235,0.2)"/>
+    <rect class="bar" x="16" y="40" width="10" height="74" rx="2" style="animation-delay:-.2s"/>
+    <rect class="bar" x="32" y="56" width="10" height="58" rx="2" style="animation-delay:-.6s"/>
+    <rect class="bar" x="48" y="30" width="10" height="84" rx="2" style="animation-delay:-1s"/>
+    <rect class="bar" x="64" y="64" width="10" height="50" rx="2" style="animation-delay:-.4s"/>
+    <rect class="bar" x="80" y="46" width="10" height="68" rx="2" style="animation-delay:-1.3s"/>
+    <rect class="bar" x="96" y="70" width="10" height="44" rx="2" style="animation-delay:-.8s"/>
+    <rect class="bar" x="112" y="52" width="10" height="62" rx="2" style="animation-delay:-.1s"/>
+    <text x="16" y="24" font-family="IBM Plex Mono, monospace" font-size="11" fill="#A3AEC0">sub-GHz</text>
+  </g>
+</svg></div></div>
+  <div class="card3d-body">
+    <p class="kicker">Offensive security</p>
+    <h3><a class="stretched" href="../projects/wireless-lab.html">Wireless lab</a></h3>
+    <p>Embedded device and RF testing on an isolated, faculty-supervised bench.</p>
+    <div class="chip-row"><span class="chip">Flipper Zero</span><span class="chip">aircrack-ng</span><span class="chip">RFID / NFC</span></div>
+    <div class="card3d-foot"><span class="state">Ongoing</span></div>
+  </div>
+</article></div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <nav class="cs-next" aria-label="Next case study">
+      <div><p class="kicker" style="margin-bottom:var(--s-4)">Next case study</p><p class="ex-title" style="--chars:12"><a href="../projects/cybertoolkit.html">CyberToolkit</a></p></div>
+      <a href="../projects/cybertoolkit.html" class="btn btn--primary" data-magnetic aria-label="Next case study: CyberToolkit">Next <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </nav>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <p class="brand-name" style="font-size:1.3rem;margin-bottom:12px;color:var(--text)">Kurt Sooknanan</p>
+        <p>Junior Security Analyst at the UMass Boston Network Security Operations Center and undergraduate LLM security researcher in the Machine Psychology Group.</p>
+      </div>
+      <div class="footer-col">
+        <h2>Work</h2>
+        <ul>
+          <li><a href="../projects.html">Projects</a></li>
+          <li><a href="../research.html">Research</a></li>
+          <li><a href="../experience.html">Experience</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h2>About</h2>
+        <ul>
+          <li><a href="../about.html">About me</a></li>
+          <li><a href="../certifications.html">Certifications</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h2>Elsewhere</h2>
+        <ul>
+          <li><a href="mailto:manny.kurt@gmail.com">Email</a></li>
+          <li><a href="https://github.com/kurt-sudo420" target="_blank" rel="noopener">GitHub<span class="sr-only"> (opens in a new tab)</span></a></li>
+          <li><a href="https://www.linkedin.com/in/kurt-sooknanan-485494410/" target="_blank" rel="noopener">LinkedIn<span class="sr-only"> (opens in a new tab)</span></a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="footer-mark" aria-hidden="true">Sooknanan</p>
+    <div class="footer-bottom">
+      <p>&copy; <span id="year">2026</span> Kurt Sooknanan. Hand-built with HTML, CSS, and JavaScript.</p>
+      <p>Last updated <span id="lastModified"></span></p>
+    </div>
+  </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="../js/script.js"></script>
+<script src="../js/visuals.js" defer></script>
+</body>
+</html>

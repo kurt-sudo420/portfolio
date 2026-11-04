@@ -6,20 +6,20 @@
 <!-- Search indexing is intentionally off (privacy). Delete this line when you want the site to appear in search results. -->
 <meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
 <title>Projects | Kurt Sooknanan</title>
-<meta name="description" content="BadToken HYDRA, an automated LLM red-teaming framework, plus CyberToolkit, embedded device and wireless security research, Ghostclick, and a security homelab, built by Kurt Sooknanan.">
+<meta name="description" content="Projects by Kurt Sooknanan: BadToken HYDRA, an automated LLM red-teaming framework, plus WebRedTeam, CyberToolkit, embedded device and wireless security, a security homelab, and Ghostclick.">
 <meta name="author" content="Kurt Sooknanan">
-<meta name="theme-color" content="#0C1A2B">
+<meta name="theme-color" content="#050608">
 <link rel="canonical" href="https://kurt-sudo420.github.io/portfolio/projects.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Kurt Sooknanan">
 <meta property="og:title" content="Projects | Kurt Sooknanan">
-<meta property="og:description" content="BadToken HYDRA, an automated LLM red-teaming framework, plus security tooling and lab work.">
+<meta property="og:description" content="Projects by Kurt Sooknanan: BadToken HYDRA, an automated LLM red-teaming framework, plus WebRedTeam, CyberToolkit, embedded device and wireless security, a security homelab, and Ghostclick.">
 <meta property="og:url" content="https://kurt-sudo420.github.io/portfolio/projects.html">
 <meta name="twitter:card" content="summary">
 <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/styles.css">
 <script>document.documentElement.classList.remove('no-js');</script>
 </head>
@@ -28,281 +28,311 @@
 <a href="#main" class="skip-link">Skip to content</a>
 
 <header class="site-header">
-  <div class="container navbar">
-    <a href="index.html" class="logo" aria-label="Kurt Sooknanan, home"><span class="logo-mark" aria-hidden="true">KS</span>Kurt Sooknanan</a>
+  <div class="nav-wrap">
+    <a href="index.html" class="brand"><span class="brand-mark" aria-hidden="true">KS</span><span class="brand-name">Kurt Sooknanan</span></a>
     <nav aria-label="Primary">
       <ul class="nav-links" id="navLinks">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="experience.html">Experience</a></li>
-        <li><a href="projects.html" class="active" aria-current="page">Projects</a></li>
-        <li><a href="academics.html">Credentials</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="index.html" style="--i:0"><span class="nav-num">01</span>Home</a></li>
+        <li><a href="about.html" style="--i:1"><span class="nav-num">02</span>About</a></li>
+        <li><a href="experience.html" style="--i:2"><span class="nav-num">03</span>Experience</a></li>
+        <li><a href="projects.html" class="active" aria-current="page" style="--i:3"><span class="nav-num">04</span>Projects</a></li>
+        <li><a href="research.html" style="--i:4"><span class="nav-num">05</span>Research</a></li>
+        <li><a href="certifications.html" style="--i:5"><span class="nav-num">06</span>Certifications</a></li>
+        <li><a href="contact.html" style="--i:6"><span class="nav-num">07</span>Contact</a></li>
       </ul>
     </nav>
-    <button class="nav-toggle" id="navToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
-      <span></span><span></span><span></span>
-    </button>
+    <a class="nav-status" href="contact.html"><span class="pulse-dot" aria-hidden="true"></span>Open to internships and co-ops</a>
+    <button class="nav-toggle" id="navToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span></button>
   </div>
 </header>
 
 <main id="main">
-  <section class="page-hero">
-    <div class="container">
-      <h1>Projects</h1>
-      <p class="lede">Research tooling, the infrastructure I run at home, and the offensive testing I do on authorized equipment: the work that happens outside a job description.</p>
+  <section class="page-hero" aria-labelledby="pTitle">
+    <div class="page-hero-canvas" aria-hidden="true"><canvas data-visual="floor"></canvas></div>
+    <div class="wrap">
+      <p class="kicker fade-in" style="--d:100ms">Projects, 2025 to 2026</p>
+      <h1 id="pTitle" data-split style="--chars:8"><span class="line">Selected</span><span class="line">work</span></h1>
+      <p class="lede fade-in" style="--d:700ms">Research frameworks, security tooling, hardware testing, and the infrastructure I run at home. Each one links to a full case study with the architecture, the method, and what actually came out of it.</p>
     </div>
   </section>
 
-  <section class="section">
-    <div class="container">
-
-      <!-- ---------- BADTOKEN HYDRA ---------- -->
-      <article class="project-card" id="badtoken" aria-labelledby="hydraH">
-        <div class="project-head">
-          <div>
-            <h2 id="hydraH">BadToken HYDRA</h2>
-            <p class="meta">Automated LLM red-teaming framework / Machine Psychology Group, Cyberpunk Division, UMass Boston</p>
-          </div>
-          <span class="status">In active development</span>
-        </div>
-
-        <p>BadToken is a Python toolkit for adversarial testing of language models and the systems built on them. HYDRA is its evidence-aware engine: a scheduler that decides which attack module runs against which target, and a shared evidence format that every module writes into. The point is that an adversarial evaluation can be re-run and compared, rather than reconstructed from scratch each time.</p>
-        <p>The research question underneath it: when a model refuses a harmful request, is the refusal doing the work, or is the model simply unable to do the task? The first study answers it with a before/after weight-editing design, orthogonalizing the refusal direction and re-scanning, with encoding probes as a control.</p>
-
-        <figure class="arch" aria-labelledby="archCap2" style="margin-block: var(--space-5);">
-          <figcaption class="arch-caption" id="archCap2">How a HYDRA campaign runs</figcaption>
-          <div class="arch-flow">
-            <div class="arch-col">
-              <p class="arch-col-label">Engine</p>
-              <div class="arch-node arch-node--engine">
-                <b>HYDRA</b>
-                <ul class="arch-parts">
-                  <li><b>Scheduler</b><span>Decides which module runs which attack, against which target</span></li>
-                  <li><b>Evidence format</b><span>One shared record per finding, whatever tool produced it</span></li>
-                </ul>
-              </div>
-            </div>
-            <div class="arch-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div>
-            <div class="arch-col">
-              <p class="arch-col-label">Attack modules</p>
-              <div class="arch-node"><b>garak</b><span>Probe library (NVIDIA)</span></div>
-              <div class="arch-node"><b>PyRIT</b><span>Multi-turn orchestration (Microsoft)</span></div>
-              <div class="arch-node"><b>WebRedTeam</b><span>Browser-based web-app testing</span></div>
-              <div class="arch-node arch-node--planned"><b>X-Ray</b><span>Planned module</span></div>
-            </div>
-            <div class="arch-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div>
-            <div class="arch-col">
-              <p class="arch-col-label">Targets</p>
-              <div class="arch-node"><b>Locally served LLMs</b><span>vLLM on A100 nodes under Slurm</span></div>
-              <div class="arch-node"><b>LLM-backed web apps</b><span>Lab-hosted test instances</span></div>
-            </div>
-          </div>
-          <p class="arch-return">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 12H5M11 6l-6 6 6 6"/></svg>
-            Every module writes results back in the same evidence format, so one campaign produces one comparable findings report.
-          </p>
-        </figure>
-
-        <div class="grid-2">
-          <div>
-            <h3 style="margin-bottom: var(--space-3);">Completed</h3>
-            <ul class="check-list">
-              <li>~20,000-prompt baseline across 20 garak probe families against a locally served instruction-tuned model.</li>
-              <li>Hit-log analysis that separates genuine guardrail failures from compliance markers inflating attack-success rates.</li>
-              <li>Z-score contextualization against a 23-model calibration baseline.</li>
-              <li>Serving stack on A100 nodes under Slurm, pinned (vLLM 0.6.3, torch 2.4.0, transformers 4.46.3) so results reproduce.</li>
-            </ul>
-          </div>
-          <div>
-            <h3 style="margin-bottom: var(--space-3);">In progress</h3>
-            <ul class="bullet-list">
-              <li>Before/after weight-editing study comparing refusal-mediated and capability-mediated resistance.</li>
-              <li>WebRedTeam module for prompt injection against LLM-backed web applications, including injection that escalates into script execution.</li>
-              <li>Cross-modal indirect injection: exploits carried in images rather than text.</li>
-              <li>Packaging as an installable library with a config-driven scan runner, structured result schema, and report generator.</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="tag-group" style="margin-top: var(--space-5);">
-          <p class="tag-group-label">Built with</p>
-          <div class="tag-row"><span class="tag">Python</span><span class="tag">garak</span><span class="tag">PyRIT</span><span class="tag">vLLM</span><span class="tag">PyTorch</span><span class="tag">Hugging Face</span><span class="tag">Slurm / HPC</span><span class="tag">conda</span></div>
-        </div>
-        <div class="tag-group">
-          <p class="tag-group-label">Grounded in</p>
-          <div class="tag-row"><span class="tag">OWASP Top 10 for LLMs</span><span class="tag">MITRE ATLAS</span><span class="tag">Nassi et al. (Black Hat EU 2023)</span><span class="tag">Arditi et al. 2024 (refusal direction)</span></div>
-        </div>
-
-        <div class="project-actions">
-          <a href="experience.html#threatTitle" class="btn btn-line">Read the threat model</a>
-          <span class="meta">First-author manuscript in preparation. The repository isn't public yet.</span>
-        </div>
-      </article>
-
-      <!-- ---------- CYBERTOOLKIT ---------- -->
-      <article class="project-card" id="cybertoolkit" aria-labelledby="ctkH">
-        <div class="project-head">
-          <div>
-            <h2 id="ctkH">CyberToolkit</h2>
-            <p class="meta">Command-line network security utilities / Python</p>
-          </div>
-          <span class="status">Public on GitHub</span>
-        </div>
-        <p>Network security utilities written against the Python standard library only, so it runs anywhere Python does. Built without frameworks on purpose, so that every piece, from socket handling to thread pooling, is something I had to understand rather than import.</p>
-        <ul class="bullet-list">
-          <li>Threaded TCP port scanner using ThreadPoolExecutor, with range parsing (<code class="mono">1-1024</code>, <code class="mono">22,80,443</code>)</li>
-          <li>Service banner grabber</li>
-          <li>Chunked SHA-256 file hashing for integrity verification</li>
-          <li>Secure password generation and DNS resolution</li>
-          <li>Socket context managers, specific exception handling, and input validation throughout</li>
-          <li>12 pytest tests covering the port parser; README includes an authorized-use-only scope note</li>
-        </ul>
-        <div class="tag-row"><span class="tag">Python</span><span class="tag">Standard library only</span><span class="tag">Threading</span><span class="tag">Sockets</span><span class="tag">pytest</span><span class="tag">MIT license</span></div>
-        <div class="project-actions">
-          <a href="https://github.com/kurt-sudo420/CyberToolkit" target="_blank" rel="noopener" class="btn btn-solid">View on GitHub<span class="visually-hidden"> (opens in a new tab)</span></a>
-        </div>
-      </article>
-
-      <!-- ---------- WIRELESS LAB ---------- -->
-      <article class="project-card" id="wireless" aria-labelledby="wlH">
-        <div class="project-head">
-          <div>
-            <h2 id="wlH">Embedded device and wireless security</h2>
-            <p class="meta">Machine Psychology Group, Cyberpunk Division / faculty-supervised, isolated hardware bench</p>
-          </div>
-          <span class="status">Ongoing</span>
-        </div>
-        <p>The hardware half of the same research: applying the offensive methodology behind BadToken to a physical attack surface, producing a device-security findings report as a companion to the LLM work. Being hands-on with techniques I read about in advisories means that when one shows up in an alert, I know what it looks like from the other side. Most recently: a captive-portal rogue access point, studying how client devices behave when they associate with a spoofed SSID and what they expose on join.</p>
-        <ul class="bullet-list">
-          <li><strong>Rogue AP / evil twin:</strong> captive-portal access point capturing associating client MAC addresses and DHCP-assigned IPs to a live monitor</li>
-          <li><strong>Wi-Fi auditing:</strong> scanning, packet capture, deauthentication, and handshake analysis with Marauder, aircrack-ng, and Kismet</li>
-          <li><strong>Sub-GHz RF:</strong> capture and replay for access-control and keyfob research</li>
-          <li><strong>RFID / NFC:</strong> credential read, clone, and modify workflows across low- and high-frequency tags</li>
-          <li><strong>BadUSB / HID:</strong> scripted payloads for physical-access and endpoint-hardening testing</li>
-        </ul>
-        <div class="tag-row"><span class="tag">Flipper Zero</span><span class="tag">Marauder</span><span class="tag">aircrack-ng</span><span class="tag">Kismet</span><span class="tag">Evil twin / rogue AP</span><span class="tag">Sub-GHz</span><span class="tag">RFID / NFC</span><span class="tag">BadUSB / HID</span></div>
-
-        <div class="callout">
-          <p><strong>Scope and ethics.</strong> Every asset used is owned by or explicitly authorized for the research group, and all testing happens on an air-gapped bench. My faculty mentor reviews scope before each new exploit class, and any finding with real-world implications goes through coordinated disclosure. No third-party networks, no production systems, no unauthorized targets.</p>
-        </div>
-
-        <div class="terminal terminal--inset" role="img" aria-label="Captive portal client monitor showing one self-owned test device on an isolated lab network">
-          <div class="terminal-bar" aria-hidden="true">
-            <span class="terminal-dot"></span><span class="terminal-dot"></span><span class="terminal-dot"></span>
-            <span class="terminal-title">evil-portal: client monitor</span>
-          </div>
-          <div class="terminal-body" aria-hidden="true">
-            <div class="comment"># isolated lab AP, self-owned test client</div>
-            <div><span class="prompt">$</span> clients --watch</div>
-            <div class="gap"></div>
-            <div class="out">CLIENT 1/1</div>
-            <div><span class="muted">MAC   :</span> <span class="out">0E:74:1D:B4:86:0A</span></div>
-            <div><span class="muted">IP    :</span> <span class="out">192.168.4.2</span></div>
-            <div><span class="muted">Joined:</span> <span class="out">21:37:06</span></div>
-          </div>
-        </div>
-        <p class="terminal-caption">A test device associating with the lab portal. The MAC is a randomized client address on a private subnet.</p>
-      </article>
-
-      <!-- ---------- GHOSTCLICK ---------- -->
-      <article class="project-card" id="ghostclick" aria-labelledby="gcH">
-        <div class="project-head">
-          <div>
-            <h2 id="gcH">Ghostclick</h2>
-            <p class="meta">Team project / Chrome extension</p>
-          </div>
-          <span class="status status--neutral">Team project</span>
-        </div>
-        <p>A privacy-first Chrome extension that records a website task once and replays it on request. It runs a fully local, on-device model through WebLLM, so nothing a user records or replays is sent to a server.</p>
-        <div class="tag-row"><span class="tag">JavaScript</span><span class="tag">Chrome extensions</span><span class="tag">WebLLM</span><span class="tag">On-device AI</span></div>
-      </article>
-
-      <!-- ---------- HOMELAB ---------- -->
-      <article class="project-card" id="homelab" aria-labelledby="hlH">
-        <div class="project-head">
-          <div>
-            <h2 id="hlH">Security homelab</h2>
-            <p class="meta">Self-hosted infrastructure / TrueNAS and ZFS / 2025 to present</p>
-          </div>
-          <span class="status">Running</span>
-        </div>
-        <p>The environment where I get to be the administrator, the attacker, and the person on call at 2am. TrueNAS with ZFS underneath hosts a local LLM container (which doubles as an offline red-team target), Pi-hole with Unbound for DNS, Nextcloud, and Jellyfin, with uptime monitoring wired to mobile alerts. I'm also building a Python security monitoring tool on SQLite with Trivy integration.</p>
-        <div class="tag-group">
-          <p class="tag-group-label">Running now</p>
-          <div class="tag-row"><span class="tag">TrueNAS / ZFS</span><span class="tag">Docker Compose</span><span class="tag">Local LLM container</span><span class="tag">Pi-hole / Unbound</span><span class="tag">Nextcloud</span><span class="tag">Jellyfin</span><span class="tag">Uptime monitoring</span><span class="tag">Mobile alerting</span></div>
-        </div>
-        <div class="tag-group">
-          <p class="tag-group-label">On the roadmap</p>
-          <div class="tag-row"><span class="tag">Wazuh</span><span class="tag">Tailscale</span><span class="tag">Vaultwarden</span><span class="tag">Nginx Proxy Manager</span></div>
-        </div>
-        <div class="project-actions">
-          <a href="about.html#walkthrough" class="btn btn-line">Watch the walkthrough</a>
-        </div>
-      </article>
-
-      <!-- ---------- THIS SITE ---------- -->
-      <article class="project-card" id="portfolio" aria-labelledby="siteH">
-        <div class="project-head">
-          <div>
-            <h2 id="siteH">This portfolio</h2>
-            <p class="meta">Hand-written HTML, CSS, and JavaScript / GitHub Pages</p>
-          </div>
-          <span class="status">Live</span>
-        </div>
-        <p>Built from scratch without a site builder or CSS framework: a hand-rolled design system with CSS custom properties, a responsive grid, an IntersectionObserver scroll reveal, a typed hero effect, a validated contact form, and a jQuery Mobile collapsible FAQ. The terminal panels are plain HTML and CSS, not screenshots.</p>
-        <div class="tag-row"><span class="tag">HTML5</span><span class="tag">CSS custom properties</span><span class="tag">JavaScript</span><span class="tag">jQuery</span><span class="tag">jQuery Mobile</span><span class="tag">GitHub Pages</span><span class="tag">WCAG AA contrast</span></div>
-        <div class="project-actions">
-          <a href="https://github.com/kurt-sudo420/portfolio" target="_blank" rel="noopener" class="btn btn-line">View the source<span class="visually-hidden"> (opens in a new tab)</span></a>
-        </div>
-      </article>
-    </div>
-  </section>
-
-  <section class="section section--surface">
-    <div class="container split">
-      <div class="split-head">
-        <h2>Everything else is on GitHub</h2>
+  <section class="s" style="padding-top:var(--s-6)" aria-label="Project exhibition">
+    <div class="wrap">
+      <div class="filters" data-filter-group role="group" aria-label="Filter projects by category">
+        <button class="filter-btn" type="button" data-filter="all" aria-pressed="true">All</button>
+        <button class="filter-btn" type="button" data-filter="llm" aria-pressed="false">LLM security</button>
+        <button class="filter-btn" type="button" data-filter="offensive" aria-pressed="false">Offensive</button>
+        <button class="filter-btn" type="button" data-filter="tooling" aria-pressed="false">Tooling</button>
+        <button class="filter-btn" type="button" data-filter="infra" aria-pressed="false">Infrastructure</button>
+        <span class="filter-count" id="filterStatus" role="status" aria-live="polite">7 projects</span>
       </div>
+
+      <div class="exhibit">
+        <!-- 01 HYDRA: full-width feature -->
+        <article class="ex-feature reveal" data-cat="llm offensive" aria-labelledby="exHydra">
+          <span class="ex-index">01 / Flagship research</span>
+          <div class="frame ex-feature-vis" style="padding:clamp(8px,2vw,24px)"><svg class="hydra-svg arch-desktop" viewBox="0 0 960 480" role="img" aria-labelledby="hydraSvgT hydraSvgD">
+  <title id="hydraSvgT">BadToken HYDRA architecture</title>
+  <desc id="hydraSvgD">The HYDRA engine schedules attacks through three modules (garak, PyRIT and WebRedTeam, with X-Ray planned) against locally served models and LLM-backed web apps. Every module writes into one shared evidence record that produces a single findings report.</desc>
+  <path class="wire" d="M260 230 C 320 230, 320 73, 380 73"/><path class="flow d1" d="M260 230 C 320 230, 320 73, 380 73"/><path class="wire" d="M260 230 C 320 230, 320 158, 380 158"/><path class="flow d2" d="M260 230 C 320 230, 320 158, 380 158"/><path class="wire" d="M260 230 C 320 230, 320 243, 380 243"/><path class="flow d3" d="M260 230 C 320 230, 320 243, 380 243"/><path class="wire" d="M260 230 C 320 230, 320 328, 380 328" stroke-dasharray="3 5"/><path class="wire" d="M600 73 C 660 73, 660 113, 720 113"/><path class="flow flow--v d1" d="M600 73 C 660 73, 660 113, 720 113"/><path class="wire" d="M600 158 C 660 158, 660 113, 720 113"/><path class="flow flow--v d2" d="M600 158 C 660 158, 660 113, 720 113"/><path class="wire" d="M600 243 C 660 243, 660 258, 720 258"/><path class="flow flow--v d3" d="M600 243 C 660 243, 660 258, 720 258"/><path class="wire" d="M490 361 L490 400"/><path class="flow flow--back" d="M490 361 L490 400"/><path class="wire" d="M825 301 L825 400"/><path class="flow flow--back" d="M825 301 L825 400"/><path class="wire" d="M150 400 L150 350"/><path class="flow flow--back" d="M150 400 L150 350"/><path class="flow flow--back d2" d="M900 412 L70 412"/>
+  <g data-stage="schedule evidence report">
+    <rect class="node node--engine" x="40" y="110" width="220" height="240" rx="16"/>
+    <circle class="core-ring" cx="222" cy="148" r="17"/>
+    <circle cx="222" cy="148" r="5" fill="#3DE8F5"/>
+    <text class="lbl" x="64" y="142">engine</text>
+    <text x="64" y="182" font-size="30" font-weight="700" font-family="Archivo, sans-serif" style="font-stretch:125%">HYDRA</text>
+    <text x="64" y="236" font-size="15" font-weight="600">Scheduler</text>
+    <text class="sub" x="64" y="256">module, attack, target</text>
+    <text x="64" y="296" font-size="15" font-weight="600">Evidence format</text>
+    <text class="sub" x="64" y="316">one record per finding</text>
+  </g>
+  <text class="lbl" x="380" y="28">attack modules</text>
+  <g data-stage="attack">
+    <rect class="node" x="380" y="40" width="220" height="66" rx="12"/><text x="400" y="69" font-size="15" font-weight="600">garak</text><text class="sub" x="400" y="89">Probe library (NVIDIA)</text>
+    <rect class="node" x="380" y="125" width="220" height="66" rx="12"/><text x="400" y="154" font-size="15" font-weight="600">PyRIT</text><text class="sub" x="400" y="174">Multi-turn orchestration (Microsoft)</text>
+    <rect class="node" x="380" y="210" width="220" height="66" rx="12"/><text x="400" y="239" font-size="15" font-weight="600">WebRedTeam</text><text class="sub" x="400" y="259">Browser-based web testing</text>
+    <rect class="node node--planned" x="380" y="295" width="220" height="66" rx="12"/><text x="400" y="324" font-size="15" font-weight="600">X-Ray</text><text class="sub" x="400" y="344">Planned module</text>
+  </g>
+  <text class="lbl" x="720" y="58">targets</text>
+  <g data-stage="attack">
+    <rect class="node node--target" x="720" y="70" width="210" height="86" rx="12"/>
+    <text x="740" y="106" font-size="15" font-weight="600">Locally served LLMs</text>
+    <text class="sub" x="740" y="128">vLLM on A100 nodes, Slurm</text>
+    <rect class="node node--target" x="720" y="215" width="210" height="86" rx="12"/>
+    <text x="740" y="251" font-size="15" font-weight="600">LLM-backed web apps</text>
+    <text class="sub" x="740" y="273">Lab-hosted test instances</text>
+  </g>
+  <g data-stage="evidence report">
+    <rect class="node" x="40" y="400" width="890" height="60" rx="12"/>
+    <text x="64" y="444" font-size="14" font-weight="600">Shared evidence record</text>
+    <text class="sub" x="236" y="444">every module writes here, so one campaign produces one comparable findings report</text>
+  </g>
+</svg>
+<div class="arch-mobile" aria-hidden="true">
+  <div class="m-col"><p class="m-col-label">engine</p><div class="m-node m-node--engine"><b>HYDRA</b><span>Scheduler plus shared evidence format</span></div></div>
+  <svg class="m-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 4v15M6 13l6 6 6-6"/></svg>
+  <div class="m-col"><p class="m-col-label">attack modules</p>
+    <div class="m-node"><b>garak</b><span>Probe library (NVIDIA)</span></div>
+    <div class="m-node"><b>PyRIT</b><span>Multi-turn orchestration (Microsoft)</span></div>
+    <div class="m-node"><b>WebRedTeam</b><span>Browser-based web testing</span></div>
+    <div class="m-node m-node--planned"><b>X-Ray</b><span>Planned module</span></div>
+  </div>
+  <svg class="m-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 4v15M6 13l6 6 6-6"/></svg>
+  <div class="m-col"><p class="m-col-label">targets</p>
+    <div class="m-node m-node--target"><b>Locally served LLMs</b><span>vLLM on A100 nodes, Slurm</span></div>
+    <div class="m-node m-node--target"><b>LLM-backed web apps</b><span>Lab-hosted test instances</span></div>
+  </div>
+  <svg class="m-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 4v15M6 13l6 6 6-6"/></svg>
+  <div class="m-col"><div class="m-node"><b>Shared evidence record</b><span>One comparable findings report per campaign</span></div></div>
+</div></div>
+          <div class="ex-feature-copy">
+            <div>
+              <span class="state state--live">In active development</span>
+              <h2 class="ex-title" id="exHydra" style="--chars:8"><a href="projects/hydra.html">BadToken HYDRA</a></h2>
+            </div>
+            <div>
+              <p class="showcase-sub">Automated LLM red-teaming framework</p>
+              <p style="margin-bottom:var(--s-5)">BadToken is a Python toolkit for adversarial testing of language models. HYDRA is its engine: a scheduler and a shared evidence format that let garak, PyRIT, and a browser-based web module run as one campaign, with every finding landing in one comparable record.</p>
+              <div class="chip-row" style="margin-bottom:var(--s-6)"><span class="chip">Python</span><span class="chip">garak</span><span class="chip">PyRIT</span><span class="chip">vLLM</span><span class="chip">PyTorch</span><span class="chip">Slurm / A100</span></div>
+              <a href="projects/hydra.html" class="btn btn--primary" data-magnetic>Read the case study <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 02 WebRedTeam: split -->
+        <article class="ex-split reveal" data-cat="llm offensive" aria-labelledby="exWrt">
+          <div class="frame ex-split-vis"><div class="stage3d" data-tilt="5">
+  <div class="browser3d" role="img" aria-label="Illustration of an LLM-backed web page where hidden instructions in page content lead the assistant to emit a script payload">
+    <div class="browser3d-bar"><i></i><i></i><i></i><span class="browser3d-url">https://lab-test.local/product/42</span></div>
+    <div class="browser3d-body">
       <div>
-        <p class="lede" style="margin-bottom: var(--space-5);">Commit history included, so you can see how each project came together rather than just the finished version.</p>
-        <a href="https://github.com/kurt-sudo420?tab=repositories" target="_blank" rel="noopener" class="btn btn-solid">Browse my repositories<span class="visually-hidden"> (opens in a new tab)</span></a>
+        <div class="sk sk--h"></div>
+        <div class="sk" style="width:92%"></div><div class="sk" style="width:84%"></div><div class="sk" style="width:88%"></div>
+        <div class="sk sk--inject" style="width:76%"></div>
+        <div class="sk" style="width:64%"></div><div class="sk" style="width:80%"></div>
       </div>
+      <div class="chatpane">
+        <div class="bubble">Summarize the reviews on this page.</div>
+        <div class="bubble bubble--ai">Reading page content&hellip;</div>
+        <div class="bubble bubble--alert">&lt;script&gt; rendered in reply</div>
+      </div>
+    </div>
+  </div>
+</div>
+<span class="float-chip" style="left:6%;top:12%"><b>untrusted</b> page content</span>
+<span class="float-chip" style="right:6%;bottom:14%">model output <b>rendered</b> as HTML</span>
+<p class="frame-label">Illustration of the vulnerability class, not a WebRedTeam screenshot</p></div>
+          <div>
+            <span class="ex-index">02 / Web and LLM security</span>
+            <h2 class="ex-title" id="exWrt" style="--chars:10"><a href="projects/webredteam.html">WebRedTeam</a></h2>
+            <span class="state state--violet" style="margin-bottom:var(--s-5)">In progress</span>
+            <p style="margin:var(--s-4) 0 var(--s-5)">When an LLM-backed web app renders model output, prompt injection can turn into script execution. I'm extending the WebRedTeam black-box framework into a HYDRA module that tests for exactly that, through a real browser.</p>
+            <div class="chip-row" style="margin-bottom:var(--s-6)"><span class="chip">Browser automation</span><span class="chip">Prompt injection</span><span class="chip">XSS</span><span class="chip">HYDRA module</span></div>
+            <a href="projects/webredteam.html" class="btn btn--ghost" data-magnetic>Read the case study <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+        </article>
+
+        <!-- 03 CyberToolkit: split, flipped -->
+        <article class="ex-split ex-split--flip reveal" data-cat="tooling" aria-labelledby="exCtk">
+          <div class="frame ex-split-vis vis-ports"><canvas data-visual="ports" aria-hidden="true"></canvas><p class="frame-label">Sweep based on the README example: ports 20 to 100 on scanme.nmap.org</p></div>
+          <div>
+            <span class="ex-index">03 / Security tooling</span>
+            <h2 class="ex-title" id="exCtk" style="--chars:12"><a href="projects/cybertoolkit.html">CyberToolkit</a></h2>
+            <span class="state" style="margin-bottom:var(--s-5)">Public on GitHub</span>
+            <p style="margin:var(--s-4) 0 var(--s-5)">Five command-line network security utilities in Python, standard library only: a threaded port scanner, banner grabber, chunked SHA-256 hashing, DNS lookup, and a password generator built on <code>secrets</code>.</p>
+            <div class="chip-row" style="margin-bottom:var(--s-6)"><span class="chip">Python</span><span class="chip">ThreadPoolExecutor</span><span class="chip">Sockets</span><span class="chip">pytest</span><span class="chip">MIT license</span></div>
+            <div class="btn-row">
+              <a href="projects/cybertoolkit.html" class="btn btn--ghost" data-magnetic>Case study <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+              <a href="https://github.com/kurt-sudo420/CyberToolkit" class="btn btn--ghost" target="_blank" rel="noopener" data-magnetic><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m8 8-5 4 5 4M16 8l5 4-5 4M14 5l-4 14"/></svg> Repository<span class="sr-only"> (opens in a new tab)</span></a>
+            </div>
+          </div>
+        </article>
+
+        <h2 class="sr-only">More projects</h2>
+        <div class="ex-row">
+          <article class="card3d reveal" data-tilt="4" data-cat="offensive">
+  <div class="card3d-vis"><div class="frame frame--grid"><svg class="rf-svg" viewBox="0 0 480 300" role="img" aria-label="Illustration of radio waves radiating from an antenna beside a spectrum display">
+  <g transform="translate(150 160)">
+    <circle class="wave" r="130"/><circle class="wave" r="130"/><circle class="wave" r="130"/><circle class="wave" r="130"/>
+  </g>
+  <path d="M150 160 L150 250 M130 250 h40" stroke="#CFE8FF" stroke-width="2" fill="none"/>
+  <circle cx="150" cy="160" r="7" fill="#3DE8F5"/>
+  <g transform="translate(300 90)">
+    <rect x="0" y="0" width="150" height="130" rx="10" fill="#151925" stroke="rgba(170,196,235,0.2)"/>
+    <rect class="bar" x="16" y="40" width="10" height="74" rx="2" style="animation-delay:-.2s"/>
+    <rect class="bar" x="32" y="56" width="10" height="58" rx="2" style="animation-delay:-.6s"/>
+    <rect class="bar" x="48" y="30" width="10" height="84" rx="2" style="animation-delay:-1s"/>
+    <rect class="bar" x="64" y="64" width="10" height="50" rx="2" style="animation-delay:-.4s"/>
+    <rect class="bar" x="80" y="46" width="10" height="68" rx="2" style="animation-delay:-1.3s"/>
+    <rect class="bar" x="96" y="70" width="10" height="44" rx="2" style="animation-delay:-.8s"/>
+    <rect class="bar" x="112" y="52" width="10" height="62" rx="2" style="animation-delay:-.1s"/>
+    <text x="16" y="24" font-family="IBM Plex Mono, monospace" font-size="11" fill="#A3AEC0">sub-GHz</text>
+  </g>
+</svg></div></div>
+  <div class="card3d-body">
+    <p class="kicker">04 / Offensive security</p>
+    <h3><a class="stretched" href="projects/wireless-lab.html">Embedded device and wireless lab</a></h3>
+    <p>The hardware half of the BadToken research: rogue access points, Wi-Fi auditing, Sub-GHz, RFID/NFC, and BadUSB, all on group-owned equipment on an air-gapped bench.</p>
+    <div class="chip-row"><span class="chip">Flipper Zero</span><span class="chip">Marauder</span><span class="chip">aircrack-ng</span><span class="chip">Kismet</span></div>
+    <div class="card3d-foot"><span class="state">Ongoing</span></div>
+  </div>
+</article>
+          <article class="card3d reveal" data-tilt="4" data-cat="infra">
+  <div class="card3d-vis"><div class="frame frame--grid"><svg class="rack-svg" viewBox="0 0 480 300" role="img" aria-label="Illustration of a homelab rack running TrueNAS, a local LLM container, Pi-hole with Unbound, and Nextcloud">
+  <rect x="110" y="24" width="260" height="252" rx="12" fill="#0A0C11" stroke="rgba(170,196,235,0.25)"/>
+  <g>
+    <rect class="unit" x="128" y="44" width="224" height="46" rx="6"/><circle class="led" cx="148" cy="67" r="4"/><circle class="led led--v" cx="162" cy="67" r="4"/><text x="180" y="71">TrueNAS / ZFS</text>
+    <rect class="unit" x="128" y="100" width="224" height="46" rx="6"/><circle class="led led--s" cx="148" cy="123" r="4"/><circle class="led" cx="162" cy="123" r="4" style="animation-delay:-.7s"/><text x="180" y="127">local LLM container</text>
+    <rect class="unit" x="128" y="156" width="224" height="46" rx="6"/><circle class="led led--v" cx="148" cy="179" r="4" style="animation-delay:-.3s"/><circle class="led" cx="162" cy="179" r="4" style="animation-delay:-1.2s"/><text x="180" y="183">Pi-hole + Unbound</text>
+    <rect class="unit" x="128" y="212" width="224" height="46" rx="6"/><circle class="led" cx="148" cy="235" r="4" style="animation-delay:-1.9s"/><circle class="led led--s" cx="162" cy="235" r="4"/><text x="180" y="239">Nextcloud, Jellyfin</text>
+  </g>
+</svg></div></div>
+  <div class="card3d-body">
+    <p class="kicker">05 / Infrastructure</p>
+    <h3><a class="stretched" href="projects/homelab.html">Security homelab</a></h3>
+    <p>TrueNAS and ZFS hosting an offline LLM red-team target, Pi-hole with Unbound, and a Python monitoring tool built on SQLite and Trivy.</p>
+    <div class="chip-row"><span class="chip">TrueNAS / ZFS</span><span class="chip">Docker Compose</span><span class="chip">Trivy</span></div>
+    <div class="card3d-foot"><span class="state">Running</span></div>
+  </div>
+</article>
+        </div>
+        <div class="ex-row ex-row--even">
+          <article class="card3d reveal" data-tilt="4" data-cat="tooling llm">
+  <div class="card3d-vis"><div class="frame frame--grid"><svg class="ghost-svg" viewBox="0 0 540 300" role="img" aria-label="Illustration of a recorded cursor path being replayed across a web page">
+  <rect x="20" y="20" width="500" height="260" rx="14" fill="#0E1119" stroke="rgba(170,196,235,0.2)"/>
+  <rect x="20" y="20" width="500" height="34" rx="14" fill="#121622"/>
+  <circle cx="44" cy="37" r="5" fill="rgba(170,196,235,0.3)"/><circle cx="60" cy="37" r="5" fill="rgba(170,196,235,0.3)"/><circle cx="76" cy="37" r="5" fill="rgba(170,196,235,0.3)"/>
+  <circle cx="490" cy="37" r="6" fill="#FF6B7A"/><text x="440" y="41" font-family="IBM Plex Mono, monospace" font-size="11" fill="#A3AEC0">REC</text>
+  <path class="track" d="M60 220 C 140 120, 220 260, 300 150 S 430 80, 480 170"/>
+  <path class="trace" d="M60 220 C 140 120, 220 260, 300 150 S 430 80, 480 170"/>
+  <circle class="pt" cx="60" cy="220" r="6"/><circle class="pt" cx="300" cy="150" r="6"/><circle class="pt" cx="480" cy="170" r="6"/>
+  <g class="ghost-cursor"><path d="M0 0 L0 18 L5 13 L9 21 L12 20 L8 12 L14 12 Z" fill="#ECF1F8" stroke="#050608" stroke-width="1"/></g>
+</svg></div></div>
+  <div class="card3d-body">
+    <p class="kicker">06 / Team project</p>
+    <h3>Ghostclick</h3>
+    <p>A privacy-first Chrome extension that records a website task once and replays it on request, using an on-device model through WebLLM so nothing is sent to a server.</p>
+    <div class="chip-row"><span class="chip">JavaScript</span><span class="chip">Chrome extension</span><span class="chip">WebLLM</span></div>
+    <div class="card3d-foot"><span class="state state--muted">Team project</span></div>
+  </div>
+</article>
+          <article class="card3d reveal" data-tilt="4" data-cat="tooling">
+  <div class="card3d-vis"><div class="frame frame--grid"><svg viewBox="0 0 480 300" role="img" aria-label="Illustration of this portfolio's layout grid">
+  <defs><linearGradient id="sg" x1="0" x2="1"><stop offset="0" stop-color="#8B6CFF"/><stop offset="1" stop-color="#3DE8F5"/></linearGradient></defs>
+  <rect x="60" y="40" width="360" height="220" rx="12" fill="#0E1119" stroke="rgba(170,196,235,0.2)"/>
+  <rect x="84" y="70" width="200" height="22" rx="4" fill="url(#sg)" opacity=".9"/>
+  <rect x="84" y="102" width="150" height="10" rx="3" fill="rgba(255,255,255,.12)"/>
+  <rect x="84" y="120" width="170" height="10" rx="3" fill="rgba(255,255,255,.08)"/>
+  <circle cx="340" cy="120" r="44" fill="none" stroke="#3DE8F5" stroke-opacity=".5" stroke-dasharray="3 5"/>
+  <circle cx="340" cy="120" r="10" fill="#3DE8F5"/>
+  <rect x="84" y="180" width="100" height="56" rx="8" fill="#151925" stroke="rgba(170,196,235,.2)"/>
+  <rect x="194" y="180" width="100" height="56" rx="8" fill="#151925" stroke="rgba(170,196,235,.2)"/>
+  <rect x="304" y="180" width="92" height="56" rx="8" fill="#151925" stroke="rgba(170,196,235,.2)"/>
+</svg></div></div>
+  <div class="card3d-body">
+    <p class="kicker">07 / Web engineering</p>
+    <h3>This portfolio</h3>
+    <p>Hand-written HTML, CSS, and JavaScript with no frameworks: custom canvas scenes, view transitions, and accessible motion that respects reduced-motion settings.</p>
+    <div class="chip-row"><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">Canvas</span><span class="chip">jQuery</span></div>
+    <div class="card3d-foot"><span class="state">Live</span><a class="arrow-link" href="https://github.com/kurt-sudo420/portfolio" target="_blank" rel="noopener">Source <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg><span class="sr-only"> (opens in a new tab)</span></a></div>
+  </div>
+</article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="s s--line s--panel">
+    <div class="wrap sec-head" style="margin-bottom:0">
+      <div><h2 class="reveal">Everything else is on GitHub</h2></div>
+      <div class="reveal" style="--rd:120ms"><p style="margin-bottom:var(--s-5)">Commit history included, so you can see how each project came together rather than just the finished version.</p>
+      <a href="https://github.com/kurt-sudo420?tab=repositories" class="btn btn--primary" target="_blank" rel="noopener" data-magnetic><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m8 8-5 4 5 4M16 8l5 4-5 4M14 5l-4 14"/></svg> Browse repositories<span class="sr-only"> (opens in a new tab)</span></a></div>
     </div>
   </section>
 </main>
 
 <footer class="site-footer">
-  <div class="container footer-grid">
-    <div class="footer-col">
-      <p class="footer-name">Kurt Sooknanan</p>
-      <p>Junior Security Analyst and undergraduate LLM security researcher, UMass Boston.</p>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <p class="brand-name" style="font-size:1.3rem;margin-bottom:12px;color:var(--text)">Kurt Sooknanan</p>
+        <p>Junior Security Analyst at the UMass Boston Network Security Operations Center and undergraduate LLM security researcher in the Machine Psychology Group.</p>
+      </div>
+      <div class="footer-col">
+        <h2>Work</h2>
+        <ul>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="research.html">Research</a></li>
+          <li><a href="experience.html">Experience</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h2>About</h2>
+        <ul>
+          <li><a href="about.html">About me</a></li>
+          <li><a href="certifications.html">Certifications</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h2>Elsewhere</h2>
+        <ul>
+          <li><a href="mailto:manny.kurt@gmail.com">Email</a></li>
+          <li><a href="https://github.com/kurt-sudo420" target="_blank" rel="noopener">GitHub<span class="sr-only"> (opens in a new tab)</span></a></li>
+          <li><a href="https://www.linkedin.com/in/kurt-sooknanan-485494410/" target="_blank" rel="noopener">LinkedIn<span class="sr-only"> (opens in a new tab)</span></a></li>
+        </ul>
+      </div>
     </div>
-    <div class="footer-col">
-      <h2>Elsewhere</h2>
-      <ul>
-        <li><a href="mailto:manny.kurt@gmail.com">Email</a></li>
-        <li><a href="https://github.com/kurt-sudo420" target="_blank" rel="noopener">GitHub</a></li>
-        <li><a href="https://www.linkedin.com/in/kurt-sooknanan-485494410/" target="_blank" rel="noopener">LinkedIn</a></li>
-      </ul>
+    <p class="footer-mark" aria-hidden="true">Sooknanan</p>
+    <div class="footer-bottom">
+      <p>&copy; <span id="year">2026</span> Kurt Sooknanan. Hand-built with HTML, CSS, and JavaScript.</p>
+      <p>Last updated <span id="lastModified"></span></p>
     </div>
-    <div class="footer-col">
-      <h2>This site</h2>
-      <ul>
-        <li><a href="experience.html">Experience</a></li>
-        <li><a href="projects.html">Projects</a></li>
-        <li><a href="academics.html">Credentials</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="container footer-bottom">
-    <p>&copy; <span id="year">2026</span> Kurt Sooknanan. Hand-built with HTML, CSS, and JavaScript.</p>
-    <p>Last updated: <span id="lastModified"></span></p>
   </div>
 </footer>
 
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="js/script.js"></script>
+<script src="js/visuals.js" defer></script>
 </body>
 </html>

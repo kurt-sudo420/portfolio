@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Search indexing is intentionally off (privacy). Delete this line when you want the site to appear in search results. -->
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<title>BadToken HYDRA case study | Kurt Sooknanan</title>
+<meta name="description" content="Case study: BadToken HYDRA, an automated LLM red-teaming framework that schedules garak, PyRIT, and a browser-based module behind one shared evidence format.">
+<meta name="author" content="Kurt Sooknanan">
+<meta name="theme-color" content="#050608">
+<link rel="canonical" href="https://kurt-sudo420.github.io/portfolio/projects/hydra.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Kurt Sooknanan">
+<meta property="og:title" content="BadToken HYDRA case study | Kurt Sooknanan">
+<meta property="og:description" content="Case study: BadToken HYDRA, an automated LLM red-teaming framework that schedules garak, PyRIT, and a browser-based module behind one shared evidence format.">
+<meta property="og:url" content="https://kurt-sudo420.github.io/portfolio/projects/hydra.html">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/styles.css">
+<script>document.documentElement.classList.remove('no-js');</script>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to content</a>
+
+<header class="site-header">
+  <div class="nav-wrap">
+    <a href="../index.html" class="brand"><span class="brand-mark" aria-hidden="true">KS</span><span class="brand-name">Kurt Sooknanan</span></a>
+    <nav aria-label="Primary">
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html" style="--i:0"><span class="nav-num">01</span>Home</a></li>
+        <li><a href="../about.html" style="--i:1"><span class="nav-num">02</span>About</a></li>
+        <li><a href="../experience.html" style="--i:2"><span class="nav-num">03</span>Experience</a></li>
+        <li><a href="../projects.html" class="active" aria-current="page" style="--i:3"><span class="nav-num">04</span>Projects</a></li>
+        <li><a href="../research.html" style="--i:4"><span class="nav-num">05</span>Research</a></li>
+        <li><a href="../certifications.html" style="--i:5"><span class="nav-num">06</span>Certifications</a></li>
+        <li><a href="../contact.html" style="--i:6"><span class="nav-num">07</span>Contact</a></li>
+      </ul>
+    </nav>
+    <a class="nav-status" href="../contact.html"><span class="pulse-dot" aria-hidden="true"></span>Open to internships and co-ops</a>
+    <button class="nav-toggle" id="navToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span></button>
+  </div>
+</header>
+
+<main id="main">
+  <section class="cs-hero" aria-labelledby="csTitle">
+    <div class="ambient" aria-hidden="true"></div>
+    <div class="wrap">
+      <a class="cs-back" href="../projects.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg> All projects</a>
+      <p class="kicker fade-in" style="--d:100ms">Case study / LLM security research</p>
+      <h1 id="csTitle" data-split style="--chars:8"><span class="line">BadToken</span><span class="line">HYDRA</span></h1>
+      <div class="cs-intro">
+        <p class="lede fade-in" style="--d:600ms">An automated red-teaming framework that runs garak, PyRIT, and a browser module as one reproducible campaign.</p>
+        <dl class="cs-meta fade-in" style="--d:750ms"><div><dt>Role</dt><dd>Undergraduate researcher</dd></div><div><dt>Status</dt><dd><span class="state state--live">In active development</span></dd></div><div class="full"><dt>Group</dt><dd>Machine Psychology Group, Cyberpunk Division, UMass Boston</dd></div><div><dt>Advisor</dt><dd>Daniel Haehn, PhD</dd></div><div><dt>Started</dt><dd>July 2026</dd></div><div class="full"><dt>Stack</dt><dd>Python, garak, PyRIT, vLLM, PyTorch, Slurm</dd></div></dl>
+      </div>
+      <div class="frame cs-vis reveal reveal--scale"><canvas data-visual="neural" aria-hidden="true"></canvas><p class="frame-label">Signals moving through a network; violet marks adversarial input</p></div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <section class="cs-section" id="problem" aria-labelledby="problem-h">
+      <header><p class="kicker">Overview</p><h2 id="problem-h">The problem</h2></header>
+      <div class="cs-body">
+<p>Red-team tools for language models each come with their own configuration, prompts, scoring, and output format. A garak run and a PyRIT campaign against the same model produce results you can't line up, and re-running either one later rarely reproduces the original conditions.</p>
+<p>That's a problem for research, where the whole point is a fair before-and-after comparison. BadToken's goal is to put the tools behind one interface and one evidence format so an adversarial evaluation can be repeated and compared rather than reconstructed from scratch.</p>
+<h3>The research question</h3>
+<p>When a model refuses a harmful request, is the refusal doing the work, or is the model simply unable to do the task? Separating "won't" from "can't" changes how you read every attack-success number.</p></div>
+    </section>
+    <section class="cs-section cs-section--wide" id="architecture" aria-labelledby="architecture-h">
+      <header><p class="kicker">Architecture</p><h2 id="architecture-h">One engine, many heads</h2></header>
+      <div class="cs-body">
+<div class="story" data-story>
+  <div class="frame story-vis" style="padding:clamp(8px,1.5vw,20px)"><svg class="hydra-svg arch-desktop" viewBox="0 0 960 480" role="img" aria-labelledby="hydraSvgT hydraSvgD">
+  <title id="hydraSvgT">BadToken HYDRA architecture</title>
+  <desc id="hydraSvgD">The HYDRA engine schedules attacks through three modules (garak, PyRIT and WebRedTeam, with X-Ray planned) against locally served models and LLM-backed web apps. Every module writes into one shared evidence record that produces a single findings report.</desc>
+  <path class="wire" d="M260 230 C 320 230, 320 73, 380 73"/><path class="flow d1" d="M260 230 C 320 230, 320 73, 380 73"/><path class="wire" d="M260 230 C 320 230, 320 158, 380 158"/><path class="flow d2" d="M260 230 C 320 230, 320 158, 380 158"/><path class="wire" d="M260 230 C 320 230, 320 243, 380 243"/><path class="flow d3" d="M260 230 C 320 230, 320 243, 380 243"/><path class="wire" d="M260 230 C 320 230, 320 328, 380 328" stroke-dasharray="3 5"/><path class="wire" d="M600 73 C 660 73, 660 113, 720 113"/><path class="flow flow--v d1" d="M600 73 C 660 73, 660 113, 720 113"/><path class="wire" d="M600 158 C 660 158, 660 113, 720 113"/><path class="flow flow--v d2" d="M600 158 C 660 158, 660 113, 720 113"/><path class="wire" d="M600 243 C 660 243, 660 258, 720 258"/><path class="flow flow--v d3" d="M600 243 C 660 243, 660 258, 720 258"/><path class="wire" d="M490 361 L490 400"/><path class="flow flow--back" d="M490 361 L490 400"/><path class="wire" d="M825 301 L825 400"/><path class="flow flow--back" d="M825 301 L825 400"/><path class="wire" d="M150 400 L150 350"/><path class="flow flow--back" d="M150 400 L150 350"/><path class="flow flow--back d2" d="M900 412 L70 412"/>
+  <g data-stage="schedule evidence report">
+    <rect class="node node--engine" x="40" y="110" width="220" height="240" rx="16"/>
+    <circle class="core-ring" cx="222" cy="148" r="17"/>
+    <circle cx="222" cy="148" r="5" fill="#3DE8F5"/>
+    <text class="lbl" x="64" y="142">engine</text>
+    <text x="64" y="182" font-size="30" font-weight="700" font-family="Archivo, sans-serif" style="font-stretch:125%">HYDRA</text>
+    <text x="64" y="236" font-size="15" font-weight="600">Scheduler</text>
+    <text class="sub" x="64" y="256">module, attack, target</text>
+    <text x="64" y="296" font-size="15" font-weight="600">Evidence format</text>
+    <text class="sub" x="64" y="316">one record per finding</text>
+  </g>
+  <text class="lbl" x="380" y="28">attack modules</text>
+  <g data-stage="attack">
+    <rect class="node" x="380" y="40" width="220" height="66" rx="12"/><text x="400" y="69" font-size="15" font-weight="600">garak</text><text class="sub" x="400" y="89">Probe library (NVIDIA)</text>
+    <rect class="node" x="380" y="125" width="220" height="66" rx="12"/><text x="400" y="154" font-size="15" font-weight="600">PyRIT</text><text class="sub" x="400" y="174">Multi-turn orchestration (Microsoft)</text>
+    <rect class="node" x="380" y="210" width="220" height="66" rx="12"/><text x="400" y="239" font-size="15" font-weight="600">WebRedTeam</text><text class="sub" x="400" y="259">Browser-based web testing</text>
+    <rect class="node node--planned" x="380" y="295" width="220" height="66" rx="12"/><text x="400" y="324" font-size="15" font-weight="600">X-Ray</text><text class="sub" x="400" y="344">Planned module</text>
+  </g>
+  <text class="lbl" x="720" y="58">targets</text>
+  <g data-stage="attack">
+    <rect class="node node--target" x="720" y="70" width="210" height="86" rx="12"/>
+    <text x="740" y="106" font-size="15" font-weight="600">Locally served LLMs</text>
+    <text class="sub" x="740" y="128">vLLM on A100 nodes, Slurm</text>
+    <rect class="node node--target" x="720" y="215" width="210" height="86" rx="12"/>
+    <text x="740" y="251" font-size="15" font-weight="600">LLM-backed web apps</text>
+    <text class="sub" x="740" y="273">Lab-hosted test instances</text>
+  </g>
+  <g data-stage="evidence report">
+    <rect class="node" x="40" y="400" width="890" height="60" rx="12"/>
+    <text x="64" y="444" font-size="14" font-weight="600">Shared evidence record</text>
+    <text class="sub" x="236" y="444">every module writes here, so one campaign produces one comparable findings report</text>
+  </g>
+</svg>
+<div class="arch-mobile" aria-hidden="true">
+  <div class="m-col"><p class="m-col-label">engine</p><div class="m-node m-node--engine"><b>HYDRA</b><span>Scheduler plus shared evidence format</span></div></div>
+  <svg class="m-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 4v15M6 13l6 6 6-6"/></svg>
+  <div class="m-col"><p class="m-col-label">attack modules</p>
+    <div class="m-node"><b>garak</b><span>Probe library (NVIDIA)</span></div>
+    <div class="m-node"><b>PyRIT</b><span>Multi-turn orchestration (Microsoft)</span></div>
+    <div class="m-node"><b>WebRedTeam</b><span>Browser-based web testing</span></div>
+    <div class="m-node m-node--planned"><b>X-Ray</b><span>Planned module</span></div>
+  </div>
+  <svg class="m-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 4v15M6 13l6 6 6-6"/></svg>
+  <div class="m-col"><p class="m-col-label">targets</p>
+    <div class="m-node m-node--target"><b>Locally served LLMs</b><span>vLLM on A100 nodes, Slurm</span></div>
+    <div class="m-node m-node--target"><b>LLM-backed web apps</b><span>Lab-hosted test instances</span></div>
+  </div>
+  <svg class="m-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 4v15M6 13l6 6 6-6"/></svg>
+  <div class="m-col"><div class="m-node"><b>Shared evidence record</b><span>One comparable findings report per campaign</span></div></div>
+</div></div>
+  <div class="story-steps">
+    <div class="story-step" data-step="schedule"><p class="kicker">Step 1</p><h3>Schedule</h3><p>A campaign starts in the engine. The scheduler decides which module runs which attack against which target, using the same probe, generation, and seed settings every time it's re-run.</p></div>
+    <div class="story-step" data-step="attack"><p class="kicker">Step 2</p><h3>Attack</h3><p>Modules do the work they're best at: garak runs its probe library, PyRIT orchestrates multi-turn attacks, and WebRedTeam drives a real browser against LLM-backed web apps. X-Ray is parked as a future module.</p></div>
+    <div class="story-step" data-step="evidence"><p class="kicker">Step 3</p><h3>Collect evidence</h3><p>Each module writes its results into one shared evidence format, so a garak hit and a PyRIT transcript can sit side by side instead of living in two incompatible logs.</p></div>
+    <div class="story-step" data-step="report"><p class="kicker">Step 4</p><h3>Report</h3><p>One campaign produces one findings report that can be compared run to run, which is what a before-and-after experiment needs.</p></div>
+  </div>
+</div><div class="code"><p class="code-cap">The library's intended interface</p><pre><span class="k">import</span> BadToken
+
+<span class="c"># run the standard scan suite against a served model</span>
+report = BadToken.<span class="f">scan</span>(model)
+
+<span class="c"># run one specific exploit against it</span>
+result = BadToken.<span class="f">test</span>(model, exploit)</pre></div></div>
+    </section>
+    <section class="cs-section" id="implementation" aria-labelledby="implementation-h">
+      <header><p class="kicker">Implementation</p><h2 id="implementation-h">Infrastructure that reproduces</h2></header>
+      <div class="cs-body">
+<p>Models are served with vLLM behind an OpenAI-compatible endpoint on A100 GPU nodes in the university research cluster, scheduled through Slurm and reached over an authenticated SSH tunnel. The garak and PyRIT clients run in a separate conda environment so the serving stack stays untouched.</p><ul class="cs-stack"><li><b>vLLM 0.6.3</b><span>Model serving, OpenAI-compatible API</span></li><li><b>torch 2.4.0</b><span>Pinned for the node's CUDA 12.2 driver</span></li><li><b>transformers 4.46.3</b><span>Pinned alongside vLLM</span></li><li><b>Slurm on A100</b><span>Batch scheduling for long scans</span></li><li><b>garak + PyRIT</b><span>Attack modules, separate conda env</span></li><li><b>Python</b><span>Orchestration and analysis</span></li></ul>
+<p style="margin-top:var(--s-5)">I also maintain the group's cluster reference documentation: session startup, Slurm and tmux commands, storage paths, environment pins, and a model-size table.</p></div>
+    </section>
+    <section class="cs-section" id="method" aria-labelledby="method-h">
+      <header><p class="kicker">Methodology</p><h2 id="method-h">A before-and-after experiment</h2></header>
+      <div class="cs-body"><ul class="bullets"><li><strong>Baseline:</strong> a ~20,000-prompt scan across 20 garak probe families against a locally served instruction-tuned model.</li><li><strong>Intervention:</strong> remove the model's refusal direction with weight editing (refusal-direction orthogonalization, after Arditi et al. 2024).</li><li><strong>Re-scan:</strong> identical probe, generation, and seed parameters, with the baseline re-run the same day to rule out configuration drift.</li><li><strong>Control:</strong> encoding probes, where resistance should come from capability rather than refusal.</li><li><strong>Analysis:</strong> compare hit-log content, not just pass rates, and place results against a 23-model calibration baseline with Z-scores.</li></ul></div>
+    </section>
+    <section class="cs-section" id="outcomes" aria-labelledby="outcomes-h">
+      <header><p class="kicker">Outcomes</p><h2 id="outcomes-h">What's documented so far</h2></header>
+      <div class="cs-body"><ul class="bullets"><li>Baseline scan complete across 20 probe families.</li><li>Hit-log review established as part of the method, separating real guardrail failures from short compliance markers that inflate attack-success rates.</li><li>Reproducible serving stack and cluster documentation in place for the group.</li><li>Weight-editing comparison in progress; first-author manuscript in preparation.</li></ul>
+<h3>Lessons learned</h3><ul class="bullets"><li>A pass rate without the hit log behind it can mislead in either direction.</li><li>Reproducibility is mostly logistics: pinned environments, identical seeds, and same-day baselines.</li><li>Black-box editing tools are fine for a smoke test, but final results need a pinned, reimplemented script you can describe exactly.</li></ul></div>
+    </section>
+    <section class="cs-section" id="repo" aria-labelledby="repo-h">
+      <header><p class="kicker">Repository</p><h2 id="repo-h">Source and next steps</h2></header>
+      <div class="cs-body">
+<p>The BadToken repository isn't public yet; it will be linked here when it is. Next up: the web module described in the WebRedTeam case study, and indirect prompt injection carried in images rather than text, reproducing Nassi et al. (Black Hat Europe 2023).</p>
+<p><a class="arrow-link" href="../research.html">See the research lab <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></p></div>
+    </section>
+  </div>
+
+  <section class="s s--line s--panel" aria-labelledby="relH">
+    <div class="wrap">
+      <div class="sec-head sec-head--stack"><h2 id="relH" style="font-size:var(--t-lg)">Related projects</h2></div>
+      <div class="cs-related"><article class="card3d reveal" data-tilt="4">
+  <div class="card3d-vis"><div class="frame frame--grid"><div style="position:absolute;inset:0"><div class="stage3d" data-tilt="5">
+  <div class="browser3d" role="img" aria-label="Illustration of an LLM-backed web page where hidden instructions in page content lead the assistant to emit a script payload">
+    <div class="browser3d-bar"><i></i><i></i><i></i><span class="browser3d-url">https://lab-test.local/product/42</span></div>
+    <div class="browser3d-body">
+      <div>
+        <div class="sk sk--h"></div>
+        <div class="sk" style="width:92%"></div><div class="sk" style="width:84%"></div><div class="sk" style="width:88%"></div>
+        <div class="sk sk--inject" style="width:76%"></div>
+        <div class="sk" style="width:64%"></div><div class="sk" style="width:80%"></div>
+      </div>
+      <div class="chatpane">
+        <div class="bubble">Summarize the reviews on this page.</div>
+        <div class="bubble bubble--ai">Reading page content&hellip;</div>
+        <div class="bubble bubble--alert">&lt;script&gt; rendered in reply</div>
+      </div>
+    </div>
+  </div>
+</div>
+</div></div></div>
+  <div class="card3d-body">
+    <p class="kicker">Web and LLM security</p>
+    <h3><a class="stretched" href="../projects/webredteam.html">WebRedTeam</a></h3>
+    <p>HYDRA's browser-based module for prompt injection that escalates into script execution.</p>
+    <div class="chip-row"><span class="chip">Browser testing</span><span class="chip">Prompt injection</span><span class="chip">XSS</span></div>
+    <div class="card3d-foot"><span class="state state--violet">In progress</span></div>
+  </div>
+</article><article class="card3d reveal" data-tilt="4">
+  <div class="card3d-vis"><div class="frame frame--grid"><canvas data-visual="ports" aria-hidden="true"></canvas></div></div>
+  <div class="card3d-body">
+    <p class="kicker">Security tooling</p>
+    <h3><a class="stretched" href="../projects/cybertoolkit.html">CyberToolkit</a></h3>
+    <p>Standard-library Python network utilities with threaded scanning and tests.</p>
+    <div class="chip-row"><span class="chip">Python</span><span class="chip">Sockets</span><span class="chip">pytest</span></div>
+    <div class="card3d-foot"><span class="state">Public on GitHub</span></div>
+  </div>
+</article></div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <nav class="cs-next" aria-label="Next case study">
+      <div><p class="kicker" style="margin-bottom:var(--s-4)">Next case study</p><p class="ex-title" style="--chars:10"><a href="../projects/webredteam.html">WebRedTeam</a></p></div>
+      <a href="../projects/webredteam.html" class="btn btn--primary" data-magnetic aria-label="Next case study: WebRedTeam">Next <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </nav>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <p class="brand-name" style="font-size:1.3rem;margin-bottom:12px;color:var(--text)">Kurt Sooknanan</p>
+        <p>Junior Security Analyst at the UMass Boston Network Security Operations Center and undergraduate LLM security researcher in the Machine Psychology Group.</p>
+      </div>
+      <div class="footer-col">
+        <h2>Work</h2>
+        <ul>
+          <li><a href="../projects.html">Projects</a></li>
+          <li><a href="../research.html">Research</a></li>
+          <li><a href="../experience.html">Experience</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h2>About</h2>
+        <ul>
+          <li><a href="../about.html">About me</a></li>
+          <li><a href="../certifications.html">Certifications</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h2>Elsewhere</h2>
+        <ul>
+          <li><a href="mailto:manny.kurt@gmail.com">Email</a></li>
+          <li><a href="https://github.com/kurt-sudo420" target="_blank" rel="noopener">GitHub<span class="sr-only"> (opens in a new tab)</span></a></li>
+          <li><a href="https://www.linkedin.com/in/kurt-sooknanan-485494410/" target="_blank" rel="noopener">LinkedIn<span class="sr-only"> (opens in a new tab)</span></a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="footer-mark" aria-hidden="true">Sooknanan</p>
+    <div class="footer-bottom">
+      <p>&copy; <span id="year">2026</span> Kurt Sooknanan. Hand-built with HTML, CSS, and JavaScript.</p>
+      <p>Last updated <span id="lastModified"></span></p>
+    </div>
+  </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="../js/script.js"></script>
+<script src="../js/visuals.js" defer></script>
+</body>
+</html>
