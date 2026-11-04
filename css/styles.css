@@ -1030,3 +1030,8 @@ html:not(.no-js) .reveal.reveal--visible { opacity: 1; transform: none; clip-pat
 .ex-title { --ex-max: var(--t-2xl); font-size: min(var(--ex-max), calc((min(100vw, var(--wrap)) - 2 * var(--gutter)) / (var(--chars, 8) * 0.95))); }
 .ex-split .ex-title { --ex-max: var(--t-xl); }
 .cs-next .ex-title { --ex-max: var(--t-2xl); }
+/* Size project titles to their own column where container queries are supported */
+.ex-split > div:not(.frame), .ex-feature-copy > div:first-child, .cs-next > div:first-child { container-type: inline-size; }
+@supports (font-size: 1cqi) {
+  .ex-title { font-size: min(var(--ex-max), calc(100cqi / (var(--chars, 8) * 0.95))); }
+}

@@ -305,9 +305,9 @@
     var cycle = 0;
     return {
       draw: function (ctx, w, h, t, dt) {
-        var pad = 28, gw = Math.min(w - pad * 2, (h - pad * 2) * 1.6);
+        var pad = 28, gw = Math.min(w - pad * 2, (h - 140) / 0.62);
         var cell = gw / COLS, gh = cell * ROWS * 0.62, ch = gh / ROWS;
-        var ox = (w - gw) / 2, oy = (h - gh) / 2 + 8;
+        var ox = (w - gw) / 2, oy = 52;
         cycle += dt;
         if (!reduce) {
           workers.forEach(function (wk) {
