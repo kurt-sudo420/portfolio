@@ -2,18 +2,50 @@
 <html lang="en" class="no-js">
 <head>
 <meta charset="UTF-8">
-<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kurt Sooknanan — AI Security Researcher & Security Analyst</title>
-<meta name="description" content="Kurt Sooknanan — undergraduate AI security researcher and Junior Security Analyst at the UMass Boston SOC.">
+<!-- Search indexing is intentionally off (privacy). Delete this line when you want the site to appear in search results. -->
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<title>Kurt Sooknanan | Security Analyst &amp; LLM Security Researcher</title>
+<meta name="description" content="Kurt Sooknanan is a Junior Security Analyst at the UMass Boston Network Security Operations Center and an undergraduate LLM security researcher building BadToken HYDRA, an automated LLM red-teaming framework. CompTIA Network+ certified.">
 <meta name="author" content="Kurt Sooknanan">
-<meta name="theme-color" content="#0A1830">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>%F0%9F%9B%A1%EF%B8%8F</text></svg>">
+<meta name="theme-color" content="#0C1A2B">
+<link rel="canonical" href="https://kurt-sudo420.github.io/portfolio/">
+<meta property="og:type" content="profile">
+<meta property="og:site_name" content="Kurt Sooknanan">
+<meta property="og:title" content="Kurt Sooknanan | Security Analyst &amp; LLM Security Researcher">
+<meta property="og:description" content="SOC analyst at UMass Boston and undergraduate LLM security researcher. CompTIA Network+ certified.">
+<meta property="og:url" content="https://kurt-sudo420.github.io/portfolio/">
+<meta property="profile:first_name" content="Kurt">
+<meta property="profile:last_name" content="Sooknanan">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="images/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/styles.css">
 <script>document.documentElement.classList.remove('no-js');</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Kurt Sooknanan",
+  "url": "https://kurt-sudo420.github.io/portfolio/",
+  "jobTitle": "Junior Security Analyst",
+  "worksFor": { "@type": "CollegeOrUniversity", "name": "University of Massachusetts Boston" },
+  "alumniOf": { "@type": "CollegeOrUniversity", "name": "University of Massachusetts Boston" },
+  "knowsAbout": ["Security operations", "Network security", "LLM security", "Red teaming", "Vulnerability assessment", "Python"],
+  "hasCredential": {
+    "@type": "EducationalOccupationalCredential",
+    "name": "CompTIA Network+ (N10-009)",
+    "credentialCategory": "certification",
+    "recognizedBy": { "@type": "Organization", "name": "CompTIA" }
+  },
+  "sameAs": [
+    "https://github.com/kurt-sudo420",
+    "https://www.linkedin.com/in/kurt-sooknanan-485494410/"
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -21,173 +53,460 @@
 
 <header class="site-header">
   <div class="container navbar">
-    <a href="index.html" class="logo">kurt<span>.</span>sooknanan</a>
+    <a href="index.html" class="logo" aria-label="Kurt Sooknanan, home"><span class="logo-mark" aria-hidden="true">KS</span>Kurt Sooknanan</a>
     <nav aria-label="Primary">
       <ul class="nav-links" id="navLinks">
         <li><a href="index.html" class="active" aria-current="page">Home</a></li>
-        <li><a href="academics.html">Academics</a></li>
         <li><a href="experience.html">Experience</a></li>
         <li><a href="projects.html">Projects</a></li>
+        <li><a href="academics.html">Credentials</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
-    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
+    <button class="nav-toggle" id="navToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
       <span></span><span></span><span></span>
     </button>
   </div>
 </header>
 
 <main id="main">
+
   <!-- ============ HERO ============ -->
-  <!-- RUBRIC #4/7: CSS Grid page layout, two-column hero -->
-  <section class="hero">
+  <section class="hero" aria-labelledby="heroTitle">
     <div class="container hero-grid">
       <div>
-        <p class="eyebrow">AI Security Researcher &middot; SOC Analyst</p>
-        <h1>Kurt Sooknanan</h1>
-        <!-- RUBRIC #13: JavaScript typing effect -->
-        <p class="hero-tagline mono">&gt; <span id="typedRole"></span><span class="cursor"></span></p>
-        <p class="lede">I red-team large language models on a university HPC cluster and run day-to-day security operations in the UMass Boston SOC. I'm a B.S. Information Technology student on the Systems Administration track, Class of 2028, and I spend most of my spare cycles building security tooling and breaking things in my homelab.</p>
-        <div class="hero-actions">
-          <a href="experience.html" class="btn btn-primary">View my experience</a>
-          <a href="projects.html" class="btn btn-outline">Browse projects</a>
+        <h1 id="heroTitle"><span class="name-line">Kurt</span><span class="name-line">Sooknanan</span></h1>
+        <p class="hero-role">Junior Security Analyst at UMass Boston and undergraduate LLM security researcher.</p>
+        <p class="hero-intro">I investigate phishing, triage alerts, and run vulnerability scans in the university's Network Security Operations Center. In the Machine Psychology Group I build BadToken HYDRA, a framework that runs automated red-team campaigns against large language models.</p>
+        <div class="btn-row">
+          <a href="#work" class="btn btn-primary">See my work</a>
+          <a href="#contact" class="btn btn-ghost">Get in touch</a>
         </div>
-
-        <!-- RUBRIC #6/7: Responsive stat row, CSS Grid -->
-        <div class="stat-row">
-          <div>
-            <div class="stat-num">20K+</div>
-            <div class="stat-label">Adversarial prompts run in research</div>
-          </div>
-          <div>
-            <div class="stat-num">185+</div>
-            <div class="stat-label">Endpoints under vulnerability management</div>
-          </div>
-          <div>
-            <div class="stat-num">2028</div>
-            <div class="stat-label">Expected graduation</div>
-          </div>
-        </div>
+        <ul class="credential-strip" aria-label="Highlights">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3 4 6v6c0 5 3.4 8.6 8 9.5 4.6-.9 8-4.5 8-9.5V6l-8-3Z"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg>
+            <span><strong>CompTIA Network+</strong> certified</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="4" width="18" height="12" rx="1.5"/><path d="M8 20h8M12 16v4"/></svg>
+            <span><strong>UMass Boston</strong> NSOC</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 3 2 8l10 5 10-5-10-5Z"/><path d="M6 10.5V16c0 1.5 2.7 3 6 3s6-1.5 6-3v-5.5"/></svg>
+            <span><strong>B.S. IT</strong>, Class of 2028</span>
+          </li>
+        </ul>
       </div>
 
-      <!-- Signature element: terminal mockup, built with plain HTML/CSS -->
-      <div class="terminal reveal" aria-hidden="true">
-        <div class="terminal-bar">
-          <span class="terminal-dot"></span>
-          <span class="terminal-dot"></span>
-          <span class="terminal-dot"></span>
-          <span class="terminal-title">kurt@soc-workstation: ~</span>
+      <!-- Signature element: terminal with the typed role and a short activity log -->
+      <div class="terminal" role="img" aria-label="Terminal window listing Kurt's current roles and recent milestones">
+        <div class="terminal-bar" aria-hidden="true">
+          <span class="terminal-dot"></span><span class="terminal-dot"></span><span class="terminal-dot"></span>
+          <span class="terminal-title">kurt@nsoc: ~</span>
         </div>
-        <div class="terminal-body">
-          <div><span class="prompt">$</span> whoami</div>
-          <div class="out">kurt-sooknanan</div>
-          <div>&nbsp;</div>
-          <div><span class="prompt">$</span> cat roles.txt</div>
-          <div class="out">AI Security Researcher</div>
-          <div class="muted">  &#8627; Cyberpunk Division / Machine Psychology Group</div>
-          <div class="out">Junior Security Analyst @ UMass Boston SOC</div>
-          <div class="out">B.S. Information Technology &mdash; Class of 2028</div>
-          <div>&nbsp;</div>
-          <div><span class="prompt">$</span> ls certifications/</div>
-          <div class="muted">Network+  Security+  CySA+  OSCP</div>
-          <div class="comment"># pathway in progress</div>
-          <div>&nbsp;</div>
+        <div class="terminal-body" aria-hidden="true">
+          <div><span class="prompt">$</span> whoami --role</div>
+          <!-- RUBRIC #13: JavaScript typing effect -->
+          <div class="typed-line"><span id="typedRole">Junior Security Analyst</span><span class="cursor"></span></div>
+          <div class="gap"></div>
+          <div><span class="prompt">$</span> tail -n 4 milestones.log</div>
+          <dl class="log">
+            <dt>2026-10</dt><dd><span class="ok">&#10003;</span>CompTIA Network+ earned</dd>
+            <dt>2026-07</dt><dd>Joined Machine Psychology Group</dd>
+            <dt>2026-07</dt><dd>Dean's List, UMass Boston</dd>
+            <dt>2026-06</dt><dd>Started at the UMass Boston NSOC</dd>
+          </dl>
+          <div class="gap"></div>
           <div><span class="prompt">$</span> ./status.sh</div>
-          <div class="out">[ OK ] guardrail scans reproducible</div>
-          <div class="out">[ OK ] alert queue triaged</div>
-          <div class="out">[ OK ] homelab uptime nominal</div>
-          <div class="out">[ OK ] open to new opportunities</div>
+          <div class="ok">[ OK ] open to internships and co-ops</div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ CURRENT FOCUS ============ -->
-  <!-- RUBRIC #3/4/8: CSS spacing/backgrounds, grid layout, icons -->
-  <section class="section section--alt">
+  <!-- ============ ABOUT ============ -->
+  <section class="section" aria-labelledby="aboutTitle">
+    <div class="container split">
+      <div class="split-head">
+        <h2 id="aboutTitle">About</h2>
+        <p>Defensive operations by day, offensive research the rest of the time.</p>
+        <a href="about.html" class="text-link split-link">More about me</a>
+      </div>
+      <div>
+        <p class="lede">I'm a B.S. Information Technology student on the Systems Administration track at UMass Boston, working on both sides of the same question: how systems actually fail, and how you catch it when they do.</p>
+        <p style="margin-top: var(--space-5);">On SOC shifts I work the alert queue, investigate reported phishing, and turn vulnerability scan results into remediation plans someone can act on. As an Undergraduate Machine Psychology Fellow with the group's Cyberpunk Division, I point the same instinct at language models, building tooling that makes adversarial testing repeatable instead of one-off. Before either role, I spent two years keeping a retail store's network and point-of-sale systems running.</p>
+
+        <dl class="focus-list">
+          <div>
+            <dt>Security operations</dt>
+            <dd>Alert triage in a cloud-native SIEM, phishing and email analysis, and incident write-ups mapped to MITRE ATT&amp;CK.</dd>
+          </div>
+          <div>
+            <dt>Network security</dt>
+            <dd>Network+ certified; hands-on with VLAN configuration, DNS/DHCP/IPAM, and wireless auditing on isolated lab gear.</dd>
+          </div>
+          <div>
+            <dt>AI and LLM security research</dt>
+            <dd>Guardrail testing with garak and PyRIT, weight-editing experiments, and prompt-injection threat modeling.</dd>
+          </div>
+          <div>
+            <dt>Red teaming</dt>
+            <dd>Automated LLM red-team campaigns, the red team side of an NSOC tabletop exercise, and RF/NFC testing on an air-gapped bench.</dd>
+          </div>
+          <div>
+            <dt>Vulnerability assessment</dt>
+            <dd>Agent-based scanning across 185+ endpoints, CVE research, and remediation prioritized by severity and exploitability.</dd>
+          </div>
+          <div>
+            <dt>Python and security tooling</dt>
+            <dd>Standard-library network utilities, scan orchestration, and automation for research pipelines.</dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FEATURED: BADTOKEN HYDRA ============ -->
+  <section class="section section--surface" id="work" aria-labelledby="hydraTitle">
     <div class="container">
-      <div class="section-header reveal">
-        <p class="eyebrow">Right now</p>
-        <h2>Three things I'm working on</h2>
-        <p class="lede">Offensive research, defensive operations, and the hardware layer underneath both &mdash; different angles on the same question of how systems actually fail.</p>
+      <div class="section-head">
+        <h2>Featured research</h2>
+        <p>The project I spend the most time on, built with the Machine Psychology Group's Cyberpunk Division at UMass Boston.</p>
       </div>
 
-      <div class="grid-3">
-        <div class="card reveal">
-          <div class="card-icon" aria-hidden="true">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="5" width="14" height="14" rx="2"/><path d="M9 9h6v6H9zM9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"/></svg>
+      <article class="feature">
+        <div class="feature-top">
+          <div>
+            <span class="status">In active development</span>
+            <h3 class="feature-title" id="hydraTitle" style="margin-top: var(--space-4);">BadToken HYDRA</h3>
+            <p class="feature-sub">Automated LLM red-teaming framework</p>
+            <p>BadToken is a Python toolkit for adversarial testing of language models. HYDRA is its engine: a scheduler and a shared evidence format that let garak, PyRIT, and a browser-based web-app module run as one automated red-team campaign, so findings from every tool land in one record you can compare and re-run.</p>
+            <p>The research question underneath it: when a model refuses a harmful request, is the refusal doing the work, or is the model simply unable to do the task?</p>
           </div>
-          <h3>LLM red-teaming</h3>
-          <p>Project BadToken, with the Cyberpunk Division of the Machine Psychology Group &mdash; adversarial testing of language-model guardrails, wrapping PyRIT and garak behind one reproducible scanning API. First-author manuscript in preparation.</p>
-          <a href="experience.html" class="card-link">See the research &rarr;</a>
+
+          <figure class="arch" aria-labelledby="archCap">
+            <figcaption class="arch-caption" id="archCap">How a HYDRA campaign runs</figcaption>
+            <div class="arch-flow">
+              <div class="arch-col">
+                <p class="arch-col-label">Engine</p>
+                <div class="arch-node arch-node--engine">
+                  <b>HYDRA</b>
+                  <ul class="arch-parts">
+                    <li><b>Scheduler</b><span>Decides which module runs which attack, against which target</span></li>
+                    <li><b>Evidence format</b><span>One shared record per finding, whatever tool produced it</span></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="arch-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div>
+              <div class="arch-col">
+                <p class="arch-col-label">Attack modules</p>
+                <div class="arch-node"><b>garak</b><span>Probe library (NVIDIA)</span></div>
+                <div class="arch-node"><b>PyRIT</b><span>Multi-turn orchestration (Microsoft)</span></div>
+                <div class="arch-node"><b>WebRedTeam</b><span>Browser-based web-app testing</span></div>
+                <div class="arch-node arch-node--planned"><b>X-Ray</b><span>Planned module</span></div>
+              </div>
+              <div class="arch-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div>
+              <div class="arch-col">
+                <p class="arch-col-label">Targets</p>
+                <div class="arch-node"><b>Locally served LLMs</b><span>vLLM on A100 nodes under Slurm</span></div>
+                <div class="arch-node"><b>LLM-backed web apps</b><span>Lab-hosted test instances</span></div>
+              </div>
+            </div>
+            <p class="arch-return">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 12H5M11 6l-6 6 6 6"/></svg>
+              Every module writes results back in the same evidence format, so one campaign produces one comparable findings report.
+            </p>
+          </figure>
         </div>
 
-        <div class="card reveal">
-          <div class="card-icon" aria-hidden="true">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2 3 6v6c0 5 4 8.5 9 10 5-1.5 9-5 9-10V6l-9-4Z"/></svg>
+        <div class="feature-bottom">
+          <div>
+            <h3>What's done so far</h3>
+            <ul class="check-list">
+              <li>Ran a ~20,000-prompt baseline across 20 garak probe families against a locally served instruction-tuned model.</li>
+              <li>Analyzed hit logs to separate genuine guardrail failures from short compliance markers that inflate attack-success rates.</li>
+              <li>Contextualized results with Z-scores against a 23-model calibration baseline.</li>
+              <li>Built the serving stack: vLLM behind an OpenAI-compatible endpoint, on a pinned CUDA/PyTorch environment so runs reproduce.</li>
+              <li>Designed a before/after weight-editing study (refusal-direction orthogonalization) with encoding probes as a control.</li>
+            </ul>
           </div>
+          <div>
+            <h3>Stack</h3>
+            <div class="tag-row">
+              <span class="tag">Python</span>
+              <span class="tag">garak</span>
+              <span class="tag">PyRIT</span>
+              <span class="tag">vLLM</span>
+              <span class="tag">PyTorch</span>
+              <span class="tag">Slurm / HPC</span>
+              <span class="tag">Hugging Face</span>
+            </div>
+            <h3 style="margin-top: var(--space-5);">Grounded in</h3>
+            <div class="tag-row">
+              <span class="tag">OWASP Top 10 for LLMs</span>
+              <span class="tag">MITRE ATLAS</span>
+            </div>
+            <p class="meta" style="margin-top: var(--space-5);">First-author manuscript in preparation. The repository isn't public yet.</p>
+            <div class="btn-row" style="margin-top: var(--space-4);">
+              <a href="projects.html#badtoken" class="btn btn-solid">Read the full write-up</a>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ OTHER PROJECTS ============ -->
+  <section class="section" aria-labelledby="projectsTitle">
+    <div class="container split">
+      <div class="split-head">
+        <h2 id="projectsTitle">More projects</h2>
+        <p>Tooling, infrastructure, and hardware work outside a job description.</p>
+        <a href="projects.html" class="text-link split-link">All project write-ups</a>
+      </div>
+      <div class="project-list">
+        <article class="project-row">
+          <div>
+            <h3>CyberToolkit</h3>
+            <p class="meta">Python, standard library only</p>
+            <p>Command-line network security utilities: a threaded TCP port scanner with range parsing, a banner grabber, SHA-256 file hashing, DNS lookup, and a secure password generator, with a pytest suite for the port parser.</p>
+            <div class="tag-row"><span class="tag">Python</span><span class="tag">Sockets</span><span class="tag">ThreadPoolExecutor</span><span class="tag">pytest</span></div>
+          </div>
+          <div class="project-row-side">
+            <span class="status">Public</span>
+            <a href="https://github.com/kurt-sudo420/CyberToolkit" class="btn btn-line" target="_blank" rel="noopener">View on GitHub<span class="visually-hidden"> (opens in a new tab)</span></a>
+          </div>
+        </article>
+
+        <article class="project-row">
+          <div>
+            <h3>Embedded device and wireless security</h3>
+            <p class="meta">Machine Psychology Group, faculty-supervised isolated bench</p>
+            <p>The hardware half of the BadToken research: rogue access point and captive-portal testing, Wi-Fi auditing, Sub-GHz capture and replay, RFID/NFC credential workflows, and BadUSB payloads, all on group-owned equipment.</p>
+            <div class="tag-row"><span class="tag">Flipper Zero</span><span class="tag">aircrack-ng</span><span class="tag">Kismet</span><span class="tag">RFID / NFC</span></div>
+          </div>
+          <div class="project-row-side">
+            <span class="status">Ongoing</span>
+            <a href="projects.html#wireless" class="btn btn-line">Read more</a>
+          </div>
+        </article>
+
+        <article class="project-row">
+          <div>
+            <h3>Ghostclick</h3>
+            <p class="meta">Team project, Chrome extension</p>
+            <p>A privacy-first extension that records a website task once and replays it on request, using an on-device model through WebLLM so nothing is sent to a server.</p>
+            <div class="tag-row"><span class="tag">JavaScript</span><span class="tag">Chrome Extensions</span><span class="tag">WebLLM</span></div>
+          </div>
+          <div class="project-row-side">
+            <span class="status">Team project</span>
+          </div>
+        </article>
+
+        <article class="project-row">
+          <div>
+            <h3>Security homelab</h3>
+            <p class="meta">TrueNAS and ZFS, self-hosted</p>
+            <p>Where I get to be the administrator, the attacker, and the person on call. It runs a local LLM container that doubles as an offline red-team target, Pi-hole with Unbound, Nextcloud, and a Python monitoring tool built on SQLite and Trivy.</p>
+            <div class="tag-row"><span class="tag">TrueNAS / ZFS</span><span class="tag">Docker Compose</span><span class="tag">Pi-hole / Unbound</span><span class="tag">Trivy</span></div>
+          </div>
+          <div class="project-row-side">
+            <span class="status">Running</span>
+            <a href="about.html#walkthrough" class="btn btn-line">Watch the tour</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ EXPERIENCE TIMELINE ============ -->
+  <section class="section section--surface" aria-labelledby="expTitle">
+    <div class="container split">
+      <div class="split-head">
+        <h2 id="expTitle">Experience</h2>
+        <p>Two current roles, plus the job that taught me to isolate a failure before touching anything.</p>
+        <a href="experience.html" class="text-link split-link">Full experience and threat model</a>
+      </div>
+      <ol class="timeline">
+        <li class="timeline-item timeline-item--current">
+          <p class="timeline-when">Jul 2026<span class="now">Present</span></p>
+          <div class="timeline-body">
+            <h3>Undergraduate LLM Security Researcher</h3>
+            <p class="timeline-org">Machine Psychology Group, Cyberpunk Division <span>/ UMass Boston</span></p>
+            <p>Undergraduate Machine Psychology Fellow advised by Daniel Haehn, PhD. Adversarial security testing of large language models and embedded devices.</p>
+            <ul class="bullet-list">
+              <li>Building BadToken HYDRA, which puts garak, PyRIT, and web-app testing behind one scheduler and evidence format.</li>
+              <li>Serve models with vLLM on A100 nodes under Slurm and maintain the group's cluster reference documentation.</li>
+              <li>First-author manuscript in preparation.</li>
+            </ul>
+          </div>
+        </li>
+        <li class="timeline-item timeline-item--current">
+          <p class="timeline-when">Jun 2026<span class="now">Present</span></p>
+          <div class="timeline-body">
+            <h3>Junior Security Analyst</h3>
+            <p class="timeline-org">Network Security Operations Center <span>/ UMass Boston</span></p>
+            <ul class="figures">
+              <li><b>185+</b>endpoints under agent-based scanning</li>
+              <li><b>12+</b>security tools in daily use</li>
+            </ul>
+            <ul class="bullet-list">
+              <li>Triage and document incidents in a cloud-native SIEM, with written findings mapped to MITRE ATT&amp;CK.</li>
+              <li>Investigate reported phishing and smishing through header analysis, URL reputation checks, and DMARC/SPF review.</li>
+              <li>Run vulnerability scans, asset-tag by hostname and IP, and write prioritized remediation proposals.</li>
+              <li>Configured VLANs on campus switches during a migration from legacy switches to new hardware.</li>
+              <li>Lead the red team side of an NSOC security tabletop exercise.</li>
+            </ul>
+          </div>
+        </li>
+        <li class="timeline-item">
+          <p class="timeline-when">Jun 2024<br>Aug 2026</p>
+          <div class="timeline-body">
+            <h3>Service Supervisor</h3>
+            <p class="timeline-org">Cumberland Farms <span>/ Retail operations</span></p>
+            <ul class="bullet-list">
+              <li>Maintained the store's data cabinet (routers, switches, patch panels) that kept POS, fuel, and back-office systems online.</li>
+              <li>Resolved POS polling failures and database sync errors by isolating hardware, network, and software before escalating.</li>
+              <li>Led shifts as key holder and onboarded staff on store systems.</li>
+            </ul>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ CERTIFICATIONS ============ -->
+  <section class="section" id="certifications" aria-labelledby="certTitle">
+    <div class="container split">
+      <div class="split-head">
+        <h2 id="certTitle">Certifications</h2>
+        <p>A deliberate sequence: networking first, then the defensive baseline, detection and response, and finally hands-on offense.</p>
+        <a href="academics.html" class="text-link split-link">Education and honors</a>
+      </div>
+      <div>
+        <article class="cert-hero" aria-labelledby="netplusTitle">
+          <!--
+            Credential badge: this is an original seal, not CompTIA's artwork.
+            To show your official badge, replace the <svg> below with the image
+            Credly gives you, e.g. <img class="cert-seal-img" src="images/comptia-network-plus.png" alt="CompTIA Network+ ce certification badge">
+          -->
+          <svg class="cert-seal" viewBox="0 0 112 112" role="img" aria-label="Certified">
+            <circle cx="56" cy="56" r="52" fill="none" stroke="#0A7466" stroke-width="3"/>
+            <circle cx="56" cy="56" r="44" fill="#0A7466" fill-opacity="0.08" stroke="#0A7466" stroke-width="1" stroke-dasharray="3 4"/>
+            <path d="m38 57 12 12 24-26" fill="none" stroke="#0A7466" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <div>
+            <span class="status status--earned">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true"><path d="m5 12 5 5 9-10"/></svg>
+              Certified
+            </span>
+            <h3 id="netplusTitle">CompTIA Network+</h3>
+            <dl class="cert-facts">
+              <div><dt>Issued by</dt><dd>CompTIA</dd></div>
+              <div><dt>Exam</dt><dd class="mono">N10-009</dd></div>
+              <div><dt>Earned</dt><dd><time datetime="2026-10">October 2026</time></dd></div>
+            </dl>
+            <p>Networking concepts, implementation, operations, security, and troubleshooting: the layer the rest of my security work sits on.</p>
+            <!-- Paste your Credly or CompTIA verification URL into href; the link appears automatically once it's filled in. -->
+            <a class="btn btn-line cert-verify" href="" target="_blank" rel="noopener">Verify credential<span class="visually-hidden"> (opens in a new tab)</span></a>
+          </div>
+        </article>
+
+        <ol class="pathway" aria-label="Certification pathway">
+          <li class="is-done">
+            <h3>Network+</h3>
+            <p class="meta">Networking foundations</p>
+            <span class="status">Earned Oct 2026</span>
+          </li>
+          <li>
+            <h3>Security+</h3>
+            <p class="meta">Defensive baseline</p>
+            <span class="status status--progress">In progress</span>
+          </li>
+          <li>
+            <h3>CySA+</h3>
+            <p class="meta">Detection and response</p>
+            <span class="status status--progress">Planned</span>
+          </li>
+          <li>
+            <h3>OSCP</h3>
+            <p class="meta">Offensive security</p>
+            <span class="status status--progress">Long-term goal</span>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SKILLS ============ -->
+  <section class="section section--surface" aria-labelledby="skillsTitle">
+    <div class="container split">
+      <div class="split-head">
+        <h2 id="skillsTitle">Skills and tools</h2>
+        <p>Enterprise products are described by category. Naming an employer's security stack in public isn't my call to make.</p>
+        <a href="academics.html#skills" class="text-link split-link">Self-assessed proficiency</a>
+      </div>
+      <div class="skill-groups">
+        <div class="skill-group">
           <h3>Security operations</h3>
-          <p>Alert triage in a cloud-native SIEM, phishing investigation, vulnerability scanning across 185+ endpoints, and incident reporting in DHS format.</p>
-          <a href="experience.html" class="card-link">See the SOC work &rarr;</a>
-        </div>
-
-        <div class="card reveal">
-          <div class="card-icon" aria-hidden="true">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12.55a11 11 0 0 1 14 0M2 8.82a16 16 0 0 1 20 0M8.5 16.43a6 6 0 0 1 7 0"/><path d="M12 20h.01"/></svg>
+          <div class="tag-row">
+            <span class="tag">SIEM triage</span><span class="tag">EDR / XDR</span><span class="tag">Phishing analysis</span><span class="tag">Email header analysis</span><span class="tag">DMARC / SPF</span><span class="tag">Threat intelligence</span><span class="tag">Sandbox analysis</span><span class="tag">MITRE ATT&amp;CK</span><span class="tag">ITSM ticketing</span><span class="tag">Incident reporting</span>
           </div>
-          <h3>Embedded device security</h3>
-          <p>The hardware half of the same research &mdash; NFC credential cloning, Sub-GHz and wireless exploit testing, and rogue-AP work on an isolated, faculty-supervised bench.</p>
-          <a href="projects.html" class="card-link">See the lab &rarr;</a>
+        </div>
+        <div class="skill-group">
+          <h3>Network security</h3>
+          <div class="tag-row">
+            <span class="tag">TCP/IP</span><span class="tag">DNS</span><span class="tag">DDI / IPAM</span><span class="tag">VLANs</span><span class="tag">Switching</span><span class="tag">Wi-Fi auditing</span><span class="tag">SSH tunneling</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3>AI and LLM security</h3>
+          <div class="tag-row">
+            <span class="tag">garak</span><span class="tag">PyRIT</span><span class="tag">Prompt injection testing</span><span class="tag">Jailbreak testing</span><span class="tag">Abliteration / weight editing</span><span class="tag">vLLM</span><span class="tag">Ollama</span><span class="tag">OWASP LLM Top 10</span><span class="tag">MITRE ATLAS</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3>Red teaming and offensive</h3>
+          <div class="tag-row">
+            <span class="tag">LLM red-team campaigns</span><span class="tag">Tabletop exercises</span><span class="tag">Rogue AP / evil twin</span><span class="tag">Sub-GHz</span><span class="tag">RFID / NFC</span><span class="tag">BadUSB / HID</span><span class="tag">Flipper Zero</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3>Vulnerability assessment and automation</h3>
+          <div class="tag-row">
+            <span class="tag">Agent-based scanning</span><span class="tag">Asset tagging</span><span class="tag">NVD / CVE research</span><span class="tag">Remediation planning</span><span class="tag">Trivy</span><span class="tag">Scan orchestration</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3>Development and systems</h3>
+          <div class="tag-row">
+            <span class="tag">Python</span><span class="tag">Bash</span><span class="tag">Linux</span><span class="tag">Git / GitHub</span><span class="tag">HPC / Slurm</span><span class="tag">conda</span><span class="tag">Docker Compose</span><span class="tag">TrueNAS / ZFS</span><span class="tag">HTML / CSS / JavaScript</span>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ============ SECTION PREVIEW CARDS ============ -->
-  <section class="section">
+  <!-- ============ CONTACT ============ -->
+  <section class="section section--dark contact-band on-dark" id="contact" aria-labelledby="contactTitle">
     <div class="container">
-      <div class="section-header reveal">
-        <p class="eyebrow">Get to know me</p>
-        <h2>Four ways to look at my work</h2>
-        <p class="lede">Everything here maps back to the same person &mdash; a student, a researcher, an analyst, and someone who likes taking systems apart to understand them.</p>
-      </div>
-
-      <div class="grid-2">
-        <a href="academics.html" class="card reveal">
-          <div class="card-icon" aria-hidden="true">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3 2 8l10 5 10-5-10-5Z"/><path d="M6 10.5V16c0 1.5 2.7 3 6 3s6-1.5 6-3v-5.5"/></svg>
-          </div>
-          <h3>Academics</h3>
-          <p>Degree, honors, in-progress certifications, and an honest self-assessment of where my skills actually sit.</p>
-          <span class="card-link">View academics &rarr;</span>
+      <h2 id="contactTitle">Let's talk security.</h2>
+      <p class="lede">I'm looking for internships, co-ops, and research collaborations in security operations, network security, and AI security. Based in the Boston area and open to relocating.</p>
+      <div class="contact-links">
+        <a class="contact-link" href="mailto:manny.kurt@gmail.com">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5"/></svg>
+          <div><b>Email</b><span>manny.kurt@gmail.com</span></div>
         </a>
-
-        <a href="experience.html" class="card reveal">
-          <div class="card-icon" aria-hidden="true">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2 3 6v6c0 5 4 8.5 9 10 5-1.5 9-5 9-10V6l-9-4Z"/></svg>
-          </div>
-          <h3>Experience</h3>
-          <p>The two roles I hold right now &mdash; undergraduate AI security research and hands-on SOC operations.</p>
-          <span class="card-link">View experience &rarr;</span>
+        <a class="contact-link" href="https://github.com/kurt-sudo420" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m8 8-5 4 5 4M16 8l5 4-5 4M14 5l-4 14"/></svg>
+          <div><b>GitHub</b><span>github.com/kurt-sudo420</span></div>
+          <span class="visually-hidden"> (opens in a new tab)</span>
         </a>
-
-        <a href="projects.html" class="card reveal">
-          <div class="card-icon" aria-hidden="true">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m8 9-4 3 4 3M16 9l4 3-4 3M13 6l-2 12"/></svg>
-          </div>
-          <h3>Projects</h3>
-          <p>Tooling I've built, the homelab I run, and the wireless testing I do outside of coursework.</p>
-          <span class="card-link">View projects &rarr;</span>
-        </a>
-
-        <a href="about.html" class="card reveal">
-          <div class="card-icon" aria-hidden="true">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M3 9h18M8 4v5"/></svg>
-          </div>
-          <h3>A bit about me</h3>
-          <p>A walkthrough of the homelab, plus what I'm up to outside of school and work.</p>
-          <span class="card-link">View more &rarr;</span>
+        <a class="contact-link" href="https://www.linkedin.com/in/kurt-sooknanan-485494410/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10.5V17M8 7.5v.01M12 17v-4a2.5 2.5 0 0 1 5 0v4M12 10.5V17"/></svg>
+          <div><b>LinkedIn</b><span>Kurt Sooknanan</span></div>
+          <span class="visually-hidden"> (opens in a new tab)</span>
         </a>
       </div>
     </div>
@@ -197,11 +516,11 @@
 <footer class="site-footer">
   <div class="container footer-grid">
     <div class="footer-col">
-      <p class="footer-logo">Kurt Sooknanan</p>
-      <p>AI Security Researcher &amp; Security Analyst, UMass Boston.</p>
+      <p class="footer-name">Kurt Sooknanan</p>
+      <p>Junior Security Analyst and undergraduate LLM security researcher, UMass Boston.</p>
     </div>
     <div class="footer-col">
-      <h3>Links</h3>
+      <h2>Elsewhere</h2>
       <ul>
         <li><a href="mailto:manny.kurt@gmail.com">Email</a></li>
         <li><a href="https://github.com/kurt-sudo420" target="_blank" rel="noopener">GitHub</a></li>
@@ -209,16 +528,17 @@
       </ul>
     </div>
     <div class="footer-col">
-      <h3>Site</h3>
+      <h2>This site</h2>
       <ul>
         <li><a href="experience.html">Experience</a></li>
         <li><a href="projects.html">Projects</a></li>
+        <li><a href="academics.html">Credentials</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </div>
   </div>
   <div class="container footer-bottom">
-    <p>&copy; <span id="year"></span> Kurt Sooknanan. Built with HTML5, CSS3 &amp; JavaScript.</p>
+    <p>&copy; <span id="year">2026</span> Kurt Sooknanan. Hand-built with HTML, CSS, and JavaScript.</p>
     <p>Last updated: <span id="lastModified"></span></p>
   </div>
 </footer>
