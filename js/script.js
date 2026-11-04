@@ -16,19 +16,32 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 });
 
-/* RUBRIC #13: jQuery — mobile nav toggle */
-$(document).ready(function () {
-  $('#navToggle').on('click', function () {
-    $('#navLinks').toggleClass('nav-links--open');
-    $(this).toggleClass('nav-toggle--active');
-    var expanded = $(this).attr('aria-expanded') === 'true';
-    $(this).attr('aria-expanded', String(!expanded));
+/* RUBRIC #13: jQuery — mobile nav toggle
+   Guarded so a blocked CDN can't take the rest of this file down with it. */
+if (window.jQuery) $(document).ready(function () {
+  var $toggle = $('#navToggle');
+  var $links = $('#navLinks');
+
+  function setMenu(open) {
+    $links.toggleClass('nav-links--open', open);
+    $toggle.toggleClass('nav-toggle--active', open)
+      .attr('aria-expanded', String(open))
+      .attr('aria-label', open ? 'Close menu' : 'Open menu');
+  }
+
+  $toggle.on('click', function () {
+    setMenu($toggle.attr('aria-expanded') !== 'true');
   });
 
   // Close mobile menu when a link is tapped
-  $('#navLinks a').on('click', function () {
-    $('#navLinks').removeClass('nav-links--open');
-    $('#navToggle').removeClass('nav-toggle--active').attr('aria-expanded', 'false');
+  $links.find('a').on('click', function () { setMenu(false); });
+
+  // Close with Escape and return focus to the toggle
+  $(document).on('keydown', function (e) {
+    if (e.key === 'Escape' && $toggle.attr('aria-expanded') === 'true') {
+      setMenu(false);
+      $toggle.trigger('focus');
+    }
   });
 });
 
@@ -39,10 +52,10 @@ $(document).ready(function () {
 
   var prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var roles = [
-    'Security Analyst',
-    'IT Student @ UMass Boston',
-    'Homelab Builder',
-    'Aspiring Cloud Security Engineer'
+    'Junior Security Analyst',
+    'LLM Security Researcher',
+    'CompTIA Network+ certified',
+    'Python security tooling'
   ];
 
   if (prefersReduced) {
@@ -103,6 +116,11 @@ $(document).ready(function () {
 (function skillBars() {
   var bars = document.querySelectorAll('.skill-bar-fill');
   if (!bars.length) return;
+
+  if (!('IntersectionObserver' in window)) {
+    bars.forEach(function (bar) { bar.style.width = bar.dataset.level + '%'; });
+    return;
+  }
 
   var observer = new IntersectionObserver(function (entries) {
     entries.forEach(function (entry) {

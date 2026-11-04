@@ -2,16 +2,24 @@
 <html lang="en" class="no-js">
 <head>
 <meta charset="UTF-8">
-<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Projects — Kurt Sooknanan</title>
-<meta name="description" content="Security tooling, LLM red-teaming research, homelab infrastructure, and wireless testing built by Kurt Sooknanan.">
+<!-- Search indexing is intentionally off (privacy). Delete this line when you want the site to appear in search results. -->
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<title>Projects | Kurt Sooknanan</title>
+<meta name="description" content="BadToken HYDRA, an automated LLM red-teaming framework, plus CyberToolkit, embedded device and wireless security research, Ghostclick, and a security homelab, built by Kurt Sooknanan.">
 <meta name="author" content="Kurt Sooknanan">
-<meta name="theme-color" content="#0A1830">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>%F0%9F%9B%A1%EF%B8%8F</text></svg>">
+<meta name="theme-color" content="#0C1A2B">
+<link rel="canonical" href="https://kurt-sudo420.github.io/portfolio/projects.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Kurt Sooknanan">
+<meta property="og:title" content="Projects | Kurt Sooknanan">
+<meta property="og:description" content="BadToken HYDRA, an automated LLM red-teaming framework, plus security tooling and lab work.">
+<meta property="og:url" content="https://kurt-sudo420.github.io/portfolio/projects.html">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="images/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/styles.css">
 <script>document.documentElement.classList.remove('no-js');</script>
 </head>
@@ -21,18 +29,18 @@
 
 <header class="site-header">
   <div class="container navbar">
-    <a href="index.html" class="logo">kurt<span>.</span>sooknanan</a>
+    <a href="index.html" class="logo" aria-label="Kurt Sooknanan, home"><span class="logo-mark" aria-hidden="true">KS</span>Kurt Sooknanan</a>
     <nav aria-label="Primary">
       <ul class="nav-links" id="navLinks">
         <li><a href="index.html">Home</a></li>
-        <li><a href="academics.html">Academics</a></li>
         <li><a href="experience.html">Experience</a></li>
         <li><a href="projects.html" class="active" aria-current="page">Projects</a></li>
+        <li><a href="academics.html">Credentials</a></li>
         <li><a href="about.html">About</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
-    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks">
+    <button class="nav-toggle" id="navToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
       <span></span><span></span><span></span>
     </button>
   </div>
@@ -41,255 +49,224 @@
 <main id="main">
   <section class="page-hero">
     <div class="container">
-      <p class="eyebrow">Page 04</p>
       <h1>Projects</h1>
-      <p class="lede">Tooling I've built, the infrastructure I run at home, and the offensive testing I do on my own equipment &mdash; the work that happens outside a job description.</p>
+      <p class="lede">Research tooling, the infrastructure I run at home, and the offensive testing I do on authorized equipment: the work that happens outside a job description.</p>
     </div>
   </section>
 
   <section class="section">
     <div class="container">
 
-      <!-- ---------- BADTOKEN ---------- -->
-      <div class="card reveal project-card">
+      <!-- ---------- BADTOKEN HYDRA ---------- -->
+      <article class="project-card" id="badtoken" aria-labelledby="hydraH">
         <div class="project-head">
-          <div class="project-title-row">
-            <div class="icon-tile" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="5" width="14" height="14" rx="2"/><path d="M9 9h6v6H9zM9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"/></svg>
-            </div>
-            <div>
-              <h3>Project BadToken</h3>
-              <p class="role-meta" style="margin-bottom:0;">Adversarial security testing of LLMs and embedded devices &middot; Machine Psychology Group / Cyberpunk Division, UMass Boston</p>
-            </div>
+          <div>
+            <h2 id="hydraH">BadToken HYDRA</h2>
+            <p class="meta">Automated LLM red-teaming framework / Machine Psychology Group, Cyberpunk Division, UMass Boston</p>
           </div>
-          <span class="status-pill status-pill--active">In development</span>
+          <span class="status">In active development</span>
         </div>
 
-        <p style="margin-bottom: var(--space-4);">A Python library that puts PyRIT and garak behind one scanning and exploit API, so an adversarial evaluation can be re-run and compared rather than reconstructed from scratch each time. The research question underneath it: when a model refuses a harmful request, is that refusal doing the work, or is the model simply incapable of the task? The study answers it with a before/after weight-editing design &mdash; orthogonalizing the refusal direction and re-scanning, with encoding probes as a control.</p>
+        <p>BadToken is a Python toolkit for adversarial testing of language models and the systems built on them. HYDRA is its evidence-aware engine: a scheduler that decides which attack module runs against which target, and a shared evidence format that every module writes into. The point is that an adversarial evaluation can be re-run and compared, rather than reconstructed from scratch each time.</p>
+        <p>The research question underneath it: when a model refuses a harmful request, is the refusal doing the work, or is the model simply unable to do the task? The first study answers it with a before/after weight-editing design, orthogonalizing the refusal direction and re-scanning, with encoding probes as a control.</p>
 
-        <ul class="bullet-list" style="margin-bottom: var(--space-4);">
-          <li>~20,000-prompt baseline across 20 probe families against a locally served instruction-tuned model</li>
-          <li>Hit-log analysis that separates genuine guardrail failures from compliance markers inflating attack-success rates</li>
-          <li>Z-score contextualization against a 23-model calibration baseline</li>
-          <li>Served with vLLM on A100 nodes under Slurm, on a pinned stack (vLLM 0.6.3 / torch 2.4.0 / transformers 4.46.3) so results reproduce</li>
-          <li>Shipping as an installable package with a config-driven scan runner, structured result schema, and report generator</li>
-          <li>Extending to cross-modal indirect injection &mdash; exploits carried in images rather than text</li>
-        </ul>
+        <figure class="arch" aria-labelledby="archCap2" style="margin-block: var(--space-5);">
+          <figcaption class="arch-caption" id="archCap2">How a HYDRA campaign runs</figcaption>
+          <div class="arch-flow">
+            <div class="arch-col">
+              <p class="arch-col-label">Engine</p>
+              <div class="arch-node arch-node--engine">
+                <b>HYDRA</b>
+                <ul class="arch-parts">
+                  <li><b>Scheduler</b><span>Decides which module runs which attack, against which target</span></li>
+                  <li><b>Evidence format</b><span>One shared record per finding, whatever tool produced it</span></li>
+                </ul>
+              </div>
+            </div>
+            <div class="arch-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div>
+            <div class="arch-col">
+              <p class="arch-col-label">Attack modules</p>
+              <div class="arch-node"><b>garak</b><span>Probe library (NVIDIA)</span></div>
+              <div class="arch-node"><b>PyRIT</b><span>Multi-turn orchestration (Microsoft)</span></div>
+              <div class="arch-node"><b>WebRedTeam</b><span>Browser-based web-app testing</span></div>
+              <div class="arch-node arch-node--planned"><b>X-Ray</b><span>Planned module</span></div>
+            </div>
+            <div class="arch-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div>
+            <div class="arch-col">
+              <p class="arch-col-label">Targets</p>
+              <div class="arch-node"><b>Locally served LLMs</b><span>vLLM on A100 nodes under Slurm</span></div>
+              <div class="arch-node"><b>LLM-backed web apps</b><span>Lab-hosted test instances</span></div>
+            </div>
+          </div>
+          <p class="arch-return">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 12H5M11 6l-6 6 6 6"/></svg>
+            Every module writes results back in the same evidence format, so one campaign produces one comparable findings report.
+          </p>
+        </figure>
 
-        <div class="badge-group">
-          <p class="badge-group-label">Built with</p>
-          <div class="badge-row">
-            <span class="badge">Python</span>
-            <span class="badge">PyRIT</span>
-            <span class="badge">garak</span>
-            <span class="badge">vLLM</span>
-            <span class="badge">Slurm / HPC</span>
-            <span class="badge">PyTorch</span>
+        <div class="grid-2">
+          <div>
+            <h3 style="margin-bottom: var(--space-3);">Completed</h3>
+            <ul class="check-list">
+              <li>~20,000-prompt baseline across 20 garak probe families against a locally served instruction-tuned model.</li>
+              <li>Hit-log analysis that separates genuine guardrail failures from compliance markers inflating attack-success rates.</li>
+              <li>Z-score contextualization against a 23-model calibration baseline.</li>
+              <li>Serving stack on A100 nodes under Slurm, pinned (vLLM 0.6.3, torch 2.4.0, transformers 4.46.3) so results reproduce.</li>
+            </ul>
+          </div>
+          <div>
+            <h3 style="margin-bottom: var(--space-3);">In progress</h3>
+            <ul class="bullet-list">
+              <li>Before/after weight-editing study comparing refusal-mediated and capability-mediated resistance.</li>
+              <li>WebRedTeam module for prompt injection against LLM-backed web applications, including injection that escalates into script execution.</li>
+              <li>Cross-modal indirect injection: exploits carried in images rather than text.</li>
+              <li>Packaging as an installable library with a config-driven scan runner, structured result schema, and report generator.</li>
+            </ul>
           </div>
         </div>
 
-        <div class="badge-group">
-          <p class="badge-group-label">Grounded in</p>
-          <div class="badge-row">
-            <span class="badge">OWASP Top 10 for LLMs</span>
-            <span class="badge">MITRE ATLAS</span>
-            <span class="badge">Nassi et al. (Black Hat EU 2023)</span>
-            <span class="badge">arXiv Threat-Modeling Literature</span>
-          </div>
+        <div class="tag-group" style="margin-top: var(--space-5);">
+          <p class="tag-group-label">Built with</p>
+          <div class="tag-row"><span class="tag">Python</span><span class="tag">garak</span><span class="tag">PyRIT</span><span class="tag">vLLM</span><span class="tag">PyTorch</span><span class="tag">Hugging Face</span><span class="tag">Slurm / HPC</span><span class="tag">conda</span></div>
+        </div>
+        <div class="tag-group">
+          <p class="tag-group-label">Grounded in</p>
+          <div class="tag-row"><span class="tag">OWASP Top 10 for LLMs</span><span class="tag">MITRE ATLAS</span><span class="tag">Nassi et al. (Black Hat EU 2023)</span><span class="tag">Arditi et al. 2024 (refusal direction)</span></div>
         </div>
 
         <div class="project-actions">
-          <a href="experience.html" class="btn btn-outline--light">Read about the research &rarr;</a>
+          <a href="experience.html#threatTitle" class="btn btn-line">Read the threat model</a>
+          <span class="meta">First-author manuscript in preparation. The repository isn't public yet.</span>
         </div>
-      </div>
+      </article>
 
       <!-- ---------- CYBERTOOLKIT ---------- -->
-      <div class="card reveal project-card" style="margin-top: var(--space-5);">
+      <article class="project-card" id="cybertoolkit" aria-labelledby="ctkH">
         <div class="project-head">
-          <div class="project-title-row">
-            <div class="icon-tile" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m8 9-4 3 4 3M16 9l4 3-4 3M13 6l-2 12"/></svg>
-            </div>
-            <div>
-              <h3>CyberToolkit</h3>
-              <p class="role-meta" style="margin-bottom:0;">Command-line network security utilities &middot; Python</p>
-            </div>
+          <div>
+            <h2 id="ctkH">CyberToolkit</h2>
+            <p class="meta">Command-line network security utilities / Python</p>
           </div>
-          <span class="status-pill status-pill--active">Public on GitHub</span>
+          <span class="status">Public on GitHub</span>
         </div>
-
-        <p style="margin-bottom: var(--space-4);">A set of network security utilities written against the Python standard library only &mdash; no third-party dependencies, so it runs anywhere Python does. Built deliberately without frameworks so that every piece, from socket handling to thread pooling, is something I had to understand rather than import.</p>
-
-        <ul class="bullet-list" style="margin-bottom: var(--space-4);">
-          <li>Threaded TCP port scanner with range parsing</li>
+        <p>Network security utilities written against the Python standard library only, so it runs anywhere Python does. Built without frameworks on purpose, so that every piece, from socket handling to thread pooling, is something I had to understand rather than import.</p>
+        <ul class="bullet-list">
+          <li>Threaded TCP port scanner using ThreadPoolExecutor, with range parsing (<code class="mono">1-1024</code>, <code class="mono">22,80,443</code>)</li>
           <li>Service banner grabber</li>
-          <li>SHA-256 file hashing for integrity verification</li>
+          <li>Chunked SHA-256 file hashing for integrity verification</li>
           <li>Secure password generation and DNS resolution</li>
-          <li>Unit tests covering the core modules</li>
+          <li>Socket context managers, specific exception handling, and input validation throughout</li>
+          <li>12 pytest tests covering the port parser; README includes an authorized-use-only scope note</li>
         </ul>
-
-        <div class="badge-row">
-          <span class="badge">Python</span>
-          <span class="badge">Standard Library Only</span>
-          <span class="badge">Threading</span>
-          <span class="badge">Sockets</span>
-          <span class="badge">Unit Tests</span>
-        </div>
-
+        <div class="tag-row"><span class="tag">Python</span><span class="tag">Standard library only</span><span class="tag">Threading</span><span class="tag">Sockets</span><span class="tag">pytest</span><span class="tag">MIT license</span></div>
         <div class="project-actions">
-          <a href="https://github.com/kurt-sudo420/CyberToolkit" target="_blank" rel="noopener" class="btn btn-primary">View on GitHub &rarr;</a>
+          <a href="https://github.com/kurt-sudo420/CyberToolkit" target="_blank" rel="noopener" class="btn btn-solid">View on GitHub<span class="visually-hidden"> (opens in a new tab)</span></a>
         </div>
-      </div>
+      </article>
 
       <!-- ---------- WIRELESS LAB ---------- -->
-      <div class="card reveal project-card" style="margin-top: var(--space-5);">
+      <article class="project-card" id="wireless" aria-labelledby="wlH">
         <div class="project-head">
-          <div class="project-title-row">
-            <div class="icon-tile" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12.55a11 11 0 0 1 14 0M2 8.82a16 16 0 0 1 20 0M8.5 16.43a6 6 0 0 1 7 0"/><path d="M12 20h.01"/></svg>
-            </div>
-            <div>
-              <h3>Embedded Device &amp; Wireless Security</h3>
-              <p class="role-meta" style="margin-bottom:0;">Machine Psychology Group / Cyberpunk Division &middot; Faculty-supervised &middot; Isolated hardware bench</p>
-            </div>
+          <div>
+            <h2 id="wlH">Embedded device and wireless security</h2>
+            <p class="meta">Machine Psychology Group, Cyberpunk Division / faculty-supervised, isolated hardware bench</p>
           </div>
-          <span class="status-pill status-pill--active">Ongoing</span>
+          <span class="status">Ongoing</span>
         </div>
-
-        <p style="margin-bottom: var(--space-4);">The hardware half of the same research: applying the offensive red-teaming methodology behind Project BadToken to a physical attack surface, producing a device-security findings report as a companion result to the LLM work. Hands-on with the techniques I read about in advisories, so that when one shows up in an alert I know what it looks like from the other side &mdash; most recently a captive-portal rogue access point, studying how client devices behave when they associate with a spoofed SSID and what they expose on join.</p>
-
-        <ul class="bullet-list" style="margin-bottom: var(--space-4);">
-          <li><strong style="color: var(--charcoal);">Rogue AP / evil twin</strong> &mdash; captive-portal access point capturing associating client MAC addresses and DHCP-assigned IPs to a live monitor</li>
-          <li><strong style="color: var(--charcoal);">Wi-Fi auditing</strong> &mdash; scanning, packet capture, deauthentication, and handshake analysis with Marauder, aircrack-ng, and Kismet</li>
-          <li><strong style="color: var(--charcoal);">Sub-GHz RF</strong> &mdash; capture and replay for access-control and keyfob research</li>
-          <li><strong style="color: var(--charcoal);">RFID / NFC</strong> &mdash; credential read, clone, and modify workflows across low- and high-frequency tags</li>
-          <li><strong style="color: var(--charcoal);">BadUSB / HID</strong> &mdash; scripted payloads for physical-access and endpoint-hardening testing</li>
+        <p>The hardware half of the same research: applying the offensive methodology behind BadToken to a physical attack surface, producing a device-security findings report as a companion to the LLM work. Being hands-on with techniques I read about in advisories means that when one shows up in an alert, I know what it looks like from the other side. Most recently: a captive-portal rogue access point, studying how client devices behave when they associate with a spoofed SSID and what they expose on join.</p>
+        <ul class="bullet-list">
+          <li><strong>Rogue AP / evil twin:</strong> captive-portal access point capturing associating client MAC addresses and DHCP-assigned IPs to a live monitor</li>
+          <li><strong>Wi-Fi auditing:</strong> scanning, packet capture, deauthentication, and handshake analysis with Marauder, aircrack-ng, and Kismet</li>
+          <li><strong>Sub-GHz RF:</strong> capture and replay for access-control and keyfob research</li>
+          <li><strong>RFID / NFC:</strong> credential read, clone, and modify workflows across low- and high-frequency tags</li>
+          <li><strong>BadUSB / HID:</strong> scripted payloads for physical-access and endpoint-hardening testing</li>
         </ul>
-
-        <div class="badge-row" style="margin-bottom: var(--space-5);">
-          <span class="badge">Flipper Zero</span>
-          <span class="badge">Marauder</span>
-          <span class="badge">aircrack-ng</span>
-          <span class="badge">Kismet</span>
-          <span class="badge">Evil Twin / Rogue AP</span>
-          <span class="badge">Sub-GHz</span>
-          <span class="badge">RFID / NFC</span>
-          <span class="badge">BadUSB / HID</span>
-        </div>
+        <div class="tag-row"><span class="tag">Flipper Zero</span><span class="tag">Marauder</span><span class="tag">aircrack-ng</span><span class="tag">Kismet</span><span class="tag">Evil twin / rogue AP</span><span class="tag">Sub-GHz</span><span class="tag">RFID / NFC</span><span class="tag">BadUSB / HID</span></div>
 
         <div class="callout">
-          <p><strong style="color: var(--charcoal);">Scope and ethics.</strong> Every asset used is owned by or explicitly authorized for the research group, and all testing happens on an air-gapped bench. Scope is reviewed by my faculty mentor before each new exploit class, and any finding with real-world implications goes through coordinated disclosure. No third-party networks, no production systems, no unauthorized targets.</p>
+          <p><strong>Scope and ethics.</strong> Every asset used is owned by or explicitly authorized for the research group, and all testing happens on an air-gapped bench. My faculty mentor reviews scope before each new exploit class, and any finding with real-world implications goes through coordinated disclosure. No third-party networks, no production systems, no unauthorized targets.</p>
         </div>
 
-        <!-- Client capture recreated in the site's terminal language -->
-        <div class="terminal terminal--inset" aria-label="Captive portal client capture from an isolated lab network">
-          <div class="terminal-bar">
-            <span class="terminal-dot"></span>
-            <span class="terminal-dot"></span>
-            <span class="terminal-dot"></span>
-            <span class="terminal-title">evil-portal &mdash; client monitor</span>
+        <div class="terminal terminal--inset" role="img" aria-label="Captive portal client monitor showing one self-owned test device on an isolated lab network">
+          <div class="terminal-bar" aria-hidden="true">
+            <span class="terminal-dot"></span><span class="terminal-dot"></span><span class="terminal-dot"></span>
+            <span class="terminal-title">evil-portal: client monitor</span>
           </div>
-          <div class="terminal-body">
-            <div class="comment"># isolated lab AP &mdash; self-owned test client</div>
+          <div class="terminal-body" aria-hidden="true">
+            <div class="comment"># isolated lab AP, self-owned test client</div>
             <div><span class="prompt">$</span> clients --watch</div>
-            <div>&nbsp;</div>
+            <div class="gap"></div>
             <div class="out">CLIENT 1/1</div>
             <div><span class="muted">MAC   :</span> <span class="out">0E:74:1D:B4:86:0A</span></div>
             <div><span class="muted">IP    :</span> <span class="out">192.168.4.2</span></div>
             <div><span class="muted">Joined:</span> <span class="out">21:37:06</span></div>
           </div>
         </div>
-        <p class="terminal-caption">A test device associating with the lab portal &mdash; the MAC is a randomised client address on a private subnet.</p>
-      </div>
+        <p class="terminal-caption">A test device associating with the lab portal. The MAC is a randomized client address on a private subnet.</p>
+      </article>
+
+      <!-- ---------- GHOSTCLICK ---------- -->
+      <article class="project-card" id="ghostclick" aria-labelledby="gcH">
+        <div class="project-head">
+          <div>
+            <h2 id="gcH">Ghostclick</h2>
+            <p class="meta">Team project / Chrome extension</p>
+          </div>
+          <span class="status status--neutral">Team project</span>
+        </div>
+        <p>A privacy-first Chrome extension that records a website task once and replays it on request. It runs a fully local, on-device model through WebLLM, so nothing a user records or replays is sent to a server.</p>
+        <div class="tag-row"><span class="tag">JavaScript</span><span class="tag">Chrome extensions</span><span class="tag">WebLLM</span><span class="tag">On-device AI</span></div>
+      </article>
 
       <!-- ---------- HOMELAB ---------- -->
-      <div class="card reveal project-card" style="margin-top: var(--space-5);">
+      <article class="project-card" id="homelab" aria-labelledby="hlH">
         <div class="project-head">
-          <div class="project-title-row">
-            <div class="icon-tile" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="18" height="6" rx="1.5"/><path d="M7 7h.01M7 17h.01"/></svg>
-            </div>
-            <div>
-              <h3>Security Homelab</h3>
-              <p class="role-meta" style="margin-bottom:0;">Self-hosted infrastructure &middot; TrueNAS / ZFS &middot; 2025 &ndash; Present</p>
-            </div>
+          <div>
+            <h2 id="hlH">Security homelab</h2>
+            <p class="meta">Self-hosted infrastructure / TrueNAS and ZFS / 2025 to present</p>
           </div>
-          <span class="status-pill status-pill--active">Running</span>
+          <span class="status">Running</span>
         </div>
-
-        <p style="margin-bottom: var(--space-4);">The environment where I get to be the administrator, the attacker, and the person on call at 2am. Running on TrueNAS with ZFS underneath, it hosts a local LLM container (which doubles as an offline test target for red-team work), Nextcloud, and Jellyfin, with uptime monitoring wired to mobile alerts.</p>
-
-        <div class="badge-group">
-          <p class="badge-group-label">Running now</p>
-          <div class="badge-row">
-            <span class="badge">TrueNAS / ZFS</span>
-            <span class="badge">Local LLM Container</span>
-            <span class="badge">Nextcloud</span>
-            <span class="badge">Jellyfin</span>
-            <span class="badge">Uptime Monitoring</span>
-            <span class="badge">Mobile Alerting</span>
-          </div>
+        <p>The environment where I get to be the administrator, the attacker, and the person on call at 2am. TrueNAS with ZFS underneath hosts a local LLM container (which doubles as an offline red-team target), Pi-hole with Unbound for DNS, Nextcloud, and Jellyfin, with uptime monitoring wired to mobile alerts. I'm also building a Python security monitoring tool on SQLite with Trivy integration.</p>
+        <div class="tag-group">
+          <p class="tag-group-label">Running now</p>
+          <div class="tag-row"><span class="tag">TrueNAS / ZFS</span><span class="tag">Docker Compose</span><span class="tag">Local LLM container</span><span class="tag">Pi-hole / Unbound</span><span class="tag">Nextcloud</span><span class="tag">Jellyfin</span><span class="tag">Uptime monitoring</span><span class="tag">Mobile alerting</span></div>
         </div>
-
-        <div class="badge-group">
-          <p class="badge-group-label">On the roadmap</p>
-          <div class="badge-row">
-            <span class="badge">Wazuh</span>
-            <span class="badge">Pi-hole / Unbound</span>
-            <span class="badge">Vaultwarden</span>
-          </div>
+        <div class="tag-group">
+          <p class="tag-group-label">On the roadmap</p>
+          <div class="tag-row"><span class="tag">Wazuh</span><span class="tag">Tailscale</span><span class="tag">Vaultwarden</span><span class="tag">Nginx Proxy Manager</span></div>
         </div>
-
         <div class="project-actions">
-          <a href="about.html" class="btn btn-outline--light">Watch the walkthrough &rarr;</a>
+          <a href="about.html#walkthrough" class="btn btn-line">Watch the walkthrough</a>
         </div>
-      </div>
+      </article>
 
       <!-- ---------- THIS SITE ---------- -->
-      <div class="card reveal project-card" style="margin-top: var(--space-5);">
+      <article class="project-card" id="portfolio" aria-labelledby="siteH">
         <div class="project-head">
-          <div class="project-title-row">
-            <div class="icon-tile" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M7 6.5h.01M10 6.5h.01"/></svg>
-            </div>
-            <div>
-              <h3>This portfolio</h3>
-              <p class="role-meta" style="margin-bottom:0;">Hand-written HTML5, CSS3 &amp; JavaScript &middot; GitHub Pages</p>
-            </div>
+          <div>
+            <h2 id="siteH">This portfolio</h2>
+            <p class="meta">Hand-written HTML, CSS, and JavaScript / GitHub Pages</p>
           </div>
-          <span class="status-pill status-pill--active">Live</span>
+          <span class="status">Live</span>
         </div>
-
-        <p style="margin-bottom: var(--space-4);">Built from scratch without a site builder or CSS framework &mdash; a hand-rolled design system with CSS custom properties, a responsive grid, an IntersectionObserver scroll-reveal, a typed hero effect, a validated contact form, and a jQuery Mobile collapsible FAQ. The terminal motif throughout is plain HTML and CSS, not screenshots.</p>
-
-        <div class="badge-row">
-          <span class="badge">HTML5</span>
-          <span class="badge">CSS3 / Custom Properties</span>
-          <span class="badge">JavaScript</span>
-          <span class="badge">jQuery</span>
-          <span class="badge">jQuery Mobile</span>
-          <span class="badge">GitHub Pages</span>
-          <span class="badge">WCAG AA Contrast</span>
-        </div>
-
+        <p>Built from scratch without a site builder or CSS framework: a hand-rolled design system with CSS custom properties, a responsive grid, an IntersectionObserver scroll reveal, a typed hero effect, a validated contact form, and a jQuery Mobile collapsible FAQ. The terminal panels are plain HTML and CSS, not screenshots.</p>
+        <div class="tag-row"><span class="tag">HTML5</span><span class="tag">CSS custom properties</span><span class="tag">JavaScript</span><span class="tag">jQuery</span><span class="tag">jQuery Mobile</span><span class="tag">GitHub Pages</span><span class="tag">WCAG AA contrast</span></div>
         <div class="project-actions">
-          <a href="https://github.com/kurt-sudo420/portfolio" target="_blank" rel="noopener" class="btn btn-primary">View the source &rarr;</a>
+          <a href="https://github.com/kurt-sudo420/portfolio" target="_blank" rel="noopener" class="btn btn-line">View the source<span class="visually-hidden"> (opens in a new tab)</span></a>
         </div>
-      </div>
-
+      </article>
     </div>
   </section>
 
-  <!-- ---------- GITHUB CTA ---------- -->
-  <section class="section section--alt">
-    <div class="container">
-      <div class="section-header reveal">
-        <p class="eyebrow">Everything else</p>
-        <h2>The rest lives on GitHub</h2>
-        <p class="lede">Commit history included &mdash; you can see how each project actually came together rather than just the finished version.</p>
+  <section class="section section--surface">
+    <div class="container split">
+      <div class="split-head">
+        <h2>Everything else is on GitHub</h2>
       </div>
-      <div class="reveal">
-        <a href="https://github.com/kurt-sudo420?tab=repositories" target="_blank" rel="noopener" class="btn btn-primary">Browse my repositories &rarr;</a>
+      <div>
+        <p class="lede" style="margin-bottom: var(--space-5);">Commit history included, so you can see how each project came together rather than just the finished version.</p>
+        <a href="https://github.com/kurt-sudo420?tab=repositories" target="_blank" rel="noopener" class="btn btn-solid">Browse my repositories<span class="visually-hidden"> (opens in a new tab)</span></a>
       </div>
     </div>
   </section>
@@ -298,11 +275,11 @@
 <footer class="site-footer">
   <div class="container footer-grid">
     <div class="footer-col">
-      <p class="footer-logo">Kurt Sooknanan</p>
-      <p>AI Security Researcher &amp; Security Analyst, UMass Boston.</p>
+      <p class="footer-name">Kurt Sooknanan</p>
+      <p>Junior Security Analyst and undergraduate LLM security researcher, UMass Boston.</p>
     </div>
     <div class="footer-col">
-      <h3>Links</h3>
+      <h2>Elsewhere</h2>
       <ul>
         <li><a href="mailto:manny.kurt@gmail.com">Email</a></li>
         <li><a href="https://github.com/kurt-sudo420" target="_blank" rel="noopener">GitHub</a></li>
@@ -310,16 +287,17 @@
       </ul>
     </div>
     <div class="footer-col">
-      <h3>Site</h3>
+      <h2>This site</h2>
       <ul>
         <li><a href="experience.html">Experience</a></li>
         <li><a href="projects.html">Projects</a></li>
+        <li><a href="academics.html">Credentials</a></li>
         <li><a href="contact.html">Contact</a></li>
       </ul>
     </div>
   </div>
   <div class="container footer-bottom">
-    <p>&copy; <span id="year"></span> Kurt Sooknanan. Built with HTML5, CSS3 &amp; JavaScript.</p>
+    <p>&copy; <span id="year">2026</span> Kurt Sooknanan. Hand-built with HTML, CSS, and JavaScript.</p>
     <p>Last updated: <span id="lastModified"></span></p>
   </div>
 </footer>
