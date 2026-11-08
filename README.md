@@ -45,8 +45,6 @@ The header and footer are repeated on each page; change them on all pages togeth
   `cert-verify` links (Security+ in `index.html` and `certifications.html`, Network+ in `certifications.html`).
   Each button appears automatically once its link is filled in.
 - **Official badges (optional):** see the HTML comments above the credential cards in `certifications.html`.
-- **Phishing case study link:** paste the published URL into the empty `href=""` of the `pub-link` button in
-  the Publications section of `research.html`. The "Read the case study" button appears once it's filled in.
 - **Search indexing** is off by design (`<meta name="robots" content="noindex, ...">` on every page).
   Remove that line from each page to make the site searchable.
 
