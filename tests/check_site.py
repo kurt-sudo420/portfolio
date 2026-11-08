@@ -7,8 +7,9 @@ Run from the repository root:
 Checks every HTML page for: title, meta description, canonical URL, one <h1>,
 the seven-item primary nav with exactly one active link, working internal links
 and #anchors, image alt text, rel="noopener" on new-tab links, and accidental
-secrets. Also checks content rules: Network+ shown as earned with exam N10-009,
-only Network+ marked as earned, and no "Working knowledge" skill levels.
+secrets. Also checks content rules: Network+ (N10-009) and Security+ (SY0-701)
+shown as earned, only those two marked as earned, and no "Working knowledge"
+skill levels.
 Exits non-zero if anything fails.
 """
 import os
@@ -138,13 +139,14 @@ def main():
 
     for rel in ("index.html", "certifications.html"):
         html = raw.get(rel, "")
-        for needed in ("CompTIA", "Network+", "N10-009", "October 2026"):
+        for needed in ("CompTIA", "Network+", "N10-009", "October 2026", "Security+", "SY0-701", "November 2026"):
             if needed not in html:
-                errors.append(f"{rel}: Network+ details missing '{needed}'")
+                errors.append(f"{rel}: certification details missing '{needed}'")
     certs = strip_comments(raw.get("certifications.html", ""))
-    earned_blocks = re.findall(r'<li class="done[^"]*">.*?</li>', certs, flags=re.S)
-    if len(earned_blocks) != 1 or "Network+" not in earned_blocks[0]:
-        errors.append("certifications.html: only Network+ should be marked as earned")
+    earned_blocks = re.findall(r'<li class="done[^"]*"[^>]*>.*?</li>', certs, flags=re.S)
+    earned = sorted(n for n in ("Network+", "Security+") for b in earned_blocks if f"<h3>{n}</h3>" in b)
+    if len(earned_blocks) != 2 or earned != ["Network+", "Security+"]:
+        errors.append("certifications.html: only Network+ and Security+ should be marked as earned")
 
     print(f"Checked {len(pages)} pages.")
     if errors:

@@ -12,7 +12,7 @@ experience.html         NSOC role and full timeline
 projects.html           Project exhibition with category filters
 projects/*.html         Case studies: hydra, webredteam, cybertoolkit, wireless-lab, homelab
 research.html           Research tracks, current experiment, threat model, publications, protocol
-certifications.html     CompTIA Network+, certification pathway, honors
+certifications.html     CompTIA Security+ and Network+, certification pathway, honors
 contact.html            Contact links, mailto form, jQuery Mobile FAQ
 academics.html          Redirects to certifications.html (keeps old links working)
 css/styles.css          Design tokens and every component style
@@ -41,9 +41,10 @@ The header and footer are repeated on each page; change them on all pages togeth
 
 ## Things to fill in
 
-- **Network+ verification:** paste your Credly or CompTIA URL into the empty `href=""` of the
-  `cert-verify` links in `index.html` and `certifications.html`. The button appears automatically.
-- **Official badge (optional):** see the HTML comment above the credential card in `certifications.html`.
+- **Certification verification:** paste your Credly or CompTIA URLs into the empty `href=""` of the
+  `cert-verify` links (Security+ in `index.html` and `certifications.html`, Network+ in `certifications.html`).
+  Each button appears automatically once its link is filled in.
+- **Official badges (optional):** see the HTML comments above the credential cards in `certifications.html`.
 - **Search indexing** is off by design (`<meta name="robots" content="noindex, ...">` on every page).
   Remove that line from each page to make the site searchable.
 
@@ -55,4 +56,4 @@ python3 tests/check_site.py
 
 Verifies titles, descriptions, canonical URLs, one `<h1>` per page, the seven-item nav with one active link,
 internal links and anchors, image alt text, `rel="noopener"` on new-tab links, no committed secrets, and the
-content rules (Network+ shown as earned with exam N10-009, only Network+ marked earned, no "Working knowledge" levels).
+content rules (Network+ N10-009 and Security+ SY0-701 shown as earned, only those two marked earned, no "Working knowledge" levels).
