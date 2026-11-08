@@ -752,6 +752,101 @@ html:not(.no-js) .term-type:not(.is-in) .tl { opacity: 0; }
 .path p { font-size: 0.88rem; margin-bottom: var(--s-4); }
 .path-label { font-size: var(--t-sm); color: var(--faint); margin-bottom: var(--s-4); }
 
+.path--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+/* Security+ card: spinning foil edge, light sweep, scanlines, shield seal */
+@property --sec-spin { syntax: "<angle>"; inherits: false; initial-value: 0deg; }
+.holo--sec {
+  border-color: transparent;
+  background:
+    radial-gradient(110% 100% at 100% 0%, rgba(242, 180, 90, 0.20), transparent 45%),
+    radial-gradient(130% 120% at 0% 100%, rgba(139, 108, 255, 0.45), transparent 55%),
+    radial-gradient(90% 90% at 15% 5%, rgba(61, 232, 245, 0.22), transparent 50%),
+    linear-gradient(155deg, #171329, #0A0C14 70%);
+  box-shadow: 0 40px 110px -40px rgba(139, 108, 255, 0.65), 0 0 70px -24px rgba(61, 232, 245, 0.4), 0 30px 80px -30px rgba(0, 0, 0, 0.9);
+}
+.holo--sec > :not(.holo-ring):not(.holo-scan):not(.holo-sheen) { position: relative; z-index: 1; }
+.holo-ring {
+  position: absolute; inset: 0; z-index: 2; border-radius: inherit; padding: 1.5px; pointer-events: none;
+  background: conic-gradient(from var(--sec-spin), rgba(61, 232, 245, 0.95), rgba(139, 108, 255, 0.12) 25%, rgba(242, 180, 90, 0.9) 50%, rgba(139, 108, 255, 0.12) 75%, rgba(61, 232, 245, 0.95));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  animation: sec-spin 6s linear infinite;
+}
+.holo-scan {
+  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background: repeating-linear-gradient(0deg, rgba(207, 232, 255, 0.035) 0 1px, transparent 1px 3px);
+}
+.holo-scan::after {
+  content: ""; position: absolute; left: 0; right: 0; top: -30%; height: 30%;
+  background: linear-gradient(180deg, transparent, rgba(61, 232, 245, 0.10), transparent);
+  animation: sec-scan 4.5s linear infinite;
+}
+.holo-sheen {
+  position: absolute; inset: -40% -30%; z-index: 0; pointer-events: none; mix-blend-mode: screen;
+  background: linear-gradient(105deg, transparent 42%, rgba(207, 232, 255, 0.14) 47%, rgba(255, 255, 255, 0.26) 50%, rgba(207, 232, 255, 0.14) 53%, transparent 58%);
+  transform: translateX(-70%);
+  animation: sec-sheen 6s var(--ease) infinite;
+}
+.holo-tag {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--amber); padding: 4px 10px; border-radius: 999px;
+  border: 1px solid rgba(242, 180, 90, 0.4); background: rgba(242, 180, 90, 0.08);
+}
+.holo-tag-dot { width: 6px; height: 6px; border-radius: 50%; background: currentColor; box-shadow: 0 0 10px currentColor; animation: pulse 2.2s var(--ease) infinite; }
+.holo--sec .holo-name {
+  background: linear-gradient(100deg, var(--ice) 0%, #FFFFFF 35%, var(--cyan) 65%, #B7A6FF 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  filter: drop-shadow(0 0 18px rgba(61, 232, 245, 0.25));
+}
+.holo-plus { color: var(--amber); -webkit-text-fill-color: var(--amber); text-shadow: 0 0 22px rgba(242, 180, 90, 0.7); margin-left: 0.04em; }
+.holo-sub { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.08em; color: var(--faint); margin-top: var(--s-2); max-width: none; }
+.holo-seal--shield { width: 60px; height: 60px; filter: drop-shadow(0 0 10px rgba(61, 232, 245, 0.45)); }
+.seal-orbit { transform-box: fill-box; transform-origin: center; animation: sec-orbit 14s linear infinite; }
+@keyframes sec-spin { to { --sec-spin: 360deg; } }
+@keyframes sec-scan { to { top: 100%; } }
+@keyframes sec-sheen { 0%, 50% { transform: translateX(-70%); } 100% { transform: translateX(70%); } }
+@keyframes sec-orbit { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) {
+  .holo-ring, .holo-scan::after, .holo-sheen, .holo-tag-dot, .seal-orbit { animation: none !important; }
+  .holo-sheen, .holo-scan::after { display: none; }
+}
+@media (max-width: 420px) {
+  .holo-sub { display: none; }
+  .holo-seal--shield { width: 48px; height: 48px; }
+}
+
+/* Featured publication */
+.pub-feature {
+  display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: var(--s-7); align-items: center;
+  padding: var(--s-6); border-radius: var(--r-lg);
+  border: 1px solid rgba(61, 232, 245, 0.25);
+  background: linear-gradient(140deg, rgba(61, 232, 245, 0.07), rgba(139, 108, 255, 0.06) 50%, var(--charcoal) 80%);
+}
+.pub-feature-vis { border-radius: var(--r-md); background: radial-gradient(80% 80% at 30% 20%, rgba(61, 232, 245, 0.14), transparent 60%), var(--obsidian); border: 1px solid var(--line-2); }
+.pub-feature-svg { display: block; width: 100%; height: auto; }
+.pf-frame { fill: rgba(207, 232, 255, 0.03); stroke: var(--line-3); stroke-width: 2; }
+.pf-flap { fill: none; stroke: var(--ice); stroke-width: 2; stroke-linejoin: round; opacity: 0.7; }
+.pf-lines rect { fill: rgba(207, 232, 255, 0.18); }
+.pf-alert { fill: rgba(242, 180, 90, 0.12); stroke: var(--amber); stroke-width: 2; }
+.pf-bang { stroke: var(--amber); stroke-width: 4; stroke-linecap: round; }
+.pf-hook { fill: none; stroke: var(--cyan); stroke-width: 4; stroke-linecap: round; filter: drop-shadow(0 0 8px rgba(61, 232, 245, 0.6)); }
+.pub-feature-body h3 { font-size: var(--t-xl); font-stretch: 118%; font-variation-settings: "wdth" 118; line-height: 1; margin: var(--s-3) 0 var(--s-5); }
+.pub-meta { display: flex; flex-wrap: wrap; gap: var(--s-3) var(--s-7); margin-bottom: var(--s-5); }
+.pub-meta dt { font-family: var(--font-mono); font-size: var(--t-xs); color: var(--faint); }
+.pub-meta dd { font-weight: 600; }
+.pub-link[href=""], .pub-link:not([href]) { display: none; }
+.pub-status { margin-top: var(--s-5); }
+.pub-link:not([href=""]) + .pub-status { margin-left: var(--s-4); }
+@media (max-width: 900px) {
+  .pub-feature { grid-template-columns: minmax(0, 1fr); gap: var(--s-5); padding: var(--s-5); }
+  .pub-feature-vis { max-width: 360px; }
+}
+@media (max-width: 640px) {
+  .path--3 { grid-template-columns: minmax(0, 1fr); }
+}
+
 .honors { display: grid; gap: 0; border-top: 1px solid var(--line-2); }
 .honors li { display: grid; grid-template-columns: 8rem 1fr; gap: var(--s-5); padding: var(--s-5) 0; border-bottom: 1px solid var(--line-2); }
 .honors .yr { font-family: var(--font-mono); font-size: var(--t-sm); color: var(--faint); padding-top: 3px; }
