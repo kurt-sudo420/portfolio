@@ -15,7 +15,11 @@
 <meta property="og:title" content="Research | Kurt Sooknanan">
 <meta property="og:description" content="LLM security research by Kurt Sooknanan in the Machine Psychology Group's Cyberpunk Division at UMass Boston: red teaming, adversarial evaluation, prompt injection, and embedded device security.">
 <meta property="og:url" content="https://kurt-sudo420.github.io/portfolio/research.html">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="https://kurt-sudo420.github.io/portfolio/images/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Kurt Sooknanan: security analyst at the UMass Boston NSOC and undergraduate LLM security researcher">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -70,6 +74,92 @@
     </div>
   </section>
 
+  <section class="s s--line s--panel" id="status" aria-labelledby="statusTitle">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><p class="kicker">Status</p><h2 id="statusTitle" class="reveal">What's done, and what isn't</h2></div>
+        <p class="reveal" style="--rd:120ms">Finished work, work in progress, and ideas are three different things. Nothing in the last two columns should be read as a result.</p>
+      </div>
+      <div class="board">
+        <section class="board-col board-col--done reveal" style="--rd:0ms" aria-labelledby="board-done">
+          <h3 id="board-done">Completed<span class="board-count">3</span></h3>
+          <ul>
+            <li><b>Baseline scan</b><span>About 20,000 prompts across 20 garak probe families against a locally served model, with hit logs reviewed by hand.</span></li>
+            <li><b>Reproducible serving stack</b><span>Pinned vLLM, torch, and transformers versions on the cluster, with the group's reference documentation.</span></li>
+            <li><b>Anatomy of a Phishing Attack</b><span>First-author case study published through UMass Boston in October 2026.</span></li>
+          </ul>
+        </section>
+        <section class="board-col board-col--live reveal" style="--rd:80ms" aria-labelledby="board-live">
+          <h3 id="board-live">Ongoing<span class="board-count">4</span></h3>
+          <ul>
+            <li><b>Weight-editing comparison</b><span>Re-scanning the model after its refusal direction is removed, under identical parameters.</span></li>
+            <li><b>BadToken HYDRA engine</b><span>The scheduler and shared evidence format that tie the attack modules together.</span></li>
+            <li><b>WebRedTeam module</b><span>Browser-based testing of prompt injection that escalates into script execution.</span></li>
+            <li><b>First-author manuscript</b><span>In preparation. Not yet submitted anywhere.</span></li>
+          </ul>
+        </section>
+        <section class="board-col board-col--next reveal" style="--rd:160ms" aria-labelledby="board-next">
+          <h3 id="board-next">Proposed<span class="board-count">2</span></h3>
+          <ul>
+            <li><b>Image-carried prompt injection</b><span>Indirect injection delivered in images rather than text, reproducing Nassi et al. (Black Hat Europe 2023).</span></li>
+            <li><b>X-Ray module</b><span>Parked as a possible future HYDRA module.</span></li>
+          </ul>
+        </section>
+      </div>
+    </div>
+  </section>
+
+  <section class="s s--line" id="pipeline" aria-labelledby="pipeTitle">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><p class="kicker">Method</p><h2 id="pipeTitle" class="reveal">Anatomy of a red-team run</h2></div>
+        <p class="reveal" style="--rd:120ms">An automated evaluation is a pipeline with six stages. Step through it to see what each one does in BadToken HYDRA. <a class="text-link" href="projects/hydra.html">Read the case study</a></p>
+      </div>
+      <div class="console console--flow reveal">
+        <div class="stepper stepper--flow" data-stepper="Stages of an automated red-team run">
+          <ol>
+            <li data-label="Target">
+              <div class="stage">
+                <div class="stage-copy"><p class="stage-label">Target models</p><h3>Serve the model you're going to attack</h3><p>Each target is hosted by the group, never a third-party service. Models run under vLLM on A100 nodes in the university research cluster, scheduled with Slurm, and are reached through an authenticated SSH tunnel as an OpenAI-compatible endpoint.</p></div>
+                <dl class="evidence"><div><dt>serving</dt><dd>vLLM 0.6.3</dd></div><div><dt>hardware</dt><dd>A100 nodes, Slurm</dd></div><div><dt>access</dt><dd>SSH tunnel</dd></div><div><dt>web targets</dt><dd>lab-hosted apps</dd></div></dl>
+              </div>
+            </li>
+            <li data-label="Attack">
+              <div class="stage">
+                <div class="stage-copy"><p class="stage-label">Attack generators</p><h3>Generate adversarial inputs</h3><p>Different tools are good at different attacks. garak brings a library of single-turn probes, PyRIT orchestrates multi-turn conversations, and WebRedTeam drives a real browser against LLM-backed web apps.</p></div>
+                <dl class="evidence"><div><dt>garak</dt><dd>probe library</dd></div><div><dt>PyRIT</dt><dd>multi-turn attacks</dd></div><div><dt>WebRedTeam</dt><dd>browser module, in progress</dd></div><div><dt>X-Ray</dt><dd>planned</dd></div></dl>
+              </div>
+            </li>
+            <li data-label="Orchestrate">
+              <div class="stage">
+                <div class="stage-copy"><p class="stage-label">Test orchestration</p><h3>Run it the same way every time</h3><p>HYDRA's scheduler decides which module runs which attack against which target. A comparison is only fair if both sides ran under identical conditions, so probe, generation, and seed settings are fixed, and the baseline is re-run the same day.</p></div>
+                <dl class="evidence"><div><dt>engine</dt><dd>HYDRA scheduler</dd></div><div><dt>parameters</dt><dd>identical per pair</dd></div><div><dt>baseline</dt><dd>re-run same day</dd></div><div><dt>clients</dt><dd>separate conda env</dd></div></dl>
+              </div>
+            </li>
+            <li data-label="Analyze">
+              <div class="stage">
+                <div class="stage-copy"><p class="stage-label">Response analysis</p><h3>Read what the model actually said</h3><p>Detectors score each response, but a score is a claim, not a finding. Hit logs are reviewed by hand to separate real guardrail failures from short compliance markers that inflate attack-success rates.</p></div>
+                <dl class="evidence"><div><dt>scoring</dt><dd>tool detectors</dd></div><div><dt>review</dt><dd>hit logs, by hand</dd></div><div><dt>format</dt><dd>shared evidence record</dd></div></dl>
+              </div>
+            </li>
+            <li data-label="Measure">
+              <div class="stage">
+                <div class="stage-copy"><p class="stage-label">Evaluation metrics</p><h3>Put the numbers in context</h3><p>Pass rates per probe family mean little alone. Results are placed against a 23-model calibration baseline using Z-scores, and encoding probes act as a control, since resistance there should come from capability rather than refusal.</p></div>
+                <dl class="evidence"><div><dt>unit</dt><dd>pass rate per probe family</dd></div><div><dt>context</dt><dd>23-model calibration, Z-scores</dd></div><div><dt>control</dt><dd>encoding probes</dd></div></dl>
+              </div>
+            </li>
+            <li data-label="Report">
+              <div class="stage">
+                <div class="stage-copy"><p class="stage-label">Research reporting</p><h3>Produce one report per campaign</h3><p>Because every module writes into the same evidence format, one campaign yields one findings report that can be compared run to run. The first write-up is a manuscript in preparation; anything affecting real systems would go through coordinated disclosure.</p></div>
+                <dl class="evidence"><div><dt>output</dt><dd>one findings report</dd></div><div><dt>manuscript</dt><dd>in preparation</dd></div><div><dt>disclosure</dt><dd>coordinated</dd></div></dl>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="s s--line s--panel" aria-labelledby="expTitle">
     <div class="wrap">
       <div class="sec-head">
@@ -106,7 +196,7 @@
   <section class="s s--line" aria-labelledby="methodTitle">
     <div class="wrap">
       <div class="sec-head">
-        <div><p class="kicker">Method</p><h2 id="methodTitle" class="reveal">Reproducible by design</h2></div>
+        <div><p class="kicker">Reproducibility</p><h2 id="methodTitle" class="reveal">Reproducible by design</h2></div>
         <p class="reveal" style="--rd:120ms">Most of reproducibility is logistics. These are the rules every run follows. <a class="text-link" href="projects/hydra.html">See the HYDRA case study</a></p>
       </div>
       <div class="rules">
@@ -118,7 +208,7 @@
     </div>
   </section>
 
-  <section class="s s--line s--panel" aria-labelledby="threatTitle">
+  <section class="s s--line s--panel" id="threat-model" aria-labelledby="threatTitle">
     <div class="wrap">
       <div class="sec-head">
         <div><p class="kicker">Threat model</p><h2 id="threatTitle" class="reveal">The attack surface</h2></div>
@@ -237,5 +327,7 @@
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="js/script.js"></script>
 <script src="js/visuals.js" defer></script>
+<script src="js/labs.js" defer></script>
+<script src="js/palette.js" defer></script>
 </body>
 </html>
