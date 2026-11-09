@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Search indexing is intentionally off (privacy). Delete this line when you want the site to appear in search results. -->
+<meta name="robots" content="noindex, nofollow, noarchive, noimageindex">
+<title>Ghostclick case study | Kurt Sooknanan</title>
+<meta name="description" content="Case study: Ghostclick, a privacy-first Chrome extension that records a website task once and replays it on request using an on-device model through WebLLM.">
+<meta name="author" content="Kurt Sooknanan">
+<meta name="theme-color" content="#050608">
+<link rel="canonical" href="https://kurt-sudo420.github.io/portfolio/projects/ghostclick.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Kurt Sooknanan">
+<meta property="og:title" content="Ghostclick case study | Kurt Sooknanan">
+<meta property="og:description" content="Case study: Ghostclick, a privacy-first Chrome extension that records a website task once and replays it on request using an on-device model through WebLLM.">
+<meta property="og:url" content="https://kurt-sudo420.github.io/portfolio/projects/ghostclick.html">
+<meta property="og:image" content="https://kurt-sudo420.github.io/portfolio/images/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Kurt Sooknanan: security analyst at the UMass Boston NSOC and undergraduate LLM security researcher">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="../images/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,500..800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/styles.css">
+<script>document.documentElement.classList.remove('no-js');</script>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to content</a>
+
+<header class="site-header">
+  <div class="nav-wrap">
+    <a href="../index.html" class="brand"><span class="brand-mark" aria-hidden="true">KS</span><span class="brand-name">Kurt Sooknanan</span></a>
+    <nav aria-label="Primary">
+      <ul class="nav-links" id="navLinks">
+        <li><a href="../index.html" style="--i:0"><span class="nav-num">01</span>Home</a></li>
+        <li><a href="../about.html" style="--i:1"><span class="nav-num">02</span>About</a></li>
+        <li><a href="../experience.html" style="--i:2"><span class="nav-num">03</span>Experience</a></li>
+        <li><a href="../projects.html" class="active" aria-current="page" style="--i:3"><span class="nav-num">04</span>Projects</a></li>
+        <li><a href="../research.html" style="--i:4"><span class="nav-num">05</span>Research</a></li>
+        <li><a href="../certifications.html" style="--i:5"><span class="nav-num">06</span>Certifications</a></li>
+        <li><a href="../contact.html" style="--i:6"><span class="nav-num">07</span>Contact</a></li>
+      </ul>
+    </nav>
+    <a class="nav-status" href="../contact.html"><span class="pulse-dot" aria-hidden="true"></span>Open to internships and co-ops</a>
+    <button class="nav-toggle" id="navToggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span></button>
+  </div>
+</header>
+
+<main id="main">
+  <section class="cs-hero" aria-labelledby="csTitle">
+    <div class="ambient" aria-hidden="true"></div>
+    <div class="wrap">
+      <a class="cs-back" href="../projects.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg> All projects</a>
+      <p class="kicker fade-in" style="--d:100ms">Case study / Browser automation</p>
+      <h1 id="csTitle" data-split style="--chars:10"><span class="line">Ghostclick</span></h1>
+      <div class="cs-intro">
+        <p class="lede fade-in" style="--d:600ms">A Chrome extension that records a website task once and replays it on request, with the model running in the browser.</p>
+        <dl class="cs-meta fade-in" style="--d:750ms"><div><dt>Role</dt><dd>Team member</dd></div><div><dt>Status</dt><dd><span class="state state--muted">Team project</span></dd></div><div class="full"><dt>Stack</dt><dd>JavaScript, Chrome extension, WebLLM</dd></div><div class="full"><dt>Focus</dt><dd>Local-first browser automation</dd></div></dl>
+      </div>
+      <div class="frame frame--grid cs-vis reveal reveal--scale"><svg class="ghost-svg" viewBox="0 0 540 300" role="img" aria-label="Illustration of a recorded cursor path being replayed across a web page">
+  <rect x="20" y="20" width="500" height="260" rx="14" fill="#0E1119" stroke="rgba(170,196,235,0.2)"/>
+  <rect x="20" y="20" width="500" height="34" rx="14" fill="#121622"/>
+  <circle cx="44" cy="37" r="5" fill="rgba(170,196,235,0.3)"/><circle cx="60" cy="37" r="5" fill="rgba(170,196,235,0.3)"/><circle cx="76" cy="37" r="5" fill="rgba(170,196,235,0.3)"/>
+  <circle cx="490" cy="37" r="6" fill="#FF6B7A"/><text x="440" y="41" font-family="IBM Plex Mono, monospace" font-size="11" fill="#A3AEC0">REC</text>
+  <path class="track" d="M60 220 C 140 120, 220 260, 300 150 S 430 80, 480 170"/>
+  <path class="trace" d="M60 220 C 140 120, 220 260, 300 150 S 430 80, 480 170"/>
+  <circle class="pt" cx="60" cy="220" r="6"/><circle class="pt" cx="300" cy="150" r="6"/><circle class="pt" cx="480" cy="170" r="6"/>
+  <g class="ghost-cursor"><path d="M0 0 L0 18 L5 13 L9 21 L12 20 L8 12 L14 12 Z" fill="#ECF1F8" stroke="#050608" stroke-width="1"/></g>
+</svg><p class="frame-label" style="left:auto;right:20px">Illustration of record and replay, not a screenshot of the extension</p></div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <section class="cs-section" id="problem" aria-labelledby="problem-h">
+      <header><p class="kicker">Overview</p><h2 id="problem-h">The problem</h2></header>
+      <div class="cs-body">
+<p>Repetitive web tasks are an obvious thing to automate, but assistants that automate them usually work by sending what's on your screen to a server you don't control.</p>
+<p>Ghostclick takes the other route. It's a privacy-first Chrome extension: you perform a task once while it records, and it replays that task when you ask. The model behind it runs on the device through WebLLM, so nothing is sent to a server.</p></div>
+    </section>
+    <section class="cs-section" id="how" aria-labelledby="how-h">
+      <header><p class="kicker">Design</p><h2 id="how-h">Record once, replay on request</h2></header>
+      <div class="cs-body">
+<div class="rules rules--3">
+  <div class="rule reveal"><h3>Record</h3><p>The user carries out the task on the site once while the extension records it.</p></div>
+  <div class="rule reveal" style="--rd:70ms"><h3>Run locally</h3><p>An on-device model, loaded in the browser through WebLLM, does the language work. There is no backend to call.</p></div>
+  <div class="rule reveal" style="--rd:140ms"><h3>Replay</h3><p>When the user asks for the task again, the extension replays it on the page.</p></div>
+</div></div>
+    </section>
+    <section class="cs-section" id="security" aria-labelledby="security-h">
+      <header><p class="kicker">Security view</p><h2 id="security-h">The questions it raises</h2></header>
+      <div class="cs-body">
+<p>These are the questions I'd ask of any record-and-replay tool, and the reason this project sits next to my LLM security research.</p>
+<ul class="bullets"><li><strong>Local inference removes a data flow.</strong> With no server in the loop there's no remote copy of page content to retain or leak. That is the privacy argument for running the model on the device.</li><li><strong>A recorder sees what the user sees.</strong> Anything on the page or typed during a recording is in scope, so what gets kept, and for how long, is the central design question.</li><li><strong>A replay acts as the user.</strong> It runs inside whatever sessions the browser is signed in to, so a replay should only run when the user asks for it, which is how Ghostclick works.</li><li><strong>Page content is untrusted input.</strong> Any model that reads a web page can be steered by text planted on it. That's the same vulnerability class the <a class="text-link" href="webredteam.html">WebRedTeam</a> work tests for.</li></ul></div>
+    </section>
+    <section class="cs-section" id="status" aria-labelledby="status-h">
+      <header><p class="kicker">Status</p><h2 id="status-h">Where it stands</h2></header>
+      <div class="cs-body">
+<p>Ghostclick is a team project. The code isn't in one of my public repositories, so there's no repository link here, and there are no published measurements to report.</p>
+<p>I'm glad to walk through the design and my part in it in a conversation.</p>
+<p><a class="btn btn--ghost" href="../contact.html" data-magnetic>Get in touch <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></p></div>
+    </section>
+  </div>
+
+  <section class="s s--line s--panel" aria-labelledby="relH">
+    <div class="wrap">
+      <div class="sec-head sec-head--stack"><h2 id="relH" style="font-size:var(--t-lg)">Related projects</h2></div>
+      <div class="cs-related"><article class="card3d reveal" data-tilt="4">
+  <div class="card3d-vis"><div class="frame frame--grid"><div style="position:absolute;inset:0"><div class="stage3d" data-tilt="5">
+  <div class="browser3d" role="img" aria-label="Illustration of an LLM-backed web page where hidden instructions in page content lead the assistant to emit a script payload">
+    <div class="browser3d-bar"><i></i><i></i><i></i><span class="browser3d-url">https://lab-test.local/product/42</span></div>
+    <div class="browser3d-body">
+      <div>
+        <div class="sk sk--h"></div>
+        <div class="sk" style="width:92%"></div><div class="sk" style="width:84%"></div><div class="sk" style="width:88%"></div>
+        <div class="sk sk--inject" style="width:76%"></div>
+        <div class="sk" style="width:64%"></div><div class="sk" style="width:80%"></div>
+      </div>
+      <div class="chatpane">
+        <div class="bubble">Summarize the reviews on this page.</div>
+        <div class="bubble bubble--ai">Reading page content&hellip;</div>
+        <div class="bubble bubble--alert">&lt;script&gt; rendered in reply</div>
+      </div>
+    </div>
+  </div>
+</div>
+</div></div></div>
+  <div class="card3d-body">
+    <p class="kicker">Web and LLM security</p>
+    <h3><a class="stretched" href="../projects/webredteam.html">WebRedTeam</a></h3>
+    <p>HYDRA's browser-based module for prompt injection that escalates into script execution.</p>
+    <div class="chip-row"><span class="chip">Browser testing</span><span class="chip">Prompt injection</span><span class="chip">XSS</span></div>
+    <div class="card3d-foot"><span class="state state--violet">In progress</span></div>
+  </div>
+</article><article class="card3d reveal" data-tilt="4">
+  <div class="card3d-vis"><div class="frame frame--grid"><canvas data-visual="ports" aria-hidden="true"></canvas></div></div>
+  <div class="card3d-body">
+    <p class="kicker">Security tooling</p>
+    <h3><a class="stretched" href="../projects/cybertoolkit.html">CyberToolkit</a></h3>
+    <p>Standard-library Python network utilities with threaded scanning and tests.</p>
+    <div class="chip-row"><span class="chip">Python</span><span class="chip">Sockets</span><span class="chip">pytest</span></div>
+    <div class="card3d-foot"><span class="state">Public on GitHub</span></div>
+  </div>
+</article></div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <nav class="cs-next" aria-label="Next case study">
+      <div><p class="kicker" style="margin-bottom:var(--s-4)">Next case study</p><p class="ex-title" style="--chars:8"><a href="../projects/hydra.html">BadToken HYDRA</a></p></div>
+      <a href="../projects/hydra.html" class="btn btn--primary" data-magnetic aria-label="Next case study: BadToken HYDRA">Next <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </nav>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <p class="brand-name" style="font-size:1.3rem;margin-bottom:12px;color:var(--text)">Kurt Sooknanan</p>
+        <p>Junior Security Analyst at the UMass Boston Network Security Operations Center and undergraduate LLM security researcher in the Machine Psychology Group.</p>
+      </div>
+      <div class="footer-col">
+        <h2>Work</h2>
+        <ul>
+          <li><a href="../projects.html">Projects</a></li>
+          <li><a href="../research.html">Research</a></li>
+          <li><a href="../research.html#publications">Publications</a></li>
+          <li><a href="../experience.html">Experience</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h2>About</h2>
+        <ul>
+          <li><a href="../about.html">About me</a></li>
+          <li><a href="../certifications.html">Certifications</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h2>Elsewhere</h2>
+        <ul>
+          <li><a href="mailto:manny.kurt@gmail.com">Email</a></li>
+          <li><a href="https://github.com/kurt-sudo420" target="_blank" rel="noopener">GitHub<span class="sr-only"> (opens in a new tab)</span></a></li>
+          <li><a href="https://www.linkedin.com/in/kurt-sooknanan-485494410/" target="_blank" rel="noopener">LinkedIn<span class="sr-only"> (opens in a new tab)</span></a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="footer-mark" aria-hidden="true">Sooknanan</p>
+    <div class="footer-bottom">
+      <p>&copy; <span id="year">2026</span> Kurt Sooknanan. Hand-built with HTML, CSS, and JavaScript.</p>
+      <p>Last updated <span id="lastModified"></span></p>
+    </div>
+  </div>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="../js/script.js"></script>
+<script src="../js/visuals.js" defer></script>
+<script src="../js/palette.js" defer></script>
+</body>
+</html>

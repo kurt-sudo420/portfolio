@@ -15,7 +15,11 @@
 <meta property="og:title" content="Projects | Kurt Sooknanan">
 <meta property="og:description" content="Projects by Kurt Sooknanan: BadToken HYDRA, an automated LLM red-teaming framework, plus WebRedTeam, CyberToolkit, embedded device and wireless security, a security homelab, and Ghostclick.">
 <meta property="og:url" content="https://kurt-sudo420.github.io/portfolio/projects.html">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="https://kurt-sudo420.github.io/portfolio/images/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Kurt Sooknanan: security analyst at the UMass Boston NSOC and undergraduate LLM security researcher">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -58,6 +62,13 @@
 
   <section class="s" style="padding-top:var(--s-6)" aria-label="Project exhibition">
     <div class="wrap">
+      <div class="finder" data-finder>
+        <div class="finder-search">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2"/></svg>
+          <label class="sr-only" for="projectSearch">Search projects by technology or topic</label>
+          <input type="search" id="projectSearch" placeholder="Search by technology or topic, e.g. PyRIT" autocomplete="off" spellcheck="false" aria-keyshortcuts="/">
+          <kbd aria-hidden="true">/</kbd>
+        </div>
       <div class="filters" data-filter-group role="group" aria-label="Filter projects by category">
         <button class="filter-btn" type="button" data-filter="all" aria-pressed="true">All</button>
         <button class="filter-btn" type="button" data-filter="llm" aria-pressed="false">LLM security</button>
@@ -66,10 +77,16 @@
         <button class="filter-btn" type="button" data-filter="infra" aria-pressed="false">Infrastructure</button>
         <span class="filter-count" id="filterStatus" role="status" aria-live="polite">7 projects</span>
       </div>
+      </div>
+
+      <div class="finder-empty" id="finderEmpty" hidden>
+        <p><b>No projects match that search.</b> Try a tool name like garak or Trivy, or a topic like prompt injection.</p>
+        <button class="btn btn--ghost btn--sm" type="button" id="finderReset">Clear search and filters</button>
+      </div>
 
       <div class="exhibit">
         <!-- 01 HYDRA: full-width feature -->
-        <article class="ex-feature reveal" data-cat="llm offensive" aria-labelledby="exHydra">
+        <article class="ex-feature reveal" data-cat="llm offensive" data-keywords="red team red-teaming jailbreak benchmark abliteration weight editing scheduler evidence A100 CUDA conda reproducible" aria-labelledby="exHydra">
           <span class="ex-index">01 / Flagship research</span>
           <div class="frame ex-feature-vis" style="padding:clamp(8px,2vw,24px)"><svg class="hydra-svg arch-desktop" viewBox="0 0 960 480" role="img" aria-labelledby="hydraSvgT hydraSvgD">
   <title id="hydraSvgT">BadToken HYDRA architecture</title>
@@ -140,7 +157,7 @@
         </article>
 
         <!-- 02 WebRedTeam: split -->
-        <article class="ex-split reveal" data-cat="llm offensive" aria-labelledby="exWrt">
+        <article class="ex-split reveal" data-cat="llm offensive" data-keywords="cross-site scripting web security black-box red team" aria-labelledby="exWrt">
           <div class="frame ex-split-vis"><div class="stage3d" data-tilt="5">
   <div class="browser3d" role="img" aria-label="Illustration of an LLM-backed web page where hidden instructions in page content lead the assistant to emit a script payload">
     <div class="browser3d-bar"><i></i><i></i><i></i><span class="browser3d-url">https://lab-test.local/product/42</span></div>
@@ -173,7 +190,7 @@
         </article>
 
         <!-- 03 CyberToolkit: split, flipped -->
-        <article class="ex-split ex-split--flip reveal" data-cat="tooling" aria-labelledby="exCtk">
+        <article class="ex-split ex-split--flip reveal" data-cat="tooling" data-keywords="network port scanner CLI command line hashing GitHub open source" aria-labelledby="exCtk">
           <div class="frame ex-split-vis vis-ports"><canvas data-visual="ports" aria-hidden="true"></canvas><p class="frame-label">Sweep based on the README example: ports 20 to 100 on scanme.nmap.org</p></div>
           <div>
             <span class="ex-index">03 / Security tooling</span>
@@ -190,7 +207,7 @@
 
         <h2 class="sr-only">More projects</h2>
         <div class="ex-row">
-          <article class="card3d reveal" data-tilt="4" data-cat="offensive">
+          <article class="card3d reveal" data-tilt="4" data-cat="offensive" data-keywords="hardware radio RF wifi wireless red team">
   <div class="card3d-vis"><div class="frame frame--grid"><svg class="rf-svg" viewBox="0 0 480 300" role="img" aria-label="Illustration of radio waves radiating from an antenna beside a spectrum display">
   <g transform="translate(150 160)">
     <circle class="wave" r="130"/><circle class="wave" r="130"/><circle class="wave" r="130"/><circle class="wave" r="130"/>
@@ -217,7 +234,7 @@
     <div class="card3d-foot"><span class="state">Ongoing</span></div>
   </div>
 </article>
-          <article class="card3d reveal" data-tilt="4" data-cat="infra">
+          <article class="card3d reveal" data-tilt="4" data-cat="infra" data-keywords="self-hosted containers DNS storage linux monitoring vulnerability scanning">
   <div class="card3d-vis"><div class="frame frame--grid"><svg class="rack-svg" viewBox="0 0 480 300" role="img" aria-label="Illustration of a homelab rack running TrueNAS, a local LLM container, Pi-hole with Unbound, and Nextcloud">
   <rect x="110" y="24" width="260" height="252" rx="12" fill="#0A0C11" stroke="rgba(170,196,235,0.25)"/>
   <g>
@@ -237,7 +254,7 @@
 </article>
         </div>
         <div class="ex-row ex-row--even">
-          <article class="card3d reveal" data-tilt="4" data-cat="tooling llm">
+          <article class="card3d reveal" data-tilt="4" data-cat="tooling llm" data-keywords="browser automation on-device local model privacy record replay webgpu">
   <div class="card3d-vis"><div class="frame frame--grid"><svg class="ghost-svg" viewBox="0 0 540 300" role="img" aria-label="Illustration of a recorded cursor path being replayed across a web page">
   <rect x="20" y="20" width="500" height="260" rx="14" fill="#0E1119" stroke="rgba(170,196,235,0.2)"/>
   <rect x="20" y="20" width="500" height="34" rx="14" fill="#121622"/>
@@ -250,13 +267,13 @@
 </svg></div></div>
   <div class="card3d-body">
     <p class="kicker">06 / Team project</p>
-    <h3>Ghostclick</h3>
+    <h3><a class="stretched" href="projects/ghostclick.html">Ghostclick</a></h3>
     <p>A privacy-first Chrome extension that records a website task once and replays it on request, using an on-device model through WebLLM so nothing is sent to a server.</p>
     <div class="chip-row"><span class="chip">JavaScript</span><span class="chip">Chrome extension</span><span class="chip">WebLLM</span></div>
     <div class="card3d-foot"><span class="state state--muted">Team project</span></div>
   </div>
 </article>
-          <article class="card3d reveal" data-tilt="4" data-cat="tooling">
+          <article class="card3d reveal" data-tilt="4" data-cat="tooling" data-keywords="website frontend accessibility command palette playwright tests">
   <div class="card3d-vis"><div class="frame frame--grid"><svg viewBox="0 0 480 300" role="img" aria-label="Illustration of this portfolio's layout grid">
   <defs><linearGradient id="sg" x1="0" x2="1"><stop offset="0" stop-color="#8B6CFF"/><stop offset="1" stop-color="#3DE8F5"/></linearGradient></defs>
   <rect x="60" y="40" width="360" height="220" rx="12" fill="#0E1119" stroke="rgba(170,196,235,0.2)"/>
@@ -272,8 +289,8 @@
   <div class="card3d-body">
     <p class="kicker">07 / Web engineering</p>
     <h3>This portfolio</h3>
-    <p>Hand-written HTML, CSS, and JavaScript with no frameworks: custom canvas scenes, view transitions, and accessible motion that respects reduced-motion settings.</p>
-    <div class="chip-row"><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">Canvas</span><span class="chip">jQuery</span></div>
+    <p>Hand-written HTML, CSS, and JavaScript with no frameworks: custom canvas scenes, a keyboard command palette, and browser tests that run against every page.</p>
+    <div class="chip-row"><span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">Canvas</span><span class="chip">jQuery</span><span class="chip">Playwright</span></div>
     <div class="card3d-foot"><span class="state">Live</span><a class="arrow-link" href="https://github.com/kurt-sudo420/portfolio" target="_blank" rel="noopener">Source <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg><span class="sr-only"> (opens in a new tab)</span></a></div>
   </div>
 </article>
@@ -335,5 +352,6 @@
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="js/script.js"></script>
 <script src="js/visuals.js" defer></script>
+<script src="js/palette.js" defer></script>
 </body>
 </html>
