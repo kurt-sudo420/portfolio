@@ -759,8 +759,96 @@ a.holo { color: inherit; text-decoration: none; cursor: pointer; transition: tra
 a.holo:hover { border-color: rgba(61, 232, 245, 0.55); box-shadow: 0 40px 110px -36px rgba(61, 232, 245, 0.65), 0 30px 80px -30px rgba(0,0,0,0.9); }
 a.holo:focus-visible { outline: 2px solid var(--cyan); outline-offset: 4px; border-radius: 22px; }
 
+/* Card effects: spinning foil edge, light sweep, per-card glow (Security+ scanlines, Network+ live mesh) */
+@property --fx-spin { syntax: "<angle>"; inherits: false; initial-value: 0deg; }
+.holo--fx { --fx-a: 61, 232, 245; --fx-b: 139, 108, 255; --fx-c: 207, 232, 255; border-color: transparent; }
+.holo--fx > :not(.holo-ring):not(.holo-scan):not(.holo-sheen):not(.holo-mesh) { position: relative; z-index: 1; }
+.holo-ring {
+  position: absolute; inset: 0; z-index: 2; border-radius: inherit; padding: 1.5px; pointer-events: none;
+  background: conic-gradient(from var(--fx-spin), rgba(var(--fx-a), 0.95), rgba(var(--fx-b), 0.10) 22%, rgba(var(--fx-c), 0.9) 50%, rgba(var(--fx-b), 0.10) 78%, rgba(var(--fx-a), 0.95));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  animation: fx-spin 6s linear infinite;
+}
+.holo-sheen {
+  position: absolute; inset: -40% -30%; z-index: 0; pointer-events: none; mix-blend-mode: screen;
+  background: linear-gradient(105deg, transparent 42%, rgba(var(--fx-c), 0.12) 47%, rgba(255, 255, 255, 0.24) 50%, rgba(var(--fx-c), 0.12) 53%, transparent 58%);
+  transform: translateX(-70%);
+  animation: fx-sheen 6s var(--ease) infinite;
+}
+.holo--fx .holo-name {
+  background: linear-gradient(100deg, #FFFFFF 0%, rgb(var(--fx-c)) 30%, rgb(var(--fx-a)) 65%, rgb(var(--fx-b)) 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  filter: drop-shadow(0 0 18px rgba(var(--fx-a), 0.30));
+}
+.holo--fx .holo-chip { overflow: hidden; box-shadow: 0 0 18px -4px rgba(var(--fx-a), 0.6); }
+.holo--fx .holo-chip::before { content: ""; position: absolute; inset: 0; background: linear-gradient(110deg, transparent 35%, rgba(255, 255, 255, 0.75) 50%, transparent 65%); transform: translateX(-120%); animation: fx-chip 6s var(--ease) infinite; }
+.holo--fx .holo-seal { color: rgb(var(--fx-a)); filter: drop-shadow(0 0 10px rgba(var(--fx-a), 0.5)); }
+a.holo--fx:hover { box-shadow: 0 40px 120px -34px rgba(var(--fx-a), 0.75), 0 0 80px -20px rgba(var(--fx-b), 0.55), 0 30px 80px -30px rgba(0, 0, 0, 0.9); }
+a.holo--fx:hover .holo-ring { animation-duration: 2.5s; }
+
+/* Security+: cyan + white, scanlines with a sweeping beam */
+.holo--sec {
+  --fx-a: 61, 232, 245; --fx-b: 0, 150, 175; --fx-c: 255, 255, 255;
+  background:
+    radial-gradient(110% 100% at 100% 0%, rgba(61, 232, 245, 0.26), transparent 50%),
+    radial-gradient(130% 120% at 0% 100%, rgba(0, 150, 175, 0.30), transparent 55%),
+    radial-gradient(70% 70% at 12% 5%, rgba(255, 255, 255, 0.07), transparent 50%),
+    linear-gradient(155deg, #0C1A1F, #06090C 72%);
+  box-shadow: 0 40px 110px -40px rgba(61, 232, 245, 0.6), 0 0 70px -24px rgba(255, 255, 255, 0.18), 0 30px 80px -30px rgba(0, 0, 0, 0.9);
+}
+.holo-scan { position: absolute; inset: 0; z-index: 0; pointer-events: none; background: repeating-linear-gradient(0deg, rgba(207, 232, 255, 0.035) 0 1px, transparent 1px 3px); }
+.holo-scan::after { content: ""; position: absolute; left: 0; right: 0; top: -30%; height: 30%; background: linear-gradient(180deg, transparent, rgba(61, 232, 245, 0.12), transparent); animation: fx-scan 4.5s linear infinite; }
+
+/* Security+ circuit: cyan traces, cyan and white packets, radar pings off the pads */
+.ckt-links path { fill: none; stroke: rgba(61, 232, 245, 0.24); stroke-width: 1.1; stroke-linejoin: round; }
+.ckt-pkts path { fill: none; stroke: rgba(120, 245, 255, 0.95); stroke-width: 1.8; stroke-linecap: round; stroke-dasharray: 5 150; animation: fx-pkt-c 2.8s linear infinite; filter: drop-shadow(0 0 4px rgba(61, 232, 245, 0.9)); }
+.ckt-pkts path:nth-child(2n) { stroke: rgba(255, 255, 255, 0.95); filter: drop-shadow(0 0 4px rgba(207, 245, 255, 0.9)); animation-duration: 3.4s; animation-delay: -1.3s; }
+.ckt-pkts path:nth-child(3) { animation-duration: 2.2s; animation-delay: -0.6s; }
+.ckt-pkts path:nth-child(5) { animation-duration: 3.9s; animation-delay: -2.1s; }
+.ckt-pads circle, .ckt-pads rect { fill: #08141A; stroke: rgba(61, 232, 245, 0.85); stroke-width: 1.3; animation: fx-pad 2.6s var(--ease) infinite; }
+.ckt-pads :nth-child(2n) { animation-delay: -1.3s; }
+.ckt-ping { fill: none; stroke: rgba(61, 232, 245, 0.8); stroke-width: 1; transform-box: fill-box; transform-origin: center; animation: fx-ping 3s var(--ease) infinite; }
+.ckt-ping:nth-of-type(2) { stroke: rgba(255, 255, 255, 0.75); animation-delay: -1.5s; }
+@keyframes fx-pkt-c { to { stroke-dashoffset: -155; } }
+@keyframes fx-pad { 50% { stroke: rgba(255, 255, 255, 1); filter: drop-shadow(0 0 5px rgba(61, 232, 245, 0.9)); } }
+@keyframes fx-ping { 0% { transform: scale(1); opacity: 0.9; } 100% { transform: scale(7); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) {
+  .ckt-pkts path, .ckt-pads circle, .ckt-pads rect, .ckt-ping { animation: none !important; }
+  .ckt-pkts, .ckt-ping { display: none; }
+}
+
+/* Network+: electric blue on graphite, packets moving across a live mesh */
+.holo--net {
+  --fx-a: 0, 229, 255; --fx-b: 37, 99, 255; --fx-c: 214, 240, 255;
+  background:
+    radial-gradient(120% 110% at 100% 0%, rgba(37, 99, 255, 0.40), transparent 52%),
+    radial-gradient(90% 90% at 0% 100%, rgba(0, 229, 255, 0.20), transparent 55%),
+    linear-gradient(160deg, #101B2E, #070A11 72%);
+  box-shadow: 0 40px 110px -40px rgba(37, 99, 255, 0.7), 0 0 70px -24px rgba(0, 229, 255, 0.4), 0 30px 80px -30px rgba(0, 0, 0, 0.9);
+}
+.holo--net .holo-ring { animation-direction: reverse; }
+.holo-mesh { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; opacity: 0.65; -webkit-mask-image: radial-gradient(120% 100% at 75% 35%, #000 30%, transparent 75%); mask-image: radial-gradient(120% 100% at 75% 35%, #000 30%, transparent 75%); }
+.mesh-links path { fill: none; stroke: rgba(0, 229, 255, 0.22); stroke-width: 1; }
+.mesh-pkts path { fill: none; stroke: rgba(160, 245, 255, 0.95); stroke-width: 1.8; stroke-linecap: round; stroke-dasharray: 6 140; animation: fx-pkt 3.2s linear infinite; filter: drop-shadow(0 0 4px rgba(0, 229, 255, 0.9)); }
+.mesh-pkts path:nth-child(2) { animation-duration: 2.6s; animation-delay: -1s; }
+.mesh-pkts path:nth-child(3) { animation-duration: 3.8s; animation-delay: -2s; }
+.mesh-nodes circle { fill: #0B1322; stroke: rgba(0, 229, 255, 0.85); stroke-width: 1.4; animation: fx-node 2.4s var(--ease) infinite; }
+.mesh-nodes circle:nth-child(2n) { animation-delay: -1.2s; }
+
+@keyframes fx-spin { to { --fx-spin: 360deg; } }
+@keyframes fx-sheen { 0%, 50% { transform: translateX(-70%); } 100% { transform: translateX(70%); } }
+@keyframes fx-chip { 0%, 60% { transform: translateX(-120%); } 100% { transform: translateX(120%); } }
+@keyframes fx-scan { to { top: 100%; } }
+@keyframes fx-pkt { to { stroke-dashoffset: -146; } }
+@keyframes fx-node { 50% { stroke: rgba(160, 245, 255, 1); filter: drop-shadow(0 0 5px rgba(0, 229, 255, 0.9)); } }
+@media (prefers-reduced-motion: reduce) {
+  .holo-ring, .holo-sheen, .holo-scan::after, .mesh-pkts path, .mesh-nodes circle, .holo--fx .holo-chip::before { animation: none !important; }
+  .holo-sheen, .holo-scan::after, .mesh-pkts, .holo--fx .holo-chip::before { display: none; }
+}
+
 /* Security+ lock seal */
-.holo-seal--shield { width: 60px; height: 60px; filter: drop-shadow(0 0 10px rgba(61, 232, 245, 0.45)); }
+.holo-seal--shield { width: 60px; height: 60px; }
 .seal-orbit { transform-box: fill-box; transform-origin: center; animation: sec-orbit 14s linear infinite; }
 @keyframes sec-orbit { to { transform: rotate(360deg); } }
 @media (prefers-reduced-motion: reduce) { .seal-orbit { animation: none !important; } }
