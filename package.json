@@ -1,0 +1,17 @@
+{
+  "name": "kurt-sooknanan-portfolio",
+  "private": true,
+  "description": "Development tooling only. The site itself is plain HTML, CSS and JavaScript with no build step.",
+  "scripts": {
+    "serve": "python3 -m http.server 8080",
+    "test": "npm run test:static && npm run typecheck && npm run test:e2e",
+    "test:static": "python3 tests/check_site.py",
+    "test:e2e": "node --test tests/e2e.test.js",
+    "typecheck": "tsc -p jsconfig.json"
+  },
+  "devDependencies": {
+    "jquery": "3.7.1",
+    "playwright": "^1.56.0",
+    "typescript": ">=5.6.0"
+  }
+}
