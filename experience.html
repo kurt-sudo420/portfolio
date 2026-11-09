@@ -15,7 +15,11 @@
 <meta property="og:title" content="Experience | Kurt Sooknanan">
 <meta property="og:description" content="Kurt Sooknanan's experience as a Junior Security Analyst at the UMass Boston Network Security Operations Center and as an undergraduate LLM security researcher.">
 <meta property="og:url" content="https://kurt-sudo420.github.io/portfolio/experience.html">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="https://kurt-sudo420.github.io/portfolio/images/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Kurt Sooknanan: security analyst at the UMass Boston NSOC and undergraduate LLM security researcher">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -71,6 +75,153 @@
         </div>
         <div class="cap-grid"><div class="cap reveal" style="--rd:0ms"><div class="cap-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4M7 12l3-3 2 2 4-4"/></svg></div><h3>Security monitoring</h3><p>Work the alert queue in a cloud-native SIEM and decide what needs a closer look.</p></div><div class="cap reveal" style="--rd:70ms"><div class="cap-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3 4 6v6c0 5 3.4 8.6 8 9.5 4.6-.9 8-4.5 8-9.5V6l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg></div><h3>Detection and response</h3><p>Remediate endpoint threats with an enterprise EDR platform, including pre-deployment readiness checks.</p></div><div class="cap reveal" style="--rd:140ms"><div class="cap-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="6"/><path d="m20 20-4.5-4.5"/></svg></div><h3>Incident investigation</h3><p>Supervisor-facing written findings mapped to MITRE ATT&amp;CK, with IOCs checked against threat intelligence.</p></div><div class="cap reveal" style="--rd:210ms"><div class="cap-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg></div><h3>Email security</h3><p>Reported phishing and smishing: header analysis, URL reputation, and DMARC/SPF review across the mail chain.</p></div><div class="cap reveal" style="--rd:280ms"><div class="cap-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="7" y="8" width="10" height="12" rx="5"/><path d="M12 8V5M9 5l1.5 3M15 5l-1.5 3M4 13h3M17 13h3M5 19l2.5-2M19 19l-2.5-2"/></svg></div><h3>Vulnerability management</h3><p>Agent-based scanning across 185+ endpoints, asset tagging, and prioritized remediation proposals.</p></div><div class="cap reveal" style="--rd:350ms"><div class="cap-ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="9" y="3" width="6" height="5" rx="1"/><rect x="3" y="16" width="6" height="5" rx="1"/><rect x="15" y="16" width="6" height="5" rx="1"/><path d="M12 8v4M6 16v-4h12v4"/></svg></div><h3>Network and identity</h3><p>VLAN configuration during a campus switch migration; AAA, SSO, Kerberos, and SAML fundamentals from NSOC training.</p></div></div>
       </div>
+    </div>
+  </section>
+
+  <section class="s s--line" id="walkthrough" aria-labelledby="walkTitle">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><p class="kicker">Case walkthroughs</p><h2 id="walkTitle" class="reveal">How I work an alert</h2></div>
+        <p class="reveal" style="--rd:120ms">Three kinds of case from the queue, replayed one stage at a time. Every value is invented: the domains, addresses, hostnames, and counts don't exist anywhere.</p>
+      </div>
+      <div class="console reveal">
+        <div class="console-bar">
+          <p class="console-title">Illustrative walkthrough</p>
+          <span class="state state--amber">Synthetic data</span>
+        </div>
+        <div class="case-tabs" role="tablist" aria-label="Example cases">
+          <button class="case-tab" type="button" role="tab" id="case-t-phish" aria-selected="true" aria-controls="case-p-phish" tabindex="0"><b>Reported phishing email</b><span>Email security</span></button>
+          <button class="case-tab" type="button" role="tab" id="case-t-identity" aria-selected="false" aria-controls="case-p-identity" tabindex="-1"><b>Unusual sign-in</b><span>Identity</span></button>
+          <button class="case-tab" type="button" role="tab" id="case-t-vuln" aria-selected="false" aria-controls="case-p-vuln" tabindex="-1"><b>Critical finding on an endpoint</b><span>Vulnerability management</span></button>
+        </div>
+        <div class="case-panel" role="tabpanel" id="case-p-phish" aria-labelledby="case-t-phish" tabindex="0">
+          <div class="stepper" data-stepper="Stages of the phishing case">
+            <ol>
+              <li data-label="Signal">
+                <div class="stage">
+                  <div class="stage-copy"><p class="stage-label">Signal</p><h3>A user reports a suspicious message</h3><p>A staff member uses the report button on an email asking them to review a shared document. Reports like this are the cheapest detection there is, so each one gets a real look.</p></div>
+                  <dl class="evidence"><div><dt>source</dt><dd>user report</dd></div><div><dt>subject</dt><dd>Shared file: Q3 budget review</dd></div><div><dt>sender</dt><dd>accounts@billing-notice.example</dd></div><div><dt>queue</dt><dd>email security</dd></div></dl>
+                </div>
+              </li>
+              <li data-label="Triage">
+                <div class="stage">
+                  <div class="stage-copy"><p class="stage-label">Triage</p><h3>Read the headers before the body</h3><p>The display name imitates an internal department, but the sending domain doesn't belong to the university and the Reply-To points somewhere else again. Authentication results settle it.</p><p class="stage-decision"><b>Decision</b> Not a false report. Treat as phishing and keep going.</p></div>
+                  <dl class="evidence"><div><dt>spf</dt><dd>fail</dd></div><div><dt>dkim</dt><dd>none</dd></div><div><dt>dmarc</dt><dd>fail</dd></div><div><dt>reply-to</dt><dd>mismatch with sender</dd></div></dl>
+                </div>
+              </li>
+              <li data-label="Enrich">
+                <div class="stage">
+                  <div class="stage-copy"><p class="stage-label">Enrich</p><h3>Find out what the link does</h3><p>The URL is checked against threat intelligence, then opened in a sandbox rather than on a workstation. A recently registered domain serving a copy of a sign-in page is credential phishing, not spam.</p><p class="stage-decision"><b>Decision</b> Credential harvesting confirmed. Scope it.</p></div>
+                  <dl class="evidence"><div><dt>url</dt><dd>hxxps://docs-share[.]example/view</dd></div><div><dt>domain age</dt><dd>4 days</dd></div><div><dt>reputation</dt><dd>flagged</dd></div><div><dt>sandbox</dt><dd>fake sign-in page</dd></div></dl>
+                </div>
+              </li>
+              <li data-label="Scope">
+                <div class="stage">
+                  <div class="stage-copy"><p class="stage-label">Scope</p><h3>Find everyone else who got it</h3><p>One report rarely means one recipient. A message trace shows who else received it and who clicked, and sign-in activity for those accounts gets reviewed next.</p><p class="stage-decision"><b>Decision</b> Two accounts need follow-up. The rest need the message removed.</p></div>
+                  <dl class="evidence"><div><dt>recipients</dt><dd>14</dd></div><div><dt>clicked</dt><dd>2</dd></div><div><dt>credentials entered</dt><dd>1 suspected</dd></div><div><dt>related cases</dt><dd>unusual sign-in</dd></div></dl>
+                </div>
+              </li>
+              <li data-label="Respond">
+                <div class="stage">
+                  <div class="stage-copy"><p class="stage-label">Respond</p><h3>Contain it, inside the runbook</h3><p>The message is removed from mailboxes, the sender and URL are blocked, and affected accounts get a password reset with sessions revoked. Anything outside my permissions goes to a senior analyst with the evidence attached.</p></div>
+                  <dl class="evidence"><div><dt>message</dt><dd>removed</dd></div><div><dt>sender and url</dt><dd>blocked</dd></div><div><dt>accounts</dt><dd>reset, sessions revoked</dd></div><div><dt>escalation</dt><dd>senior analyst</dd></div></dl>
+                </div>
+              </li>
+              <li data-label="Record">
+                <div class="stage">
+                  <div class="stage-copy"><p class="stage-label">Record</p><h3>Write it up so the next analyst can use it</h3><p>Findings go into the ticket mapped to MITRE ATT&amp;CK, with indicators listed so they can be searched later. If the same lure shows up again, the second case starts from this one.</p></div>
+                  <dl class="evidence"><div><dt>technique</dt><dd>T1566.002 Spearphishing Link</dd></div><div><dt>indicators</dt><dd>1 domain, 1 url, 1 sender</dd></div><div><dt>ticket</dt><dd>closed with findings</dd></div></dl>
+                </div>
+              </li>
+            </ol>
+          </div>
+        </div>
+        <div class="case-panel" role="tabpanel" id="case-p-identity" aria-labelledby="case-t-identity" tabindex="0" hidden>
+          <div class="stepper" data-stepper="Stages of the sign-in case">
+            <ol>
+              <li data-label="Signal">
+                <div class="stage">
+                  <div class="stage-copy"><p class="stage-label">Signal</p><h3>Two sign-ins that can't both be the same person</h3><p>The SIEM raises an alert: one account signs in from Boston, then from another continent forty minutes later.</p></div>
+                  <dl class="evidence"><div><dt>account</dt><dd>jdoe (synthetic)</dd></div><div><dt>sign-in 1</dt><dd>198.51.100.24, Boston</dd></div><div><dt>sign-in 2</dt><dd>203.0.113.77, overseas</dd></div><div><dt>gap</dt><dd>40 minutes</dd></div></dl>
+                </div>
+              </li>
+              <li data-label="Triage">
+                <div class="stage">
+                  <div class="stage-copy"><p class="stage-label">Triage</p><h3>Rule out the boring explanations first</h3><p>Most of these are a VPN, a phone on a carrier network, or real travel. Device, client, and MFA details usually say which. Here the second sign-in is an unregistered device, and the MFA prompt was approved anyway.</p><p class="stage-decision"><b>Decision</b> No benign explanation fits. Investigate as a compromised account.</p></div>
+                  <dl class="evidence"><div><dt>device</dt><dd>unregistered</dd></div><div><dt>client</dt><dd>new browser profile</dd></div><div><dt>mfa</dt><dd>push approved</dd></div><div><dt>vpn match</dt><dd>no</dd></div></dl>
+                </div>
+              </li>
+              <li data-label="Enrich">
+                <div class="stage">
+                  <div class="stage-copy"><p class="stage-label">Enrich</p><h3>Look at where it came from</h3><p>The second address belongs to a hosting provider the account has never used. Recent history adds context: the same user reported a phishing email two days earlier.</p><p class="stage-decision"><b>Decision</b> Likely credential theft from the phishing case. Link the two.</p></div>
+                  <dl class="evidence"><div><dt>ip owner</dt><dd>hosting provider</dd></div><div><dt>reputation</dt><dd>flagged</dd></div><div><dt>prior use</dt><dd>none</dd></div><div><dt>linked case</dt><dd>reported phishing email</dd></div></dl>
+                </div>
+              </li>
+              <li data-label="Scope">
+                <div class="stage">
+                  <div class="stage-copy"><p class="stage-label">Scope</p><h3>Find out what the session did</h3><p>What matters is what happened after sign-in: new inbox rules, forwarding, changes to MFA methods, files opened. A rule that quietly moves replies out of the inbox is a common way to hide.</p><p class="stage-decision"><b>Decision</b> Mailbox tampering found. Contain now.</p></div>
+                  <dl class="evidence"><div><dt>inbox rule</dt><dd>created, hides replies</dd></div><div><dt>forwarding</dt><dd>none</dd></div><div><dt>mfa methods</dt><dd>unchanged</dd></div><div><dt>mail sent</dt><dd>0</dd></div></dl>
+                </div>
+              </li>
+              <li data-label="Respond">
+                <div class="stage">
+                  <div class="stage-copy"><p class="stage-label">Respond</p><h3>Cut off access and undo the changes</h3><p>Sessions are revoked, credentials reset, the rule removed, and MFA re-registered with the user. Account actions I can't take myself are escalated with the timeline attached.</p></div>
+                  <dl class="evidence"><div><dt>sessions</dt><dd>revoked</dd></div><div><dt>password</dt><dd>reset</dd></div><div><dt>inbox rule</dt><dd>removed</dd></div><div><dt>mfa</dt><dd>re-registered</dd></div></dl>
+                </div>
+              </li>
+              <li data-label="Record">
+                <div class="stage">
+                  <div class="stage-copy"><p class="stage-label">Record</p><h3>Close the loop with the phishing case</h3><p>The write-up records both techniques and ties this case to the email that started it, so the full chain is in one place.</p></div>
+                  <dl class="evidence"><div><dt>technique</dt><dd>T1078 Valid Accounts</dd></div><div><dt>technique</dt><dd>T1564.008 Email Hiding Rules</dd></div><div><dt>ticket</dt><dd>closed, linked</dd></div></dl>
+                </div>
+              </li>
+            </ol>
+          </div>
+        </div>
+        <div class="case-panel" role="tabpanel" id="case-p-vuln" aria-labelledby="case-t-vuln" tabindex="0" hidden>
+          <div class="stepper" data-stepper="Stages of the vulnerability case">
+            <ol>
+              <li data-label="Signal">
+                <div class="stage">
+                  <div class="stage-copy"><p class="stage-label">Signal</p><h3>A scan flags a critical finding</h3><p>The scanning agent on a workstation reports an outdated browser runtime with a critical vulnerability.</p></div>
+                  <dl class="evidence"><div><dt>asset</dt><dd>WS-LAB-0142 (synthetic)</dd></div><div><dt>finding</dt><dd>outdated browser runtime</dd></div><div><dt>severity</dt><dd>critical, CVSS 9.8</dd></div><div><dt>id</dt><dd>CVE-0000-00000 (placeholder)</dd></div></dl>
+                </div>
+              </li>
+              <li data-label="Triage">
+                <div class="stage">
+                  <div class="stage-copy"><p class="stage-label">Triage</p><h3>Confirm it's real</h3><p>Scanners report stale data and duplicates. Installed version against fixed version, the agent's last check-in, and whether the asset still exists all get checked before anyone is asked to patch.</p><p class="stage-decision"><b>Decision</b> True positive on a live machine.</p></div>
+                  <dl class="evidence"><div><dt>installed</dt><dd>older than fixed version</dd></div><div><dt>last check-in</dt><dd>today</dd></div><div><dt>duplicate asset</dt><dd>no</dd></div></dl>
+                </div>
+              </li>
+              <li data-label="Enrich">
+                <div class="stage">
+                  <div class="stage-copy"><p class="stage-label">Enrich</p><h3>Decide how much it matters</h3><p>Severity alone isn't priority. The NVD entry gives the attack vector, and a listing in a known-exploited catalog means attackers are already using it. What the machine can reach matters too.</p><p class="stage-decision"><b>Decision</b> Exploited in the wild and network-reachable. Move it up the queue.</p></div>
+                  <dl class="evidence"><div><dt>vector</dt><dd>network, no privileges</dd></div><div><dt>known exploited</dt><dd>yes</dd></div><div><dt>exposure</dt><dd>user workstation</dd></div></dl>
+                </div>
+              </li>
+              <li data-label="Scope">
+                <div class="stage">
+                  <div class="stage-copy"><p class="stage-label">Scope</p><h3>Find every machine with the same problem</h3><p>Asset tags by hostname and address range turn one finding into a list: every endpoint running the same software version.</p></div>
+                  <dl class="evidence"><div><dt>affected endpoints</dt><dd>23</dd></div><div><dt>tag groups</dt><dd>2</dd></div><div><dt>already patched</dt><dd>5</dd></div></dl>
+                </div>
+              </li>
+              <li data-label="Respond">
+                <div class="stage">
+                  <div class="stage-copy"><p class="stage-label">Respond</p><h3>Propose a fix someone can act on</h3><p>The remediation proposal orders the work by exploitability and exposure, names the owning team, and sets a date. It goes to them as a ticket rather than a spreadsheet.</p></div>
+                  <dl class="evidence"><div><dt>order</dt><dd>exposed machines first</dd></div><div><dt>owner</dt><dd>desktop support</dd></div><div><dt>ticket</dt><dd>opened</dd></div></dl>
+                </div>
+              </li>
+              <li data-label="Record">
+                <div class="stage">
+                  <div class="stage-copy"><p class="stage-label">Record</p><h3>Rescan, then close</h3><p>A finding is closed when a fresh scan says so, not when a patch is reported as installed. Before-and-after results go in the ticket.</p></div>
+                  <dl class="evidence"><div><dt>rescan</dt><dd>clean</dd></div><div><dt>evidence</dt><dd>before and after attached</dd></div><div><dt>ticket</dt><dd>closed</dd></div></dl>
+                </div>
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+      <p class="meta console-note">This shows method, not history. It isn't a record of any real incident, and it leaves out how the university's environment is configured.</p>
     </div>
   </section>
 
@@ -174,5 +325,7 @@
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script src="js/script.js"></script>
 <script src="js/visuals.js" defer></script>
+<script src="js/labs.js" defer></script>
+<script src="js/palette.js" defer></script>
 </body>
 </html>

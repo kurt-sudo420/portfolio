@@ -7,7 +7,9 @@ Run from the repository root:
 Checks every HTML page for: title, meta description, canonical URL, one <h1>,
 the seven-item primary nav with exactly one active link, working internal links
 and #anchors, image alt text, rel="noopener" on new-tab links, and accidental
-secrets. Also checks content rules: Network+ (N10-009) and Security+ (SY0-701)
+secrets. Also checks the social preview image, that the command palette is
+loaded on every page and each of its entries resolves, and that interactive
+steppers have labelled stages. Content rules: Network+ (N10-009) and Security+ (SY0-701)
 shown as earned, only those two marked as earned, and no "Working knowledge"
 skill levels.
 Exits non-zero if anything fails.
@@ -21,6 +23,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 NAV = ["index.html", "about.html", "experience.html", "projects.html",
        "research.html", "certifications.html", "contact.html"]
 REDIRECTS = {"academics.html"}
+SITE = "https://kurt-sudo420.github.io/portfolio/"
 SECRET_PATTERNS = [r"AKIA[0-9A-Z]{16}", r"ghp_[A-Za-z0-9]{36}", r"sk-[A-Za-z0-9]{32,}", r"-----BEGIN [A-Z ]*PRIVATE KEY-----"]
 
 
@@ -35,6 +38,11 @@ class Page(HTMLParser):
         self.canonical = None
         self.nav_links, self.active = [], []
         self._in_nav = 0
+        self.prop = {}
+        self.scripts = []
+        self.steppers = 0
+        self.stepper_items = []
+        self._stepper_depth = 0
 
     def handle_starttag(self, tag, attrs):
         a = dict(attrs)
@@ -46,6 +54,21 @@ class Page(HTMLParser):
             self._in_title = True
         if tag == "meta" and "name" in a:
             self.meta[a["name"]] = a.get("content", "")
+        if tag == "meta" and "property" in a:
+            self.prop[a["property"]] = a.get("content", "")
+        if tag == "script" and a.get("src"):
+            self.scripts.append(a["src"])
+        if "data-stepper" in a:
+            self.steppers += 1
+            self._stepper_depth = 1
+            if not (a.get("data-stepper") or "").strip():
+                self.stepper_items.append(None)
+        elif self._stepper_depth:
+            if tag not in ("br", "img", "input", "meta", "link", "hr"):
+                self._stepper_depth += 1
+            # <div data-stepper> > <ol> > <li>: stage items sit two levels down
+            if tag == "li" and self._stepper_depth == 3:
+                self.stepper_items.append(a.get("data-label"))
         if tag == "link" and a.get("rel") == "canonical":
             self.canonical = a.get("href")
         if tag == "ul" and a.get("id") == "navLinks":
@@ -68,6 +91,8 @@ class Page(HTMLParser):
             self.imgs.append(a.get("src"))
 
     def handle_endtag(self, tag):
+        if self._stepper_depth and tag not in ("br", "img", "input", "meta", "link", "hr"):
+            self._stepper_depth -= 1
         if tag == "title":
             self._in_title = False
         if tag == "ul" and self._in_nav:
@@ -136,6 +161,33 @@ def main():
                 err(f"possible secret matching {pat}")
         if "Working knowledge" in raw[rel]:
             err('skill level "Working knowledge" should not appear')
+        image = p.prop.get("og:image", "")
+        if not image.startswith(SITE):
+            err("og:image missing or not an absolute URL on this site")
+        elif not os.path.exists(os.path.join(ROOT, image[len(SITE):])):
+            err(f"og:image file not found: {image}")
+        if p.meta.get("twitter:card") != "summary_large_image":
+            err("twitter:card should be summary_large_image")
+        if not any(src.endswith("js/palette.js") for src in p.scripts):
+            err("command palette script (js/palette.js) not loaded")
+        if p.steppers and not any(src.endswith("js/labs.js") for src in p.scripts):
+            err("page has a stepper but does not load js/labs.js")
+        if any(not label for label in p.stepper_items):
+            err("every stepper needs a name and every stage a data-label")
+
+    # Every command palette entry must point at a real page and anchor.
+    palette = open(os.path.join(ROOT, "js", "palette.js"), encoding="utf-8").read()
+    targets = re.findall(r"href: '([^']+)'", palette)
+    if len(targets) < 10:
+        errors.append("js/palette.js: could not read the palette entries")
+    for href in targets:
+        if href.startswith("http"):
+            continue
+        path, _, frag = href.partition("#")
+        if path not in parsed:
+            errors.append(f"js/palette.js: entry points at a missing page: {href}")
+        elif frag and frag not in parsed[path].ids:
+            errors.append(f"js/palette.js: entry points at a missing anchor: {href}")
 
     for rel in ("index.html", "certifications.html"):
         html = raw.get(rel, "")

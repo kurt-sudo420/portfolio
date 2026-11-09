@@ -98,7 +98,7 @@ if (window.jQuery) $(document).ready(function () {
   var roles = [
     'Junior Security Analyst',
     'LLM Security Researcher',
-    'CompTIA Network+ certified',
+    'Security+ and Network+ certified',
     'Python security tooling'
   ];
   if (REDUCE) { el.textContent = roles[0]; return; }
@@ -198,36 +198,87 @@ if (window.jQuery) $(document).ready(function () {
   });
 })();
 
-/* Projects page category filters */
-(function projectFilters() {
+/* Projects page: category filters combined with free-text search.
+   A project is shown when it matches the active category AND every word
+   typed in the search box. Both are mirrored into the URL (?cat=&q=) so a
+   filtered view can be linked to; the command palette relies on ?q=. */
+(function projectFinder() {
   var group = document.querySelector('[data-filter-group]');
   if (!group) return;
   var buttons = group.querySelectorAll('[data-filter]');
-  var items = document.querySelectorAll('[data-cat]');
+  var items = Array.prototype.slice.call(document.querySelectorAll('[data-cat]'));
   var status = document.getElementById('filterStatus');
+  var input = document.getElementById('projectSearch');
+  var empty = document.getElementById('finderEmpty');
+  var reset = document.getElementById('finderReset');
+  var state = { cat: 'all', q: '' };
 
-  function apply(filter) {
+  function normalize(text) { return text.toLowerCase().replace(/[^a-z0-9+#.]+/g, ' ').trim(); }
+
+  // Searchable text is the card's own visible copy plus optional data-keywords.
+  var haystacks = items.map(function (item) {
+    return ' ' + normalize(item.textContent + ' ' + (item.getAttribute('data-keywords') || ''));
+  });
+
+  function apply() {
+    var words = normalize(state.q).split(' ').filter(Boolean);
     var shown = 0;
-    items.forEach(function (item) {
-      var match = filter === 'all' || item.getAttribute('data-cat').split(' ').indexOf(filter) !== -1;
-      if (match) {
+    items.forEach(function (item, i) {
+      var inCat = state.cat === 'all' || item.getAttribute('data-cat').split(' ').indexOf(state.cat) !== -1;
+      var inText = words.every(function (w) { return haystacks[i].indexOf(w) !== -1; });
+      if (inCat && inText) {
         shown++;
         if (item.classList.contains('is-hidden')) {
           item.classList.remove('is-hidden');
           item.classList.add('is-filtering');
           requestAnimationFrame(function () { requestAnimationFrame(function () { item.classList.remove('is-filtering'); }); });
         }
+        // Filtered-in cards may never have scrolled into view; don't leave them transparent.
+        if (state.cat !== 'all' || words.length) item.classList.add('reveal--visible');
       } else {
         item.classList.add('is-hidden');
       }
     });
-    buttons.forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-filter') === filter)); });
+    buttons.forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-filter') === state.cat)); });
+    // Rows that lost every card would otherwise leave an empty gap in the grid.
+    document.querySelectorAll('.ex-row').forEach(function (row) {
+      row.hidden = !row.querySelector('[data-cat]:not(.is-hidden)');
+    });
     if (status) status.textContent = shown + (shown === 1 ? ' project' : ' projects');
+    if (empty) empty.hidden = shown !== 0;
+
+    if (window.history && history.replaceState) {
+      var params = new URLSearchParams();
+      if (state.cat !== 'all') params.set('cat', state.cat);
+      if (state.q.trim()) params.set('q', state.q.trim());
+      var query = params.toString();
+      history.replaceState(null, '', window.location.pathname + (query ? '?' + query : '') + window.location.hash);
+    }
   }
+
   buttons.forEach(function (b) {
-    b.addEventListener('click', function () { apply(b.getAttribute('data-filter')); });
+    b.addEventListener('click', function () { state.cat = b.getAttribute('data-filter'); apply(); });
   });
-  apply('all');
+  if (input) {
+    input.addEventListener('input', function () { state.q = input.value; apply(); });
+    input.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && input.value) { e.preventDefault(); input.value = ''; state.q = ''; apply(); }
+    });
+  }
+  if (reset) reset.addEventListener('click', function () {
+    state.cat = 'all'; state.q = '';
+    if (input) { input.value = ''; input.focus(); }
+    apply();
+  });
+
+  try {
+    var initial = new URLSearchParams(window.location.search);
+    var cat = initial.get('cat');
+    if (cat && group.querySelector('[data-filter="' + cat.replace(/[^a-z]/g, '') + '"]')) state.cat = cat;
+    state.q = (initial.get('q') || '').slice(0, 80);
+    if (input) input.value = state.q;
+  } catch (err) { /* URLSearchParams unavailable: start unfiltered */ }
+  apply();
 })();
 
 /* Accessible tabs (skills, threat model): click + arrow keys */
